@@ -1,0 +1,96 @@
+nov 08 15:00:27 imx7sabresd systemd-timesyncd[289]: System clock time unset or jumped backwards, restoring from recorded timestamp: Wed 2023-01-25 01:29:32 UTC
+jan 25 02:30:20 imx7sabresd systemd-journald[238]: Oldest entry in /var/log/journal/90e56b7ec34c4cbd9418c5be4134100b/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+jan 25 02:30:20 imx7sabresd systemd-journald[238]: /var/log/journal/90e56b7ec34c4cbd9418c5be4134100b/system.journal: Journal header limits reached or header out-of-date, rotating.
+jan 25 02:29:32 imx7sabresd systemd[1]: Started Network Name Resolution.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target Network.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target Host and Network Name Lookups.
+jan 25 02:29:32 imx7sabresd systemd[1]: Started Network Time Synchronization.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target System Initialization.
+jan 25 02:29:32 imx7sabresd systemd[1]: Started Daily Cleanup of Temporary Directories.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target Boot Completion Check.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target System Time Set.
+jan 25 02:29:32 imx7sabresd systemd[1]: Reached target Timer Units.
+jan 25 02:29:32 imx7sabresd systemd[1]: Listening on D-Bus System Message Bus Socket.
+jan 25 02:29:32 imx7sabresd systemd[1]: Starting sshd.socket...
+jan 25 02:29:33 imx7sabresd systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+jan 25 02:30:19 imx7sabresd systemd-resolved[288]: Clock change detected. Flushing caches.
+jan 25 02:30:19 imx7sabresd systemd-timesyncd[289]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+jan 25 02:30:19 imx7sabresd systemd-timesyncd[289]: Initial clock synchronization to Wed 2023-01-25 01:30:19.939371 UTC.
+jan 25 02:30:20 imx7sabresd systemd[1]: Listening on sshd.socket.
+jan 25 02:30:20 imx7sabresd systemd[1]: Reached target Socket Units.
+jan 25 02:30:20 imx7sabresd netserver[298]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+jan 25 02:30:20 imx7sabresd systemd[1]: Reached target Basic System.
+jan 25 02:30:20 imx7sabresd systemd[1]: System is tainted: cgroupsv1
+jan 25 02:30:20 imx7sabresd systemd[1]: Starting D-Bus System Message Bus...
+jan 25 02:30:20 imx7sabresd systemd[1]: Started Getty on tty1.
+jan 25 02:30:20 imx7sabresd systemd[1]: Started Netperf Benchmark Server.
+jan 25 02:30:20 imx7sabresd systemd[1]: Started Serial Getty on ttymxc0.
+jan 25 02:30:20 imx7sabresd systemd[1]: Reached target Login Prompts.
+jan 25 02:30:20 imx7sabresd systemd[1]: Starting RAUC Good-marking Service...
+jan 25 02:30:20 imx7sabresd systemd[1]: Starting User Login Management...
+jan 25 02:30:20 imx7sabresd systemd[1]: Starting OpenSSH Key Generation...
+jan 25 02:30:20 imx7sabresd systemd-logind[301]: New seat seat0.
+jan 25 02:30:20 imx7sabresd systemd-logind[301]: Watching system buttons on /dev/input/event0 (30370000.snvs:snvs-powerkey)
+jan 25 02:30:20 imx7sabresd systemd[1]: Started D-Bus System Message Bus.
+jan 25 02:30:20 imx7sabresd systemd[1]: Finished OpenSSH Key Generation.
+jan 25 02:30:20 imx7sabresd dbus-daemon[296]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.0' (uid=605 pid=257 comm="/usr/lib/systemd/systemd-networkd")
+jan 25 02:30:21 imx7sabresd systemd[1]: Started User Login Management.
+jan 25 02:30:21 imx7sabresd dbus-daemon[296]: [system] Successfully activated service 'org.freedesktop.systemd1'
+jan 25 02:30:21 imx7sabresd systemd[1]: Starting Hostname Service...
+jan 25 02:30:21 imx7sabresd dbus-daemon[296]: [system] Successfully activated service 'org.freedesktop.hostname1'
+jan 25 02:30:21 imx7sabresd systemd[1]: Started Hostname Service.
+jan 25 02:30:21 imx7sabresd systemd-networkd[257]: Could not set hostname: Access denied
+jan 25 02:30:22 imx7sabresd dbus-daemon[296]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=308 comm="/usr/bin/rauc status mark-good")
+jan 25 02:30:22 imx7sabresd systemd[1]: Starting RAUC Update Service...
+jan 25 02:30:22 imx7sabresd rauc[311]: Using central status file /var/lib/rauc/central.raucs
+jan 25 02:30:22 imx7sabresd rauc[311]: Using central status file /var/lib/rauc/central.raucs
+jan 25 02:30:22 imx7sabresd dbus-daemon[296]: [system] Successfully activated service 'de.pengutronix.rauc'
+jan 25 02:30:22 imx7sabresd systemd[1]: Started RAUC Update Service.
+jan 25 02:30:22 imx7sabresd rauc[311]: rauc mark: marked slot kernel.0 as good
+jan 25 02:30:22 imx7sabresd rauc[308]: rauc status: marked slot kernel.0 as good
+jan 25 02:30:22 imx7sabresd systemd[1]: Finished RAUC Good-marking Service.
+jan 25 02:30:22 imx7sabresd systemd[1]: Reached target Multi-User System.
+jan 25 02:30:23 imx7sabresd systemd[1]: Starting Record Runlevel Change in UTMP...
+jan 25 02:30:23 imx7sabresd systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+jan 25 02:30:23 imx7sabresd systemd[1]: Finished Record Runlevel Change in UTMP.
+jan 25 02:30:23 imx7sabresd systemd[1]: Startup finished in 10.301s (kernel) + 14.950s (userspace) = 25.251s.
+jan 25 02:30:24 imx7sabresd login[299]: ROOT LOGIN  on '/dev/ttymxc0'
+jan 25 02:30:30 imx7sabresd rauc[311]: rauc mark: activated slot kernel.0
+jan 25 02:30:30 imx7sabresd kernel: VLDO2: disabling
+jan 25 02:30:30 imx7sabresd systemd[1]: Created slice Slice /system/sshd.
+jan 25 02:30:30 imx7sabresd systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:42046).
+jan 25 02:30:31 imx7sabresd sshd[370]: Accepted publickey for root from 192.168.17.13 port 42046 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 02:30:31 imx7sabresd sshd[370]: Received disconnect from 192.168.17.13 port 42046:11: disconnected by user
+jan 25 02:30:31 imx7sabresd sshd[370]: Disconnected from user root 192.168.17.13 port 42046
+jan 25 02:30:31 imx7sabresd systemd[1]: sshd@0-192.168.17.160:22-192.168.17.13:42046.service: Deactivated successfully.
+jan 25 02:30:31 imx7sabresd systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:42050).
+jan 25 02:30:32 imx7sabresd sshd[376]: Accepted publickey for root from 192.168.17.13 port 42050 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 02:30:35 imx7sabresd rauc[311]: input bundle: /tmp/bootloader-imx7sabresd.raucb
+jan 25 02:30:35 imx7sabresd rauc[311]: Active slot bootname: A
+jan 25 02:30:35 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: started
+jan 25 02:30:35 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Checking and mounting bundle...
+jan 25 02:30:35 imx7sabresd rauc[311]: Reading bundle: /tmp/bootloader-imx7sabresd.raucb
+jan 25 02:30:35 imx7sabresd rauc[311]: Verifying bundle signature... 
+jan 25 02:30:35 imx7sabresd rauc[311]: Verified detached signature by 'O = Test Org, CN = Test Org Development-1'
+jan 25 02:30:35 imx7sabresd rauc[311]: Mounting bundle '/tmp/bootloader-imx7sabresd.raucb' to '/run/rauc/bundle'
+jan 25 02:30:35 imx7sabresd kernel: loop0: detected capacity change from 0 to 498
+jan 25 02:30:35 imx7sabresd kernel: loop0: detected capacity change from 498 to 496
+jan 25 02:30:35 imx7sabresd rauc[311]: Configured loop device '/dev/loop0' for 253952 bytes
+jan 25 02:30:35 imx7sabresd rauc[311]: Starting pre install handler: /usr/libexec/rauc-pre-install.sh
+jan 25 02:30:35 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slots...
+jan 25 02:30:35 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Checking slot boot.0
+jan 25 02:30:35 imx7sabresd rauc[311]: Updating /dev/mmcblk0 with 'install' slot hook
+jan 25 02:30:35 imx7sabresd rauc[311]: Running slot hook 'slot-install' for boot.0
+jan 25 02:30:35 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0
+jan 25 02:30:35 imx7sabresd rauc[390]: << bootloader-hook [STARTED]
+jan 25 02:30:35 imx7sabresd rauc[390]: << Data on /dev/mmcblk0 at 1 (bs=1k) already identical to /tmp/tmp.GzrPHCOZrN/u-boot.imx
+jan 25 02:30:37 imx7sabresd rauc[390]: << Updating U-boot environment
+jan 25 02:30:37 imx7sabresd rauc[390]: << Updating U-boot environment done
+jan 25 02:30:38 imx7sabresd rauc[390]: << Data on /dev/disk/by-partlabel/U-Boot-script at 0 (bs=1k) already identical to /run/rauc/bundle/bootscript.itb
+jan 25 02:30:38 imx7sabresd rauc[390]: << bootloader-hook [DONE]
+jan 25 02:30:39 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0 status
+jan 25 02:30:39 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0 done
+jan 25 02:30:39 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: All slots updated
+jan 25 02:30:39 imx7sabresd rauc[311]: Starting post install handler: /usr/libexec/rauc-post-install.sh
+jan 25 02:30:39 imx7sabresd rauc[311]: installing /tmp/bootloader-imx7sabresd.raucb: finished
+jan 25 02:30:39 imx7sabresd rauc[311]: installing `/tmp/bootloader-imx7sabresd.raucb` succeeded

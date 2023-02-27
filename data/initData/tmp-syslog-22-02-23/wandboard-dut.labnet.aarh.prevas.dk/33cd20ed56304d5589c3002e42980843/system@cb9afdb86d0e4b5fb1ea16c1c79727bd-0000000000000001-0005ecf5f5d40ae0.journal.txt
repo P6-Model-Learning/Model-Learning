@@ -1,0 +1,404 @@
+nov 08 15:00:19 wandboard kernel: Booting Linux on physical CPU 0x0
+nov 08 15:00:19 wandboard kernel: Linux version 5.15.82 (oe-user@oe-host) (arm-oe-linux-gnueabi-gcc (GCC) 12.2.0, GNU ld (GNU Binutils) 2.39.0.20220819) #1 SMP Thu Dec 8 10:28:45 UTC 2022
+nov 08 15:00:19 wandboard kernel: CPU: ARMv7 Processor [412fc09a] revision 10 (ARMv7), cr=10c5387d
+nov 08 15:00:19 wandboard kernel: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+nov 08 15:00:19 wandboard kernel: OF: fdt: Machine model: Wandboard i.MX6 Dual Lite Board
+nov 08 15:00:19 wandboard kernel: Memory policy: Data cache writealloc
+nov 08 15:00:19 wandboard kernel: cma: Reserved 128 MiB at 0x48000000
+nov 08 15:00:19 wandboard kernel: Zone ranges:
+nov 08 15:00:19 wandboard kernel:   Normal   [mem 0x0000000010000000-0x000000003fffffff]
+nov 08 15:00:19 wandboard kernel:   HighMem  [mem 0x0000000040000000-0x000000004fffffff]
+nov 08 15:00:19 wandboard kernel: Movable zone start for each node
+nov 08 15:00:19 wandboard kernel: Early memory node ranges
+nov 08 15:00:19 wandboard kernel:   node   0: [mem 0x0000000010000000-0x000000004fffffff]
+nov 08 15:00:19 wandboard kernel: Initmem setup node 0 [mem 0x0000000010000000-0x000000004fffffff]
+nov 08 15:00:19 wandboard kernel: percpu: Embedded 17 pages/cpu s38188 r8192 d23252 u69632
+nov 08 15:00:19 wandboard kernel: pcpu-alloc: s38188 r8192 d23252 u69632 alloc=17*4096
+nov 08 15:00:19 wandboard kernel: pcpu-alloc: [0] 0 [0] 1 
+nov 08 15:00:19 wandboard kernel: Built 1 zonelists, mobility grouping on.  Total pages: 260608
+nov 08 15:00:19 wandboard kernel: Kernel command line: console=ttymxc0,115200n8 cma=128M quiet rauc.slot=A 
+nov 08 15:00:19 wandboard kernel: Dentry cache hash table entries: 131072 (order: 7, 524288 bytes, linear)
+nov 08 15:00:19 wandboard kernel: Inode-cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+nov 08 15:00:19 wandboard kernel: mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+nov 08 15:00:19 wandboard kernel: Memory: 876400K/1048576K available (14336K kernel code, 1809K rwdata, 4864K rodata, 1024K init, 6628K bss, 41104K reserved, 131072K cma-reserved, 131072K highmem)
+nov 08 15:00:19 wandboard kernel: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+nov 08 15:00:19 wandboard kernel: trace event string verifier disabled
+nov 08 15:00:19 wandboard kernel: Running RCU self tests
+nov 08 15:00:19 wandboard kernel: rcu: Hierarchical RCU implementation.
+nov 08 15:00:19 wandboard kernel: rcu:         RCU event tracing is enabled.
+nov 08 15:00:19 wandboard kernel: rcu:         RCU lockdep checking is enabled.
+nov 08 15:00:19 wandboard kernel: rcu:         RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+nov 08 15:00:19 wandboard kernel:         Tracing variant of Tasks RCU enabled.
+nov 08 15:00:19 wandboard kernel: rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+nov 08 15:00:19 wandboard kernel: rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+nov 08 15:00:19 wandboard kernel: NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+nov 08 15:00:19 wandboard kernel: L2C-310 erratum 769419 enabled
+nov 08 15:00:19 wandboard kernel: L2C-310 enabling early BRESP for Cortex-A9
+nov 08 15:00:19 wandboard kernel: L2C-310 full line of zeros enabled for Cortex-A9
+nov 08 15:00:19 wandboard kernel: L2C-310 ID prefetch enabled, offset 16 lines
+nov 08 15:00:19 wandboard kernel: L2C-310 dynamic clock gating enabled, standby mode enabled
+nov 08 15:00:19 wandboard kernel: L2C-310 cache controller enabled, 16 ways, 512 kB
+nov 08 15:00:19 wandboard kernel: L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76450001
+nov 08 15:00:19 wandboard kernel: Switching to timer-based delay loop, resolution 333ns
+nov 08 15:00:19 wandboard kernel: sched_clock: 32 bits at 3000kHz, resolution 333ns, wraps every 715827882841ns
+nov 08 15:00:19 wandboard kernel: clocksource: mxc_timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 637086815595 ns
+nov 08 15:00:19 wandboard kernel: Console: colour dummy device 80x30
+nov 08 15:00:19 wandboard kernel: Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+nov 08 15:00:19 wandboard kernel: ... MAX_LOCKDEP_SUBCLASSES:  8
+nov 08 15:00:19 wandboard kernel: ... MAX_LOCK_DEPTH:          48
+nov 08 15:00:19 wandboard kernel: ... MAX_LOCKDEP_KEYS:        8192
+nov 08 15:00:19 wandboard kernel: ... CLASSHASH_SIZE:          4096
+nov 08 15:00:19 wandboard kernel: ... MAX_LOCKDEP_ENTRIES:     32768
+nov 08 15:00:19 wandboard kernel: ... MAX_LOCKDEP_CHAINS:      65536
+nov 08 15:00:19 wandboard kernel: ... CHAINHASH_SIZE:          32768
+nov 08 15:00:19 wandboard kernel:  memory used by lock dependency info: 4061 kB
+nov 08 15:00:19 wandboard kernel:  memory used for stack traces: 2112 kB
+nov 08 15:00:19 wandboard kernel:  per task-struct memory footprint: 1536 bytes
+nov 08 15:00:19 wandboard kernel: Calibrating delay loop (skipped), value calculated using timer frequency.. 6.00 BogoMIPS (lpj=30000)
+nov 08 15:00:19 wandboard kernel: pid_max: default: 32768 minimum: 301
+nov 08 15:00:19 wandboard kernel: Mount-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+nov 08 15:00:19 wandboard kernel: Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+nov 08 15:00:19 wandboard kernel: CPU: Testing write buffer coherency: ok
+nov 08 15:00:19 wandboard kernel: CPU0: Spectre v2: using BPIALL workaround
+nov 08 15:00:19 wandboard kernel: CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+nov 08 15:00:19 wandboard kernel: Running RCU-tasks wait API self tests
+nov 08 15:00:19 wandboard kernel: Setting up static identity map for 0x10100000 - 0x10100078
+nov 08 15:00:19 wandboard kernel: rcu: Hierarchical SRCU implementation.
+nov 08 15:00:19 wandboard kernel: smp: Bringing up secondary CPUs ...
+nov 08 15:00:19 wandboard kernel: CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+nov 08 15:00:19 wandboard kernel: CPU1: Spectre v2: using BPIALL workaround
+nov 08 15:00:19 wandboard kernel: smp: Brought up 1 node, 2 CPUs
+nov 08 15:00:19 wandboard kernel: SMP: Total of 2 processors activated (12.00 BogoMIPS).
+nov 08 15:00:19 wandboard kernel: CPU: All CPU(s) started in SVC mode.
+nov 08 15:00:19 wandboard kernel: devtmpfs: initialized
+nov 08 15:00:19 wandboard kernel: VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+nov 08 15:00:19 wandboard kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+nov 08 15:00:19 wandboard kernel: futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+nov 08 15:00:19 wandboard kernel: pinctrl core: initialized pinctrl subsystem
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_NETLINK/PF_ROUTE protocol family
+nov 08 15:00:19 wandboard kernel: Callback from call_rcu_tasks_trace() invoked.
+nov 08 15:00:19 wandboard kernel: DMA: preallocated 256 KiB pool for atomic coherent allocations
+nov 08 15:00:19 wandboard kernel: thermal_sys: Registered thermal governor 'step_wise'
+nov 08 15:00:19 wandboard kernel: cpuidle: using governor menu
+nov 08 15:00:19 wandboard kernel: CPU identified as i.MX6DL, silicon rev 1.3
+nov 08 15:00:19 wandboard kernel: vdd1p1: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: vdd3p0: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: vdd2p5: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: vddarm: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: vddpu: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: vddsoc: supplied by regulator-dummy
+nov 08 15:00:19 wandboard kernel: platform 21dc000.mipi: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi1_mux
+nov 08 15:00:19 wandboard kernel: platform 21dc000.mipi: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi0_mux
+nov 08 15:00:19 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 120000.hdmi
+nov 08 15:00:19 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi1_mux
+nov 08 15:00:19 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi0_mux
+nov 08 15:00:19 wandboard kernel: No ATAGs?
+nov 08 15:00:19 wandboard kernel: hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+nov 08 15:00:19 wandboard kernel: hw-breakpoint: maximum watchpoint size is 4 bytes.
+nov 08 15:00:19 wandboard kernel: imx6dl-pinctrl 20e0000.pinctrl: initialized IMX pinctrl driver
+nov 08 15:00:19 wandboard kernel: Kprobes globally optimized
+nov 08 15:00:19 wandboard kernel: vgaarb: loaded
+nov 08 15:00:19 wandboard kernel: SCSI subsystem initialized
+nov 08 15:00:19 wandboard kernel: libata version 3.00 loaded.
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver usbfs
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver hub
+nov 08 15:00:19 wandboard kernel: usbcore: registered new device driver usb
+nov 08 15:00:19 wandboard kernel: usb_phy_generic usbphynop1: supply vcc not found, using dummy regulator
+nov 08 15:00:19 wandboard kernel: usb_phy_generic usbphynop1: dummy supplies not allowed for exclusive requests
+nov 08 15:00:19 wandboard kernel: usb_phy_generic usbphynop2: supply vcc not found, using dummy regulator
+nov 08 15:00:19 wandboard kernel: usb_phy_generic usbphynop2: dummy supplies not allowed for exclusive requests
+nov 08 15:00:19 wandboard kernel: i2c i2c-0: IMX I2C adapter registered
+nov 08 15:00:19 wandboard kernel: i2c 1-003c: Fixing up cyclic dependency with 21dc000.mipi
+nov 08 15:00:19 wandboard kernel: i2c i2c-1: IMX I2C adapter registered
+nov 08 15:00:19 wandboard kernel: mc: Linux media interface: v0.10
+nov 08 15:00:19 wandboard kernel: videodev: Linux video capture interface: v2.00
+nov 08 15:00:19 wandboard kernel: pps_core: LinuxPPS API ver. 1 registered
+nov 08 15:00:19 wandboard kernel: pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+nov 08 15:00:19 wandboard kernel: PTP clock support registered
+nov 08 15:00:19 wandboard kernel: Advanced Linux Sound Architecture Driver Initialized.
+nov 08 15:00:19 wandboard kernel: Bluetooth: Core ver 2.22
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_BLUETOOTH protocol family
+nov 08 15:00:19 wandboard kernel: Bluetooth: HCI device and connection manager initialized
+nov 08 15:00:19 wandboard kernel: Bluetooth: HCI socket layer initialized
+nov 08 15:00:19 wandboard kernel: Bluetooth: L2CAP socket layer initialized
+nov 08 15:00:19 wandboard kernel: Bluetooth: SCO socket layer initialized
+nov 08 15:00:19 wandboard kernel: clocksource: Switched to clocksource mxc_timer1
+nov 08 15:00:19 wandboard kernel: VFS: Disk quotas dquot_6.6.0
+nov 08 15:00:19 wandboard kernel: VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_INET protocol family
+nov 08 15:00:19 wandboard kernel: IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+nov 08 15:00:19 wandboard kernel: tcp_listen_portaddr_hash hash table entries: 512 (order: 2, 22528 bytes, linear)
+nov 08 15:00:19 wandboard kernel: Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+nov 08 15:00:19 wandboard kernel: TCP established hash table entries: 8192 (order: 3, 32768 bytes, linear)
+nov 08 15:00:19 wandboard kernel: TCP bind hash table entries: 8192 (order: 6, 327680 bytes, linear)
+nov 08 15:00:19 wandboard kernel: TCP: Hash tables configured (established 8192 bind 8192)
+nov 08 15:00:19 wandboard kernel: UDP hash table entries: 512 (order: 3, 49152 bytes, linear)
+nov 08 15:00:19 wandboard kernel: UDP-Lite hash table entries: 512 (order: 3, 49152 bytes, linear)
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_UNIX/PF_LOCAL protocol family
+nov 08 15:00:19 wandboard kernel: PCI: CLS 0 bytes, default 64
+nov 08 15:00:19 wandboard kernel: armv7-pmu pmu: hw perfevents: no interrupt-affinity property, guessing.
+nov 08 15:00:19 wandboard kernel: Trying to unpack rootfs image as initramfs...
+nov 08 15:00:19 wandboard kernel: hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+nov 08 15:00:19 wandboard kernel: Initialise system trusted keyrings
+nov 08 15:00:19 wandboard kernel: workingset: timestamp_bits=30 max_order=18 bucket_order=0
+nov 08 15:00:19 wandboard kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+nov 08 15:00:19 wandboard kernel: fuse: init (API version 7.34)
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_ALG protocol family
+nov 08 15:00:19 wandboard kernel: Key type asymmetric registered
+nov 08 15:00:19 wandboard kernel: Asymmetric key parser 'x509' registered
+nov 08 15:00:19 wandboard kernel: bounce: pool size: 64 pages
+nov 08 15:00:19 wandboard kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
+nov 08 15:00:19 wandboard kernel: io scheduler mq-deadline registered
+nov 08 15:00:19 wandboard kernel: io scheduler kyber registered
+nov 08 15:00:19 wandboard kernel: mxs-dma 110000.dma-apbh: initialized
+nov 08 15:00:19 wandboard kernel: 2020000.serial: ttymxc0 at MMIO 0x2020000 (irq = 33, base_baud = 5000000) is a IMX
+nov 08 15:00:19 wandboard kernel: printk: console [ttymxc0] enabled
+nov 08 15:00:19 wandboard kernel: 21ec000.serial: ttymxc2 at MMIO 0x21ec000 (irq = 76, base_baud = 5000000) is a IMX
+nov 08 15:00:19 wandboard kernel: dwhdmi-imx 120000.hdmi: Detected HDMI TX controller v1.31a with HDCP (DWC HDMI 3D TX PHY)
+nov 08 15:00:19 wandboard kernel: Freeing initrd memory: 1828K
+nov 08 15:00:19 wandboard kernel: imx-sdma 20ec000.sdma: Direct firmware load for imx/sdma/sdma-imx6q.bin failed with error -2
+nov 08 15:00:19 wandboard kernel: imx-sdma 20ec000.sdma: external firmware not found, using ROM firmware
+nov 08 15:00:19 wandboard kernel: etnaviv etnaviv: bound 130000.gpu (ops gpu_ops)
+nov 08 15:00:19 wandboard kernel: etnaviv etnaviv: bound 134000.gpu (ops gpu_ops)
+nov 08 15:00:19 wandboard kernel: etnaviv-gpu 130000.gpu: model: GC880, revision: 5106
+nov 08 15:00:19 wandboard kernel: etnaviv-gpu 134000.gpu: model: GC320, revision: 5007
+nov 08 15:00:19 wandboard kernel: [drm] Initialized etnaviv 1.3.0 20151214 for etnaviv on minor 0
+nov 08 15:00:19 wandboard kernel: imx-drm display-subsystem: bound imx-ipuv3-crtc.2 (ops ipu_crtc_ops)
+nov 08 15:00:19 wandboard kernel: imx-drm display-subsystem: bound imx-ipuv3-crtc.3 (ops ipu_crtc_ops)
+nov 08 15:00:19 wandboard kernel: imx-drm display-subsystem: bound 120000.hdmi (ops dw_hdmi_imx_ops)
+nov 08 15:00:19 wandboard kernel: [drm] Initialized imx-drm 1.0.0 20120507 for display-subsystem on minor 1
+nov 08 15:00:19 wandboard kernel: imx-drm display-subsystem: [drm] Cannot find any crtc or sizes
+nov 08 15:00:19 wandboard kernel: imx-ipuv3 2400000.ipu: IPUv3H probed
+nov 08 15:00:19 wandboard kernel: imx-drm display-subsystem: [drm] Cannot find any crtc or sizes
+nov 08 15:00:19 wandboard kernel: brd: module loaded
+nov 08 15:00:19 wandboard kernel: loop: module loaded
+nov 08 15:00:19 wandboard kernel: tun: Universal TUN/TAP device driver, 1.6
+nov 08 15:00:19 wandboard kernel: CAN device driver interface
+nov 08 15:00:19 wandboard kernel: pps pps0: new PPS source ptp0
+nov 08 15:00:19 wandboard kernel: fec 2188000.ethernet eth0: registered PHC device 0
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver r8152
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver lan78xx
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver asix
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver ax88179_178a
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver cdc_ether
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver smsc95xx
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver net1080
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver cdc_subset
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver zaurus
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver MOSCHIP usb-ethernet driver
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver cdc_ncm
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver r8153_ecm
+nov 08 15:00:19 wandboard kernel: ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+nov 08 15:00:19 wandboard kernel: ehci-pci: EHCI PCI platform driver
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver usb-storage
+nov 08 15:00:19 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,tsc2046
+nov 08 15:00:19 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7843
+nov 08 15:00:19 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7845
+nov 08 15:00:19 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7873
+nov 08 15:00:19 wandboard kernel: snvs_rtc 20cc000.snvs:snvs-rtc-lp: registered as rtc0
+nov 08 15:00:19 wandboard kernel: snvs_rtc 20cc000.snvs:snvs-rtc-lp: setting system clock to 1970-01-01T00:00:00 UTC (0)
+nov 08 15:00:19 wandboard kernel: i2c_dev: i2c /dev entries driver
+nov 08 15:00:19 wandboard kernel: Bluetooth: HCI UART driver ver 2.3
+nov 08 15:00:19 wandboard kernel: Bluetooth: HCI UART protocol H4 registered
+nov 08 15:00:19 wandboard kernel: Bluetooth: HCI UART protocol LL registered
+nov 08 15:00:19 wandboard kernel: sdhci: Secure Digital Host Controller Interface driver
+nov 08 15:00:19 wandboard kernel: sdhci: Copyright(c) Pierre Ossman
+nov 08 15:00:19 wandboard kernel: sdhci-pltfm: SDHCI platform and OF driver helper
+nov 08 15:00:19 wandboard kernel: sdhci-esdhc-imx 2190000.mmc: Got CD GPIO
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: Entropy delay = 3200
+nov 08 15:00:19 wandboard kernel: sdhci-esdhc-imx 2198000.mmc: Got CD GPIO
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: Instantiated RNG4 SH0
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: Instantiated RNG4 SH1
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: device ID = 0x0a16010000000100 (Era 4)
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: job rings = 2, qi = 0
+nov 08 15:00:19 wandboard kernel: caam algorithms registered in /proc/crypto
+nov 08 15:00:19 wandboard kernel: mmc1: SDHCI controller on 2194000.mmc [2194000.mmc] using ADMA
+nov 08 15:00:19 wandboard kernel: mmc0: SDHCI controller on 2190000.mmc [2190000.mmc] using ADMA
+nov 08 15:00:19 wandboard kernel: mmc2: SDHCI controller on 2198000.mmc [2198000.mmc] using ADMA
+nov 08 15:00:19 wandboard kernel: caam 2100000.crypto: registering rng-caam
+nov 08 15:00:19 wandboard kernel: usbcore: registered new interface driver usbhid
+nov 08 15:00:19 wandboard kernel: usbhid: USB HID core driver
+nov 08 15:00:19 wandboard kernel: imx-ipuv3-csi imx-ipuv3-csi.0: Registered ipu1_csi0 capture as /dev/video0
+nov 08 15:00:19 wandboard kernel: imx-ipuv3 2400000.ipu: Registered ipu1_ic_prpenc capture as /dev/video1
+nov 08 15:00:19 wandboard kernel: imx-ipuv3 2400000.ipu: Registered ipu1_ic_prpvf capture as /dev/video2
+nov 08 15:00:19 wandboard kernel: imx-ipuv3-csi imx-ipuv3-csi.1: Registered ipu1_csi1 capture as /dev/video3
+nov 08 15:00:19 wandboard kernel: mmc2: host does not support reading read-only switch, assuming write-enable
+nov 08 15:00:19 wandboard kernel: mmc2: new high speed SDHC card at address aaaa
+nov 08 15:00:19 wandboard kernel: mmcblk2: mmc2:aaaa SC16G 14.8 GiB 
+nov 08 15:00:19 wandboard kernel: sgtl5000 1-000a: sgtl5000 revision 0x11
+nov 08 15:00:19 wandboard kernel: sgtl5000 1-000a: Using internal LDO instead of VDDD: check ER1 erratum
+nov 08 15:00:19 wandboard kernel:  mmcblk2: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+nov 08 15:00:19 wandboard kernel: fsl-ssi-dai 2028000.ssi: No cache defaults, reading back from HW
+nov 08 15:00:19 wandboard kernel: mmc1: new high speed SDIO card at address 0001
+nov 08 15:00:19 wandboard kernel: random: crng init done
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_INET6 protocol family
+nov 08 15:00:19 wandboard kernel: Segment Routing with IPv6
+nov 08 15:00:19 wandboard kernel: In-situ OAM (IOAM) with IPv6
+nov 08 15:00:19 wandboard kernel: sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_PACKET protocol family
+nov 08 15:00:19 wandboard kernel: can: controller area network core
+nov 08 15:00:19 wandboard kernel: NET: Registered PF_CAN protocol family
+nov 08 15:00:19 wandboard kernel: can: raw protocol
+nov 08 15:00:19 wandboard kernel: can: broadcast manager protocol
+nov 08 15:00:19 wandboard kernel: can: netlink gateway - max_hops=1
+nov 08 15:00:19 wandboard kernel: Registering SWP/SWPB emulation handler
+nov 08 15:00:19 wandboard kernel: Loading compiled-in X.509 certificates
+nov 08 15:00:19 wandboard kernel: imx_usb 2184200.usb: No over current polarity defined
+nov 08 15:00:19 wandboard kernel: ci_hdrc ci_hdrc.1: EHCI Host Controller
+nov 08 15:00:19 wandboard kernel: ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 1
+nov 08 15:00:19 wandboard kernel: ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+nov 08 15:00:19 wandboard kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.15
+nov 08 15:00:19 wandboard kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+nov 08 15:00:19 wandboard kernel: usb usb1: Product: EHCI Host Controller
+nov 08 15:00:19 wandboard kernel: usb usb1: Manufacturer: Linux 5.15.82 ehci_hcd
+nov 08 15:00:19 wandboard kernel: usb usb1: SerialNumber: ci_hdrc.1
+nov 08 15:00:19 wandboard kernel: hub 1-0:1.0: USB hub found
+nov 08 15:00:19 wandboard kernel: hub 1-0:1.0: 1 port detected
+nov 08 15:00:19 wandboard kernel: imx_thermal 20c8000.anatop:tempmon: Commercial CPU temperature grade - max:95C critical:90C passive:85C
+nov 08 15:00:19 wandboard kernel: cfg80211: Loading compiled-in X.509 certificates for regulatory database
+nov 08 15:00:19 wandboard kernel: cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+nov 08 15:00:19 wandboard kernel: ALSA device list:
+nov 08 15:00:19 wandboard kernel:   #0: imx6-wandboard-sgtl5000
+nov 08 15:00:19 wandboard kernel:   #1: imx-spdif
+nov 08 15:00:19 wandboard kernel: platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+nov 08 15:00:19 wandboard kernel: cfg80211: failed to load regulatory.db
+nov 08 15:00:19 wandboard kernel: Freeing unused kernel image (initmem) memory: 1024K
+nov 08 15:00:19 wandboard kernel: Run /init as init process
+nov 08 15:00:19 wandboard kernel:   with arguments:
+nov 08 15:00:19 wandboard kernel:     /init
+nov 08 15:00:19 wandboard kernel:   with environment:
+nov 08 15:00:19 wandboard kernel:     HOME=/
+nov 08 15:00:19 wandboard kernel:     TERM=linux
+nov 08 15:00:19 wandboard kernel: EXT4-fs (mmcblk2p6): recovery complete
+nov 08 15:00:19 wandboard kernel: EXT4-fs (mmcblk2p6): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+nov 08 15:00:19 wandboard systemd[1]: System time before build time, advancing clock.
+nov 08 15:00:19 wandboard systemd[1]: systemd 251.8+ running in system mode (-PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK -SECCOMP -GCRYPT -GNUTLS -OPENSSL -ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=hybrid)
+nov 08 15:00:19 wandboard systemd[1]: Detected architecture arm.
+nov 08 15:00:19 wandboard systemd[1]: Hostname set to <wandboard>.
+nov 08 15:00:19 wandboard systemd[1]: Initializing machine ID from random generator.
+nov 08 15:00:19 wandboard systemd[1]: Using hardware watchdog 'imx2+ watchdog', version 0, device /dev/watchdog0
+nov 08 15:00:19 wandboard systemd[1]: Watchdog running with a timeout of 10s.
+nov 08 15:00:19 wandboard systemd[1]: Queued start job for default target Multi-User System.
+nov 08 15:00:19 wandboard systemd[1]: Unnecessary job was removed for /dev/mmcblk2p6.
+nov 08 15:00:19 wandboard systemd[1]: Created slice Slice /system/getty.
+nov 08 15:00:19 wandboard systemd[1]: Created slice Slice /system/modprobe.
+nov 08 15:00:19 wandboard systemd[1]: Created slice Slice /system/serial-getty.
+nov 08 15:00:19 wandboard systemd[1]: Created slice Slice /system/systemd-fsck.
+nov 08 15:00:19 wandboard systemd[1]: Created slice User and Session Slice.
+nov 08 15:00:19 wandboard systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+nov 08 15:00:19 wandboard systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Path Units.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Remote File Systems.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Slice Units.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Swaps.
+nov 08 15:00:19 wandboard systemd[1]: Listening on initctl Compatibility Named Pipe.
+nov 08 15:00:19 wandboard systemd[1]: Journal Audit Socket was skipped because of a failed condition check (ConditionSecurity=audit).
+nov 08 15:00:19 wandboard systemd[1]: Listening on Journal Socket (/dev/log).
+nov 08 15:00:19 wandboard systemd[1]: Listening on Journal Socket.
+nov 08 15:00:19 wandboard systemd[1]: Listening on Network Service Netlink Socket.
+nov 08 15:00:19 wandboard systemd[1]: Listening on udev Control Socket.
+nov 08 15:00:19 wandboard systemd[1]: Listening on udev Kernel Socket.
+nov 08 15:00:19 wandboard systemd[1]: Listening on User Database Manager Socket.
+nov 08 15:00:19 wandboard systemd[1]: Huge Pages File System was skipped because of a failed condition check (ConditionPathExists=/sys/kernel/mm/hugepages).
+nov 08 15:00:19 wandboard systemd[1]: POSIX Message Queue File System was skipped because of a failed condition check (ConditionPathExists=/proc/sys/fs/mqueue).
+nov 08 15:00:19 wandboard systemd[1]: Mounting Kernel Debug File System...
+nov 08 15:00:19 wandboard systemd[1]: Mounting Kernel Trace File System...
+nov 08 15:00:19 wandboard systemd[1]: Create List of Static Device Nodes was skipped because of a failed condition check (ConditionFileNotEmpty=/lib/modules/5.15.82/modules.devname).
+nov 08 15:00:19 wandboard systemd[1]: Starting Load Kernel Module configfs...
+nov 08 15:00:19 wandboard systemd[1]: Starting Load Kernel Module drm...
+nov 08 15:00:19 wandboard systemd[1]: Starting Load Kernel Module fuse...
+nov 08 15:00:19 wandboard systemd[1]: Starting Journal Service...
+nov 08 15:00:19 wandboard systemd[1]: Load Kernel Modules was skipped because all trigger condition checks failed.
+nov 08 15:00:19 wandboard systemd[1]: Starting Generate network units from Kernel command line...
+nov 08 15:00:19 wandboard systemd[1]: Starting Remount Root and Kernel File Systems...
+nov 08 15:00:19 wandboard systemd[1]: Starting Apply Kernel Variables...
+nov 08 15:00:19 wandboard systemd[1]: Starting Create Static Device Nodes in /dev...
+nov 08 15:00:19 wandboard systemd[1]: Starting Coldplug All udev Devices...
+nov 08 15:00:19 wandboard systemd[1]: Mounted Kernel Debug File System.
+nov 08 15:00:19 wandboard systemd[1]: Mounted Kernel Trace File System.
+nov 08 15:00:19 wandboard systemd[1]: modprobe@configfs.service: Deactivated successfully.
+nov 08 15:00:19 wandboard systemd[1]: Finished Load Kernel Module configfs.
+nov 08 15:00:19 wandboard systemd[1]: modprobe@drm.service: Deactivated successfully.
+nov 08 15:00:19 wandboard systemd[1]: Finished Load Kernel Module drm.
+nov 08 15:00:19 wandboard systemd[1]: modprobe@fuse.service: Deactivated successfully.
+nov 08 15:00:19 wandboard systemd[1]: Finished Load Kernel Module fuse.
+nov 08 15:00:19 wandboard systemd[1]: Finished Generate network units from Kernel command line.
+nov 08 15:00:19 wandboard systemd[1]: Finished Remount Root and Kernel File Systems.
+nov 08 15:00:19 wandboard systemd[1]: Finished Apply Kernel Variables.
+nov 08 15:00:19 wandboard systemd[1]: Finished Create Static Device Nodes in /dev.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Preparation for Local File Systems.
+nov 08 15:00:19 wandboard systemd[1]: Reached target Preparation for Network.
+nov 08 15:00:19 wandboard systemd[1]: Mounting FUSE Control File System...
+nov 08 15:00:19 wandboard systemd[1]: Mounting Kernel Configuration File System...
+nov 08 15:00:19 wandboard systemd[1]: Mounting /tmp...
+nov 08 15:00:19 wandboard systemd[1]: Virtual Machine and Container Storage (Compatibility) was skipped because of a failed condition check (ConditionPathExists=/var/lib/machines.raw).
+nov 08 15:00:19 wandboard systemd[1]: Reached target Containers.
+nov 08 15:00:19 wandboard systemd[1]: Mounting /var/volatile...
+nov 08 15:00:19 wandboard systemd[1]: Rebuild Hardware Database was skipped because all trigger condition checks failed.
+nov 08 15:00:19 wandboard systemd[1]: Platform Persistent Storage Archival was skipped because of a failed condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+nov 08 15:00:19 wandboard systemd[1]: Starting Rule-based Manager for Device Events and Files...
+nov 08 15:00:19 wandboard systemd[1]: Mounted FUSE Control File System.
+nov 08 15:00:19 wandboard systemd[1]: Mounted Kernel Configuration File System.
+nov 08 15:00:19 wandboard systemd[1]: Mounted /tmp.
+nov 08 15:00:19 wandboard systemd[1]: Mounted /var/volatile.
+nov 08 15:00:19 wandboard systemd[1]: Bind mount volatile /var/cache was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/cache).
+nov 08 15:00:19 wandboard systemd[1]: Bind mount volatile /var/lib was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/lib).
+nov 08 15:00:19 wandboard systemd[1]: Starting Load/Save Random Seed...
+nov 08 15:00:19 wandboard systemd[1]: Bind mount volatile /var/spool was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/spool).
+nov 08 15:00:19 wandboard systemd-journald[210]: Journal started
+nov 08 15:00:19 wandboard systemd-journald[210]: Runtime Journal (/run/log/journal/33cd20ed56304d5589c3002e42980843) is 8.0M, max 64.0M, 56.0M free.
+nov 08 15:00:19 wandboard systemd[1]: Starting Bind mount volatile /srv...
+nov 08 15:00:19 wandboard systemd[1]: Started Journal Service.
+nov 08 15:00:19 wandboard systemd[1]: Finished Load/Save Random Seed.
+nov 08 15:00:19 wandboard systemd[1]: First Boot Complete was skipped because of a failed condition check (ConditionFirstBoot=yes).
+nov 08 15:00:19 wandboard systemd[1]: Starting Flush Journal to Persistent Storage...
+nov 08 15:00:19 wandboard systemd-udevd[224]: Using default interface naming scheme 'v251'.
+nov 08 15:00:19 wandboard systemd-udevd[224]: /usr/lib/udev/rules.d/50-udev-default.rules:46 Unknown group 'sgx', ignoring
+nov 08 15:00:19 wandboard systemd-udevd[224]: /usr/lib/udev/rules.d/50-udev-default.rules:47 Unknown group 'sgx', ignoring
+nov 08 15:00:19 wandboard systemd-journald[210]: Time spent on flushing to /var/log/journal/33cd20ed56304d5589c3002e42980843 is 176.402ms for 357 entries.
+nov 08 15:00:19 wandboard systemd-journald[210]: System Journal (/var/log/journal/33cd20ed56304d5589c3002e42980843) is 5.7M, max 10.1M, 4.4M free.
+nov 08 15:00:20 wandboard systemd-journald[210]: Received client request to flush runtime journal.
+nov 08 15:00:19 wandboard systemd[1]: Started Rule-based Manager for Device Events and Files.
+nov 08 15:00:19 wandboard systemd[1]: Starting Network Configuration...
+nov 08 15:00:20 wandboard systemd[1]: Finished Flush Journal to Persistent Storage.
+nov 08 15:00:20 wandboard systemd[1]: Finished Bind mount volatile /srv.
+nov 08 15:00:20 wandboard systemd-networkd[229]: lo: Link UP
+nov 08 15:00:20 wandboard systemd-networkd[229]: lo: Gained carrier
+nov 08 15:00:20 wandboard systemd-networkd[229]: Enumeration completed
+nov 08 15:00:20 wandboard systemd[1]: Started Network Configuration.
+nov 08 15:00:23 wandboard systemd-networkd[229]: eth0: Configuring with /usr/lib/systemd/network/80-wired.network.
+nov 08 15:00:23 wandboard systemd[1]: Finished Coldplug All udev Devices.
+nov 08 15:00:23 wandboard systemd-networkd[229]: eth0: Link UP
+nov 08 15:00:23 wandboard kernel: Qualcomm Atheros AR8031/AR8033 2188000.ethernet-1:01: attached PHY driver (mii_bus:phy_addr=2188000.ethernet-1:01, irq=POLL)
+nov 08 15:00:23 wandboard systemd[1]: Found device /dev/mmcblk2p5.
+nov 08 15:00:24 wandboard systemd[1]: Reached target Sound Card.
+nov 08 15:00:24 wandboard systemd[1]: Reached target Hardware activated USB gadget.
+nov 08 15:00:24 wandboard systemd[1]: Starting File System Check on /dev/mmcblk2p5...
+nov 08 15:00:24 wandboard systemd-fsck[253]: home: recovering journal
+nov 08 15:00:24 wandboard systemd-fsck[253]: home: clean, 43/128016 files, 48153/512000 blocks
+nov 08 15:00:24 wandboard systemd[1]: Finished File System Check on /dev/mmcblk2p5.
+nov 08 15:00:24 wandboard systemd[1]: Mounting Home Partition...
+nov 08 15:00:24 wandboard kernel: EXT4-fs (mmcblk2p5): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+nov 08 15:00:24 wandboard systemd[1]: Mounted Home Partition.
+nov 08 15:00:24 wandboard systemd[1]: Reached target Local File Systems.
+nov 08 15:00:24 wandboard systemd[1]: Commit a transient machine-id on disk was skipped because of a failed condition check (ConditionPathIsMountPoint=/etc/machine-id).
+nov 08 15:00:24 wandboard systemd[1]: Starting Create Volatile Files and Directories...
+nov 08 15:00:24 wandboard systemd-tmpfiles[258]: /usr/lib/tmpfiles.d/fw_printenv.conf:1: Duplicate line for path "/run/lock", ignoring.
+nov 08 15:00:24 wandboard systemd-tmpfiles[258]: /usr/lib/tmpfiles.d/legacy.conf:13: Duplicate line for path "/run/lock", ignoring.
+nov 08 15:00:24 wandboard systemd-tmpfiles[258]: "/var/tmp" already exists and is not a directory.
+nov 08 15:00:24 wandboard systemd[1]: Finished Create Volatile Files and Directories.
+nov 08 15:00:24 wandboard systemd[1]: Started Hardware RNG Entropy Gatherer Daemon.
+nov 08 15:00:24 wandboard systemd[1]: Rebuild Journal Catalog was skipped because of a failed condition check (ConditionNeedsUpdate=/var).
+nov 08 15:00:25 wandboard systemd[1]: Starting Network Name Resolution...
+nov 08 15:00:25 wandboard systemd[1]: Starting Network Time Synchronization...
+nov 08 15:00:25 wandboard systemd[1]: Starting Update is Completed...
+nov 08 15:00:25 wandboard systemd[1]: Starting Record System Boot/Shutdown in UTMP...
+nov 08 15:00:25 wandboard kernel: fec 2188000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+nov 08 15:00:25 wandboard kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+nov 08 15:00:25 wandboard systemd-networkd[229]: eth0: Gained carrier
+nov 08 15:00:25 wandboard systemd[1]: Finished Update is Completed.
+nov 08 15:00:25 wandboard systemd[1]: Finished Record System Boot/Shutdown in UTMP.
+nov 08 15:00:25 wandboard systemd-networkd[229]: eth0: DHCPv4 address 192.168.17.162/23, gateway 192.168.17.1 acquired from 192.168.17.1
+nov 08 15:00:25 wandboard rngd[259]: Initializing available sources
+nov 08 15:00:25 wandboard rngd[259]: [hwrng ]: Initialized
+nov 08 15:00:25 wandboard systemd-timesyncd[261]: System clock time unset or jumped backwards, restoring from recorded timestamp: Thu 2023-01-26 02:16:29 UTC

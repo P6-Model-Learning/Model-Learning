@@ -1,0 +1,86 @@
+jan 23 10:23:29 rpi3 systemd-timesyncd[203]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+jan 23 10:23:29 rpi3 systemd-journald[153]: Oldest entry in /var/log/journal/21d28eb76df84ff6b3826f5063d9d5f4/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+jan 23 10:23:29 rpi3 systemd-journald[153]: /var/log/journal/21d28eb76df84ff6b3826f5063d9d5f4/system.journal: Journal header limits reached or header out-of-date, rotating.
+jan 23 10:23:29 rpi3 systemd-timesyncd[203]: Initial clock synchronization to Mon 2023-01-23 09:23:29.348245 UTC.
+jan 23 10:23:29 rpi3 systemd-resolved[202]: Clock change detected. Flushing caches.
+jan 23 10:23:29 rpi3 systemd[1]: Starting Hostname Service...
+jan 23 10:23:29 rpi3 systemd-resolved[202]: Detected conflict on rpi3 IN A 192.168.17.181
+jan 23 10:23:29 rpi3 systemd-resolved[202]: Hostname conflict, changing published hostname from 'rpi3' to 'rpi7'.
+jan 23 10:23:29 rpi3 dbus-daemon[208]: [system] Successfully activated service 'org.freedesktop.hostname1'
+jan 23 10:23:29 rpi3 systemd[1]: Started Hostname Service.
+jan 23 10:23:29 rpi3 systemd-networkd[174]: Could not set hostname: Access denied
+jan 23 10:23:29 rpi3 dbus-daemon[208]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=225 comm="/usr/bin/rauc status mark-good")
+jan 23 10:23:29 rpi3 systemd[1]: Starting RAUC Update Service...
+jan 23 10:23:30 rpi3 rauc[228]: Using central status file /var/lib/rauc/central.raucs
+jan 23 10:23:30 rpi3 rauc[228]: Using central status file /var/lib/rauc/central.raucs
+jan 23 10:23:30 rpi3 dbus-daemon[208]: [system] Successfully activated service 'de.pengutronix.rauc'
+jan 23 10:23:30 rpi3 systemd[1]: Started RAUC Update Service.
+jan 23 10:23:30 rpi3 rauc[228]: rauc mark: marked slot kernel.0 as good
+jan 23 10:23:30 rpi3 rauc[225]: rauc status: marked slot kernel.0 as good
+jan 23 10:23:30 rpi3 systemd[1]: Finished RAUC Good-marking Service.
+jan 23 10:23:30 rpi3 systemd[1]: Reached target Multi-User System.
+jan 23 10:23:30 rpi3 systemd[1]: Starting Record Runlevel Change in UTMP...
+jan 23 10:23:30 rpi3 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+jan 23 10:23:30 rpi3 systemd[1]: Finished Record Runlevel Change in UTMP.
+jan 23 10:23:30 rpi3 systemd-networkd[174]: eth0: Gained IPv6LL
+jan 23 10:23:32 rpi3 systemd[1]: Created slice Slice /system/sshd.
+jan 23 10:23:53 rpi3 sshd_check_keys[214]:   generating ssh ED25519 host key...
+jan 23 10:23:53 rpi3 systemd[1]: Finished OpenSSH Key Generation.
+jan 23 10:23:53 rpi3 systemd[1]: Started OpenSSH Per-Connection Daemon (172.16.11.78:46638).
+jan 23 10:23:53 rpi3 systemd[1]: Startup finished in 1.671s (kernel) + 28.975s (userspace) = 30.646s.
+jan 23 10:23:55 rpi3 sshd[253]: Accepted password for root from 172.16.11.78 port 46638 ssh2
+jan 23 10:23:59 rpi3 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+jan 23 10:25:56 rpi3 sshd[253]: Received disconnect from 172.16.11.78 port 46638:11: disconnected by user
+jan 23 10:25:56 rpi3 sshd[253]: Disconnected from user root 172.16.11.78 port 46638
+jan 23 10:25:56 rpi3 systemd[1]: sshd@0-192.168.17.181:22-172.16.11.78:46638.service: Deactivated successfully.
+jan 23 10:38:23 rpi3 systemd[1]: Starting Cleanup of Temporary Directories...
+jan 23 10:38:23 rpi3 systemd-tmpfiles[278]: /usr/lib/tmpfiles.d/fw_printenv.conf:1: Duplicate line for path "/run/lock", ignoring.
+jan 23 10:38:23 rpi3 systemd-tmpfiles[278]: /usr/lib/tmpfiles.d/legacy.conf:13: Duplicate line for path "/run/lock", ignoring.
+jan 23 10:38:23 rpi3 systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+jan 23 10:38:23 rpi3 systemd[1]: Finished Cleanup of Temporary Directories.
+jan 23 10:52:04 rpi3 login[211]: ROOT LOGIN  on '/dev/ttyS1'
+jan 23 10:52:09 rpi3 rauc[228]: rauc mark: activated slot kernel.0
+jan 23 10:52:09 rpi3 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44610).
+jan 23 10:52:10 rpi3 sshd[329]: Accepted publickey for root from 192.168.17.13 port 44610 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 23 10:52:10 rpi3 sshd[329]: Received disconnect from 192.168.17.13 port 44610:11: disconnected by user
+jan 23 10:52:10 rpi3 sshd[329]: Disconnected from user root 192.168.17.13 port 44610
+jan 23 10:52:10 rpi3 systemd[1]: sshd@1-192.168.17.181:22-192.168.17.13:44610.service: Deactivated successfully.
+jan 23 10:52:10 rpi3 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44616).
+jan 23 10:52:10 rpi3 sshd[336]: Accepted publickey for root from 192.168.17.13 port 44616 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 23 10:52:25 rpi3 rauc[228]: input bundle: /tmp/system-rpi3.raucb
+jan 23 10:52:25 rpi3 rauc[228]: Active slot bootname: A
+jan 23 10:52:25 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: started
+jan 23 10:52:25 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Checking and mounting bundle...
+jan 23 10:52:25 rpi3 rauc[228]: Reading bundle: /tmp/system-rpi3.raucb
+jan 23 10:52:25 rpi3 rauc[228]: Verifying bundle signature... 
+jan 23 10:52:27 rpi3 rauc[228]: Verified detached signature by 'O = Test Org, CN = Test Org Development-1'
+jan 23 10:52:28 rpi3 rauc[228]: Mounting bundle '/tmp/system-rpi3.raucb' to '/run/rauc/bundle'
+jan 23 10:52:28 rpi3 kernel: loop0: detected capacity change from 0 to 146650
+jan 23 10:52:28 rpi3 kernel: loop0: detected capacity change from 146650 to 146648
+jan 23 10:52:28 rpi3 rauc[228]: Configured loop device '/dev/loop0' for 75083776 bytes
+jan 23 10:52:28 rpi3 rauc[228]: Starting pre install handler: /usr/libexec/rauc-pre-install.sh
+jan 23 10:52:28 rpi3 rauc[228]: Marking target slot kernel.1 as non-bootable...
+jan 23 10:52:28 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slots...
+jan 23 10:52:28 rpi3 rauc[228]: Checking image type for slot type: raw
+jan 23 10:52:28 rpi3 rauc[228]: Image detected as type: *.img
+jan 23 10:52:28 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Checking slot rootfs.1
+jan 23 10:52:28 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot rootfs.1
+jan 23 10:52:28 rpi3 rauc[228]: Updating /dev/disk/by-partlabel/rootfs-B with /run/rauc/bundle/base-rootfs.squashfs.img
+jan 23 10:52:28 rpi3 rauc[228]: opening slot device /dev/disk/by-partlabel/rootfs-B
+jan 23 10:52:28 rpi3 rauc[228]: writing data to device /dev/disk/by-partlabel/rootfs-B
+jan 23 10:52:34 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot rootfs.1 status
+jan 23 10:52:34 rpi3 rauc[228]: Checking image type for slot type: raw
+jan 23 10:52:34 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot rootfs.1 done
+jan 23 10:52:34 rpi3 rauc[228]: Image detected as type: *.vfat
+jan 23 10:52:34 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Checking slot kernel.1
+jan 23 10:52:34 rpi3 rauc[228]: Updating /dev/disk/by-partlabel/kernel-B with /run/rauc/bundle/pil-kernelfs-rpi3.vfat
+jan 23 10:52:34 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot kernel.1
+jan 23 10:52:34 rpi3 rauc[228]: opening slot device /dev/disk/by-partlabel/kernel-B
+jan 23 10:52:34 rpi3 rauc[228]: writing data to device /dev/disk/by-partlabel/kernel-B
+jan 23 10:52:39 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot kernel.1 status
+jan 23 10:52:39 rpi3 rauc[228]: Marking target slot kernel.1 as bootable...
+jan 23 10:52:39 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: Updating slot kernel.1 done
+jan 23 10:52:39 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: All slots updated
+jan 23 10:52:39 rpi3 rauc[228]: Starting post install handler: /usr/libexec/rauc-post-install.sh
+jan 23 10:52:39 rpi3 rauc[228]: installing /tmp/system-rpi3.raucb: finished
+jan 23 10:52:39 rpi3 rauc[228]: installing `/tmp/system-rpi3.raucb` succeeded

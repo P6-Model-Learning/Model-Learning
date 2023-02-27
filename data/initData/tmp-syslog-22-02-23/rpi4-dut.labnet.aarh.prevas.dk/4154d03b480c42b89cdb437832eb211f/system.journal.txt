@@ -1,0 +1,79 @@
+feb 10 11:41:51 rpi4 systemd-resolved[219]: Clock change detected. Flushing caches.
+feb 10 11:41:51 rpi4 systemd-journald[157]: Oldest entry in /var/log/journal/4154d03b480c42b89cdb437832eb211f/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+feb 10 11:41:51 rpi4 systemd-journald[157]: /var/log/journal/4154d03b480c42b89cdb437832eb211f/system.journal: Journal header limits reached or header out-of-date, rotating.
+feb 10 11:41:51 rpi4 dbus-daemon[225]: [system] Successfully activated service 'org.freedesktop.hostname1'
+feb 10 11:41:51 rpi4 systemd-timesyncd[220]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+feb 10 11:41:51 rpi4 systemd-timesyncd[220]: Initial clock synchronization to Fri 2023-02-10 10:41:51.277341 UTC.
+feb 10 11:41:51 rpi4 systemd[1]: Starting Hostname Service...
+feb 10 11:41:51 rpi4 systemd[1]: Created slice Slice /system/sshd.
+feb 10 11:41:51 rpi4 systemd[1]: Started Hostname Service.
+feb 10 11:41:51 rpi4 systemd-networkd[177]: Could not set hostname: Access denied
+feb 10 11:41:51 rpi4 dbus-daemon[225]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=239 comm="/usr/bin/rauc status mark-good")
+feb 10 11:41:51 rpi4 systemd[1]: Starting RAUC Update Service...
+feb 10 11:41:51 rpi4 rauc[246]: Using central status file /var/lib/rauc/central.raucs
+feb 10 11:41:51 rpi4 rauc[246]: Using central status file /var/lib/rauc/central.raucs
+feb 10 11:41:51 rpi4 dbus-daemon[225]: [system] Successfully activated service 'de.pengutronix.rauc'
+feb 10 11:41:51 rpi4 systemd[1]: Started RAUC Update Service.
+feb 10 11:41:52 rpi4 rauc[246]: rauc mark: marked slot kernel.0 as good
+feb 10 11:41:52 rpi4 rauc[239]: rauc status: marked slot kernel.0 as good
+feb 10 11:41:52 rpi4 systemd[1]: Finished RAUC Good-marking Service.
+feb 10 11:41:52 rpi4 systemd[1]: Reached target Multi-User System.
+feb 10 11:41:52 rpi4 systemd[1]: Starting Record Runlevel Change in UTMP...
+feb 10 11:41:52 rpi4 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+feb 10 11:41:52 rpi4 systemd[1]: Finished Record Runlevel Change in UTMP.
+feb 10 11:41:53 rpi4 systemd-networkd[177]: eth0: Gained IPv6LL
+feb 10 11:41:57 rpi4 sshd_check_keys[231]:   generating ssh ED25519 host key...
+feb 10 11:41:57 rpi4 systemd[1]: Finished OpenSSH Key Generation.
+feb 10 11:41:57 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (172.16.11.78:40514).
+feb 10 11:41:57 rpi4 systemd[1]: Startup finished in 1.461s (kernel) + 10.138s (userspace) = 11.599s.
+feb 10 11:41:59 rpi4 sshd[270]: Accepted password for root from 172.16.11.78 port 40514 ssh2
+feb 10 11:42:21 rpi4 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+feb 10 11:43:16 rpi4 sshd[270]: Received disconnect from 172.16.11.78 port 40514:11: disconnected by user
+feb 10 11:43:16 rpi4 sshd[270]: Disconnected from user root 172.16.11.78 port 40514
+feb 10 11:43:16 rpi4 systemd[1]: sshd@0-192.168.17.167:22-172.16.11.78:40514.service: Deactivated successfully.
+feb 10 11:43:55 rpi4 login[228]: ROOT LOGIN  on '/dev/ttyS0'
+feb 10 11:43:59 rpi4 rauc[246]: rauc mark: activated slot kernel.0
+feb 10 11:44:00 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:60248).
+feb 10 11:44:00 rpi4 sshd[322]: Accepted publickey for root from 192.168.17.13 port 60248 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 10 11:44:00 rpi4 sshd[322]: Received disconnect from 192.168.17.13 port 60248:11: disconnected by user
+feb 10 11:44:00 rpi4 sshd[322]: Disconnected from user root 192.168.17.13 port 60248
+feb 10 11:44:00 rpi4 systemd[1]: sshd@1-192.168.17.167:22-192.168.17.13:60248.service: Deactivated successfully.
+feb 10 11:44:01 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:60250).
+feb 10 11:44:01 rpi4 sshd[327]: Accepted publickey for root from 192.168.17.13 port 60250 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 10 11:44:10 rpi4 rauc[246]: input bundle: /tmp/system-rpi4.raucb
+feb 10 11:44:10 rpi4 rauc[246]: Active slot bootname: A
+feb 10 11:44:10 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: started
+feb 10 11:44:10 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Checking and mounting bundle...
+feb 10 11:44:10 rpi4 rauc[246]: Reading bundle: /tmp/system-rpi4.raucb
+feb 10 11:44:10 rpi4 rauc[246]: Verifying bundle signature... 
+feb 10 11:44:11 rpi4 rauc[246]: Verified detached signature by 'O = Test Org, CN = Test Org Development-1'
+feb 10 11:44:11 rpi4 rauc[246]: Mounting bundle '/tmp/system-rpi4.raucb' to '/run/rauc/bundle'
+feb 10 11:44:11 rpi4 kernel: loop0: detected capacity change from 0 to 146586
+feb 10 11:44:11 rpi4 kernel: loop0: detected capacity change from 146586 to 146584
+feb 10 11:44:11 rpi4 rauc[246]: Configured loop device '/dev/loop0' for 75051008 bytes
+feb 10 11:44:11 rpi4 rauc[246]: Starting pre install handler: /usr/libexec/rauc-pre-install.sh
+feb 10 11:44:11 rpi4 rauc[246]: Marking target slot kernel.1 as non-bootable...
+feb 10 11:44:11 rpi4 rauc[246]: Checking image type for slot type: raw
+feb 10 11:44:11 rpi4 rauc[246]: Image detected as type: *.img
+feb 10 11:44:11 rpi4 rauc[246]: Updating /dev/disk/by-partlabel/rootfs-B with /run/rauc/bundle/base-rootfs.squashfs.img
+feb 10 11:44:11 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slots...
+feb 10 11:44:11 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Checking slot rootfs.1
+feb 10 11:44:11 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.1
+feb 10 11:44:11 rpi4 rauc[246]: opening slot device /dev/disk/by-partlabel/rootfs-B
+feb 10 11:44:11 rpi4 rauc[246]: writing data to device /dev/disk/by-partlabel/rootfs-B
+feb 10 11:44:42 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.1 status
+feb 10 11:44:42 rpi4 rauc[246]: Checking image type for slot type: raw
+feb 10 11:44:42 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.1 done
+feb 10 11:44:42 rpi4 rauc[246]: Image detected as type: *.vfat
+feb 10 11:44:42 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Checking slot kernel.1
+feb 10 11:44:42 rpi4 rauc[246]: Updating /dev/disk/by-partlabel/kernel-B with /run/rauc/bundle/pil-kernelfs-rpi4.vfat
+feb 10 11:44:42 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot kernel.1
+feb 10 11:44:42 rpi4 rauc[246]: opening slot device /dev/disk/by-partlabel/kernel-B
+feb 10 11:44:42 rpi4 rauc[246]: writing data to device /dev/disk/by-partlabel/kernel-B
+feb 10 11:44:51 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot kernel.1 status
+feb 10 11:44:52 rpi4 rauc[246]: Marking target slot kernel.1 as bootable...
+feb 10 11:44:52 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: Updating slot kernel.1 done
+feb 10 11:44:53 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: All slots updated
+feb 10 11:44:53 rpi4 rauc[246]: Starting post install handler: /usr/libexec/rauc-post-install.sh
+feb 10 11:44:53 rpi4 rauc[246]: installing /tmp/system-rpi4.raucb: finished
+feb 10 11:44:53 rpi4 rauc[246]: installing `/tmp/system-rpi4.raucb` succeeded

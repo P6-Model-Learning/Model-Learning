@@ -1,0 +1,1 @@
+nov 08 15:00:19 rpi4 systemd-timesyncd[218]: System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2023-02-11 02:39:55 UTC

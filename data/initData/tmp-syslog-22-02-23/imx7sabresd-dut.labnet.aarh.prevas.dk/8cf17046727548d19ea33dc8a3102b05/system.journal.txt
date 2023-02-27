@@ -1,0 +1,135 @@
+nov 08 15:00:28 imx7sabresd systemd-timesyncd[288]: System clock time unset or jumped backwards, restoring from recorded timestamp: Mon 2023-01-23 09:53:24 UTC
+jan 23 10:54:13 imx7sabresd systemd-journald[237]: Oldest entry in /var/log/journal/8cf17046727548d19ea33dc8a3102b05/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+jan 23 10:54:13 imx7sabresd systemd-journald[237]: /var/log/journal/8cf17046727548d19ea33dc8a3102b05/system.journal: Journal header limits reached or header out-of-date, rotating.
+jan 23 10:53:25 imx7sabresd systemd[1]: Started Network Time Synchronization.
+jan 23 10:53:25 imx7sabresd systemd[1]: Reached target System Time Set.
+jan 23 10:53:25 imx7sabresd systemd-resolved[287]: Positive Trust Anchors:
+jan 23 10:53:25 imx7sabresd systemd-resolved[287]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+jan 23 10:53:25 imx7sabresd systemd-resolved[287]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+jan 23 10:54:13 imx7sabresd systemd-timesyncd[288]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+jan 23 10:54:13 imx7sabresd systemd-timesyncd[288]: Initial clock synchronization to Mon 2023-01-23 09:54:13.358358 UTC.
+jan 23 10:54:13 imx7sabresd systemd-resolved[287]: Using system hostname 'imx7sabresd'.
+jan 23 10:54:13 imx7sabresd systemd[1]: Started Network Name Resolution.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target Network.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target Host and Network Name Lookups.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target System Initialization.
+jan 23 10:54:13 imx7sabresd systemd[1]: Started Daily Cleanup of Temporary Directories.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target Boot Completion Check.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target Timer Units.
+jan 23 10:54:13 imx7sabresd systemd[1]: Listening on D-Bus System Message Bus Socket.
+jan 23 10:54:13 imx7sabresd systemd[1]: Starting sshd.socket...
+jan 23 10:54:13 imx7sabresd systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+jan 23 10:54:13 imx7sabresd systemd[1]: Listening on sshd.socket.
+jan 23 10:54:13 imx7sabresd systemd[1]: Reached target Socket Units.
+jan 23 10:54:14 imx7sabresd systemd[1]: Reached target Basic System.
+jan 23 10:54:14 imx7sabresd systemd[1]: System is tainted: cgroupsv1
+jan 23 10:54:14 imx7sabresd systemd[1]: Starting D-Bus System Message Bus...
+jan 23 10:54:14 imx7sabresd systemd[1]: Started Getty on tty1.
+jan 23 10:54:14 imx7sabresd systemd[1]: Started Netperf Benchmark Server.
+jan 23 10:54:14 imx7sabresd systemd[1]: Started Serial Getty on ttymxc0.
+jan 23 10:54:14 imx7sabresd systemd[1]: Reached target Login Prompts.
+jan 23 10:54:14 imx7sabresd systemd[1]: Starting RAUC Good-marking Service...
+jan 23 10:54:14 imx7sabresd netserver[297]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+jan 23 10:54:14 imx7sabresd systemd[1]: Starting User Login Management...
+jan 23 10:54:14 imx7sabresd systemd[1]: Starting OpenSSH Key Generation...
+jan 23 10:54:14 imx7sabresd systemd[1]: Started D-Bus System Message Bus.
+jan 23 10:54:14 imx7sabresd dbus-daemon[295]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.2' (uid=605 pid=256 comm="/usr/lib/systemd/systemd-networkd")
+jan 23 10:54:14 imx7sabresd dbus-daemon[295]: [system] Successfully activated service 'org.freedesktop.systemd1'
+jan 23 10:54:14 imx7sabresd systemd[1]: Starting Hostname Service...
+jan 23 10:54:14 imx7sabresd systemd-logind[300]: New seat seat0.
+jan 23 10:54:14 imx7sabresd systemd-logind[300]: Watching system buttons on /dev/input/event0 (30370000.snvs:snvs-powerkey)
+jan 23 10:54:14 imx7sabresd systemd[1]: Started User Login Management.
+jan 23 10:54:14 imx7sabresd systemd[1]: Finished OpenSSH Key Generation.
+jan 23 10:54:15 imx7sabresd dbus-daemon[295]: [system] Successfully activated service 'org.freedesktop.hostname1'
+jan 23 10:54:15 imx7sabresd systemd[1]: Started Hostname Service.
+jan 23 10:54:15 imx7sabresd systemd-networkd[256]: Could not set hostname: Access denied
+jan 23 10:54:16 imx7sabresd dbus-daemon[295]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=307 comm="/usr/bin/rauc status mark-good")
+jan 23 10:54:16 imx7sabresd systemd[1]: Starting RAUC Update Service...
+jan 23 10:54:16 imx7sabresd rauc[310]: Using central status file /var/rauc.status
+jan 23 10:54:16 imx7sabresd rauc[310]: Using central status file /var/rauc.status
+jan 23 10:54:16 imx7sabresd dbus-daemon[295]: [system] Successfully activated service 'de.pengutronix.rauc'
+jan 23 10:54:16 imx7sabresd systemd[1]: Started RAUC Update Service.
+jan 23 10:54:16 imx7sabresd rauc[310]: rauc mark: marked slot kernel.0 as good
+jan 23 10:54:16 imx7sabresd rauc[307]: rauc status: marked slot kernel.0 as good
+jan 23 10:54:16 imx7sabresd systemd[1]: Finished RAUC Good-marking Service.
+jan 23 10:54:16 imx7sabresd systemd[1]: Reached target Multi-User System.
+jan 23 10:54:16 imx7sabresd systemd[1]: Starting Record Runlevel Change in UTMP...
+jan 23 10:54:16 imx7sabresd systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+jan 23 10:54:16 imx7sabresd systemd[1]: Finished Record Runlevel Change in UTMP.
+jan 23 10:54:16 imx7sabresd systemd[1]: Startup finished in 9.908s (kernel) + 15.536s (userspace) = 25.445s.
+jan 23 10:54:17 imx7sabresd login[298]: ROOT LOGIN  on '/dev/ttymxc0'
+jan 23 10:54:24 imx7sabresd rauc[310]: rauc mark: activated slot kernel.0
+jan 23 10:54:24 imx7sabresd kernel: VLDO2: disabling
+jan 23 10:54:24 imx7sabresd systemd[1]: Created slice Slice /system/sshd.
+jan 23 10:54:24 imx7sabresd systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:37252).
+jan 23 10:54:25 imx7sabresd sshd[369]: Accepted publickey for root from 192.168.17.13 port 37252 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 23 10:54:25 imx7sabresd sshd[369]: Received disconnect from 192.168.17.13 port 37252:11: disconnected by user
+jan 23 10:54:25 imx7sabresd sshd[369]: Disconnected from user root 192.168.17.13 port 37252
+jan 23 10:54:25 imx7sabresd systemd[1]: sshd@0-192.168.17.160:22-192.168.17.13:37252.service: Deactivated successfully.
+jan 23 10:54:25 imx7sabresd systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:37260).
+jan 23 10:54:26 imx7sabresd sshd[375]: Accepted publickey for root from 192.168.17.13 port 37260 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 23 10:54:28 imx7sabresd rauc[310]: input bundle: /tmp/bootloader-imx7sabresd.raucb
+jan 23 10:54:28 imx7sabresd rauc[310]: Active slot bootname: A
+jan 23 10:54:28 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: started
+jan 23 10:54:28 imx7sabresd rauc[310]: Reading bundle: /tmp/bootloader-imx7sabresd.raucb
+jan 23 10:54:28 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Checking and mounting bundle...
+jan 23 10:54:28 imx7sabresd rauc[310]: Verifying bundle signature... 
+jan 23 10:54:28 imx7sabresd rauc[310]: Verified detached signature by 'O = Test Org, CN = Test Org Development-1'
+jan 23 10:54:28 imx7sabresd rauc[310]: Mounting bundle '/tmp/bootloader-imx7sabresd.raucb' to '/run/rauc/bundle'
+jan 23 10:54:28 imx7sabresd kernel: loop0: detected capacity change from 0 to 498
+jan 23 10:54:28 imx7sabresd kernel: loop0: detected capacity change from 498 to 496
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=3)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=2)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:28 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=2)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=2)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=2)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=2)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=1)
+jan 23 10:54:29 imx7sabresd kernel: loop_set_block_size: loop0 () has still dirty pages (nrpages=3)
+jan 23 10:54:30 imx7sabresd rauc[310]: Configured loop device '/dev/loop0' for 253952 bytes
+jan 23 10:54:30 imx7sabresd rauc[310]: Starting pre install handler: /usr/libexec/rauc-pre-install.sh
+jan 23 10:54:30 imx7sabresd rauc[310]: Updating /dev/mmcblk0 with 'install' slot hook
+jan 23 10:54:30 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slots...
+jan 23 10:54:30 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Checking slot boot.0
+jan 23 10:54:30 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0
+jan 23 10:54:30 imx7sabresd rauc[310]: Running slot hook 'slot-install' for boot.0
+jan 23 10:54:30 imx7sabresd rauc[389]: << bootloader-hook [STARTED]
+jan 23 10:54:30 imx7sabresd rauc[389]: << Data on /dev/mmcblk0 at 1 (bs=1k) already identical to /tmp/tmp.YCsJ78MMRD/u-boot.imx
+jan 23 10:54:32 imx7sabresd rauc[389]: << Updating U-boot environment
+jan 23 10:54:32 imx7sabresd rauc[389]: << Updating U-boot environment done
+jan 23 10:54:32 imx7sabresd rauc[389]: << Data on /dev/disk/by-partlabel/U-Boot-script at 0 (bs=1k) already identical to /run/rauc/bundle/bootscript.itb
+jan 23 10:54:32 imx7sabresd rauc[389]: << bootloader-hook [DONE]
+jan 23 10:54:33 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0 status
+jan 23 10:54:33 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: Updating slot boot.0 done
+jan 23 10:54:33 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: All slots updated
+jan 23 10:54:33 imx7sabresd rauc[310]: Starting post install handler: /usr/libexec/rauc-post-install.sh
+jan 23 10:54:33 imx7sabresd rauc[310]: installing /tmp/bootloader-imx7sabresd.raucb: finished
+jan 23 10:54:33 imx7sabresd rauc[310]: installing `/tmp/bootloader-imx7sabresd.raucb` succeeded

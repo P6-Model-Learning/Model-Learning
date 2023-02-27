@@ -1,0 +1,551 @@
+jan 25 12:20:56 wandboard kernel: Booting Linux on physical CPU 0x0
+jan 25 12:20:56 wandboard kernel: Linux version 5.15.82 (oe-user@oe-host) (arm-oe-linux-gnueabi-gcc (GCC) 12.2.0, GNU ld (GNU Binutils) 2.39.0.20220819) #1 SMP Thu Dec 8 10:28:45 UTC 2022
+jan 25 12:20:56 wandboard kernel: CPU: ARMv7 Processor [412fc09a] revision 10 (ARMv7), cr=10c5387d
+jan 25 12:20:56 wandboard kernel: CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+jan 25 12:20:56 wandboard kernel: OF: fdt: Machine model: Wandboard i.MX6 Dual Lite Board
+jan 25 12:20:56 wandboard kernel: Memory policy: Data cache writealloc
+jan 25 12:20:56 wandboard kernel: cma: Reserved 128 MiB at 0x48000000
+jan 25 12:20:56 wandboard kernel: Zone ranges:
+jan 25 12:20:56 wandboard kernel:   Normal   [mem 0x0000000010000000-0x000000003fffffff]
+jan 25 12:20:56 wandboard kernel:   HighMem  [mem 0x0000000040000000-0x000000004fffffff]
+jan 25 12:20:56 wandboard kernel: Movable zone start for each node
+jan 25 12:20:56 wandboard kernel: Early memory node ranges
+jan 25 12:20:56 wandboard kernel:   node   0: [mem 0x0000000010000000-0x000000004fffffff]
+jan 25 12:20:56 wandboard kernel: Initmem setup node 0 [mem 0x0000000010000000-0x000000004fffffff]
+jan 25 12:20:56 wandboard kernel: percpu: Embedded 17 pages/cpu s38188 r8192 d23252 u69632
+jan 25 12:20:56 wandboard kernel: pcpu-alloc: s38188 r8192 d23252 u69632 alloc=17*4096
+jan 25 12:20:56 wandboard kernel: pcpu-alloc: [0] 0 [0] 1 
+jan 25 12:20:56 wandboard kernel: Built 1 zonelists, mobility grouping on.  Total pages: 260608
+jan 25 12:20:56 wandboard kernel: Kernel command line: console=ttymxc0,115200n8 cma=128M quiet rauc.slot=B 
+jan 25 12:20:56 wandboard kernel: Dentry cache hash table entries: 131072 (order: 7, 524288 bytes, linear)
+jan 25 12:20:56 wandboard kernel: Inode-cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+jan 25 12:20:56 wandboard kernel: mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+jan 25 12:20:56 wandboard kernel: Memory: 876400K/1048576K available (14336K kernel code, 1809K rwdata, 4864K rodata, 1024K init, 6628K bss, 41104K reserved, 131072K cma-reserved, 131072K highmem)
+jan 25 12:20:56 wandboard kernel: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+jan 25 12:20:56 wandboard kernel: trace event string verifier disabled
+jan 25 12:20:56 wandboard kernel: Running RCU self tests
+jan 25 12:20:56 wandboard kernel: rcu: Hierarchical RCU implementation.
+jan 25 12:20:56 wandboard kernel: rcu:         RCU event tracing is enabled.
+jan 25 12:20:56 wandboard kernel: rcu:         RCU lockdep checking is enabled.
+jan 25 12:20:56 wandboard kernel: rcu:         RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+jan 25 12:20:56 wandboard kernel:         Tracing variant of Tasks RCU enabled.
+jan 25 12:20:56 wandboard kernel: rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+jan 25 12:20:56 wandboard kernel: rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+jan 25 12:20:56 wandboard kernel: NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+jan 25 12:20:56 wandboard kernel: L2C-310 erratum 769419 enabled
+jan 25 12:20:56 wandboard kernel: L2C-310 enabling early BRESP for Cortex-A9
+jan 25 12:20:56 wandboard kernel: L2C-310 full line of zeros enabled for Cortex-A9
+jan 25 12:20:56 wandboard kernel: L2C-310 ID prefetch enabled, offset 16 lines
+jan 25 12:20:56 wandboard kernel: L2C-310 dynamic clock gating enabled, standby mode enabled
+jan 25 12:20:56 wandboard kernel: L2C-310 cache controller enabled, 16 ways, 512 kB
+jan 25 12:20:56 wandboard kernel: L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76450001
+jan 25 12:20:56 wandboard kernel: Switching to timer-based delay loop, resolution 333ns
+jan 25 12:20:56 wandboard kernel: sched_clock: 32 bits at 3000kHz, resolution 333ns, wraps every 715827882841ns
+jan 25 12:20:56 wandboard kernel: clocksource: mxc_timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 637086815595 ns
+jan 25 12:20:56 wandboard kernel: Console: colour dummy device 80x30
+jan 25 12:20:56 wandboard kernel: Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+jan 25 12:20:56 wandboard kernel: ... MAX_LOCKDEP_SUBCLASSES:  8
+jan 25 12:20:56 wandboard kernel: ... MAX_LOCK_DEPTH:          48
+jan 25 12:20:56 wandboard kernel: ... MAX_LOCKDEP_KEYS:        8192
+jan 25 12:20:56 wandboard kernel: ... CLASSHASH_SIZE:          4096
+jan 25 12:20:56 wandboard kernel: ... MAX_LOCKDEP_ENTRIES:     32768
+jan 25 12:20:56 wandboard kernel: ... MAX_LOCKDEP_CHAINS:      65536
+jan 25 12:20:56 wandboard kernel: ... CHAINHASH_SIZE:          32768
+jan 25 12:20:56 wandboard kernel:  memory used by lock dependency info: 4061 kB
+jan 25 12:20:56 wandboard kernel:  memory used for stack traces: 2112 kB
+jan 25 12:20:56 wandboard kernel:  per task-struct memory footprint: 1536 bytes
+jan 25 12:20:56 wandboard kernel: Calibrating delay loop (skipped), value calculated using timer frequency.. 6.00 BogoMIPS (lpj=30000)
+jan 25 12:20:56 wandboard kernel: pid_max: default: 32768 minimum: 301
+jan 25 12:20:56 wandboard kernel: Mount-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+jan 25 12:20:56 wandboard kernel: Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+jan 25 12:20:56 wandboard kernel: CPU: Testing write buffer coherency: ok
+jan 25 12:20:56 wandboard kernel: CPU0: Spectre v2: using BPIALL workaround
+jan 25 12:20:56 wandboard kernel: CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+jan 25 12:20:56 wandboard kernel: Running RCU-tasks wait API self tests
+jan 25 12:20:56 wandboard kernel: Setting up static identity map for 0x10100000 - 0x10100078
+jan 25 12:20:56 wandboard kernel: rcu: Hierarchical SRCU implementation.
+jan 25 12:20:56 wandboard kernel: smp: Bringing up secondary CPUs ...
+jan 25 12:20:56 wandboard kernel: CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+jan 25 12:20:56 wandboard kernel: CPU1: Spectre v2: using BPIALL workaround
+jan 25 12:20:56 wandboard kernel: smp: Brought up 1 node, 2 CPUs
+jan 25 12:20:56 wandboard kernel: SMP: Total of 2 processors activated (12.00 BogoMIPS).
+jan 25 12:20:56 wandboard kernel: CPU: All CPU(s) started in SVC mode.
+jan 25 12:20:56 wandboard kernel: devtmpfs: initialized
+jan 25 12:20:56 wandboard kernel: VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+jan 25 12:20:56 wandboard kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+jan 25 12:20:56 wandboard kernel: futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+jan 25 12:20:56 wandboard kernel: pinctrl core: initialized pinctrl subsystem
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_NETLINK/PF_ROUTE protocol family
+jan 25 12:20:56 wandboard kernel: Callback from call_rcu_tasks_trace() invoked.
+jan 25 12:20:56 wandboard kernel: DMA: preallocated 256 KiB pool for atomic coherent allocations
+jan 25 12:20:56 wandboard kernel: thermal_sys: Registered thermal governor 'step_wise'
+jan 25 12:20:56 wandboard kernel: cpuidle: using governor menu
+jan 25 12:20:56 wandboard kernel: CPU identified as i.MX6DL, silicon rev 1.3
+jan 25 12:20:56 wandboard kernel: vdd1p1: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: vdd3p0: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: vdd2p5: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: vddarm: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: vddpu: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: vddsoc: supplied by regulator-dummy
+jan 25 12:20:56 wandboard kernel: platform 21dc000.mipi: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi1_mux
+jan 25 12:20:56 wandboard kernel: platform 21dc000.mipi: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi0_mux
+jan 25 12:20:56 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 120000.hdmi
+jan 25 12:20:56 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi1_mux
+jan 25 12:20:56 wandboard kernel: platform 2400000.ipu: Fixing up cyclic dependency with 20e0000.iomuxc-gpr:ipu1_csi0_mux
+jan 25 12:20:56 wandboard kernel: No ATAGs?
+jan 25 12:20:56 wandboard kernel: hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+jan 25 12:20:56 wandboard kernel: hw-breakpoint: maximum watchpoint size is 4 bytes.
+jan 25 12:20:56 wandboard kernel: imx6dl-pinctrl 20e0000.pinctrl: initialized IMX pinctrl driver
+jan 25 12:20:56 wandboard kernel: Kprobes globally optimized
+jan 25 12:20:56 wandboard kernel: vgaarb: loaded
+jan 25 12:20:56 wandboard kernel: SCSI subsystem initialized
+jan 25 12:20:56 wandboard kernel: libata version 3.00 loaded.
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver usbfs
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver hub
+jan 25 12:20:56 wandboard kernel: usbcore: registered new device driver usb
+jan 25 12:20:56 wandboard kernel: usb_phy_generic usbphynop1: supply vcc not found, using dummy regulator
+jan 25 12:20:56 wandboard kernel: usb_phy_generic usbphynop1: dummy supplies not allowed for exclusive requests
+jan 25 12:20:56 wandboard kernel: usb_phy_generic usbphynop2: supply vcc not found, using dummy regulator
+jan 25 12:20:56 wandboard kernel: usb_phy_generic usbphynop2: dummy supplies not allowed for exclusive requests
+jan 25 12:20:56 wandboard kernel: i2c i2c-0: IMX I2C adapter registered
+jan 25 12:20:56 wandboard kernel: i2c 1-003c: Fixing up cyclic dependency with 21dc000.mipi
+jan 25 12:20:56 wandboard kernel: i2c i2c-1: IMX I2C adapter registered
+jan 25 12:20:56 wandboard kernel: mc: Linux media interface: v0.10
+jan 25 12:20:56 wandboard kernel: videodev: Linux video capture interface: v2.00
+jan 25 12:20:56 wandboard kernel: pps_core: LinuxPPS API ver. 1 registered
+jan 25 12:20:56 wandboard kernel: pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+jan 25 12:20:56 wandboard kernel: PTP clock support registered
+jan 25 12:20:56 wandboard kernel: Advanced Linux Sound Architecture Driver Initialized.
+jan 25 12:20:56 wandboard kernel: Bluetooth: Core ver 2.22
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_BLUETOOTH protocol family
+jan 25 12:20:56 wandboard kernel: Bluetooth: HCI device and connection manager initialized
+jan 25 12:20:56 wandboard kernel: Bluetooth: HCI socket layer initialized
+jan 25 12:20:56 wandboard kernel: Bluetooth: L2CAP socket layer initialized
+jan 25 12:20:56 wandboard kernel: Bluetooth: SCO socket layer initialized
+jan 25 12:20:56 wandboard kernel: clocksource: Switched to clocksource mxc_timer1
+jan 25 12:20:56 wandboard kernel: VFS: Disk quotas dquot_6.6.0
+jan 25 12:20:56 wandboard kernel: VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_INET protocol family
+jan 25 12:20:56 wandboard kernel: IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+jan 25 12:20:56 wandboard kernel: tcp_listen_portaddr_hash hash table entries: 512 (order: 2, 22528 bytes, linear)
+jan 25 12:20:56 wandboard kernel: Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+jan 25 12:20:56 wandboard kernel: TCP established hash table entries: 8192 (order: 3, 32768 bytes, linear)
+jan 25 12:20:56 wandboard kernel: TCP bind hash table entries: 8192 (order: 6, 327680 bytes, linear)
+jan 25 12:20:56 wandboard kernel: TCP: Hash tables configured (established 8192 bind 8192)
+jan 25 12:20:56 wandboard kernel: UDP hash table entries: 512 (order: 3, 49152 bytes, linear)
+jan 25 12:20:56 wandboard kernel: UDP-Lite hash table entries: 512 (order: 3, 49152 bytes, linear)
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_UNIX/PF_LOCAL protocol family
+jan 25 12:20:56 wandboard kernel: PCI: CLS 0 bytes, default 64
+jan 25 12:20:56 wandboard kernel: armv7-pmu pmu: hw perfevents: no interrupt-affinity property, guessing.
+jan 25 12:20:56 wandboard kernel: Trying to unpack rootfs image as initramfs...
+jan 25 12:20:56 wandboard kernel: hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+jan 25 12:20:56 wandboard kernel: Initialise system trusted keyrings
+jan 25 12:20:56 wandboard kernel: workingset: timestamp_bits=30 max_order=18 bucket_order=0
+jan 25 12:20:56 wandboard kernel: squashfs: version 4.0 (2009/01/31) Phillip Lougher
+jan 25 12:20:56 wandboard kernel: fuse: init (API version 7.34)
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_ALG protocol family
+jan 25 12:20:56 wandboard kernel: Key type asymmetric registered
+jan 25 12:20:56 wandboard kernel: Asymmetric key parser 'x509' registered
+jan 25 12:20:56 wandboard kernel: bounce: pool size: 64 pages
+jan 25 12:20:56 wandboard kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
+jan 25 12:20:56 wandboard kernel: io scheduler mq-deadline registered
+jan 25 12:20:56 wandboard kernel: io scheduler kyber registered
+jan 25 12:20:56 wandboard kernel: mxs-dma 110000.dma-apbh: initialized
+jan 25 12:20:56 wandboard kernel: 2020000.serial: ttymxc0 at MMIO 0x2020000 (irq = 33, base_baud = 5000000) is a IMX
+jan 25 12:20:56 wandboard kernel: printk: console [ttymxc0] enabled
+jan 25 12:20:56 wandboard kernel: 21ec000.serial: ttymxc2 at MMIO 0x21ec000 (irq = 76, base_baud = 5000000) is a IMX
+jan 25 12:20:56 wandboard kernel: dwhdmi-imx 120000.hdmi: Detected HDMI TX controller v1.31a with HDCP (DWC HDMI 3D TX PHY)
+jan 25 12:20:56 wandboard kernel: Freeing initrd memory: 1828K
+jan 25 12:20:56 wandboard kernel: imx-sdma 20ec000.sdma: Direct firmware load for imx/sdma/sdma-imx6q.bin failed with error -2
+jan 25 12:20:56 wandboard kernel: imx-sdma 20ec000.sdma: external firmware not found, using ROM firmware
+jan 25 12:20:56 wandboard kernel: etnaviv etnaviv: bound 130000.gpu (ops gpu_ops)
+jan 25 12:20:56 wandboard kernel: etnaviv etnaviv: bound 134000.gpu (ops gpu_ops)
+jan 25 12:20:56 wandboard kernel: etnaviv-gpu 130000.gpu: model: GC880, revision: 5106
+jan 25 12:20:56 wandboard kernel: etnaviv-gpu 134000.gpu: model: GC320, revision: 5007
+jan 25 12:20:56 wandboard kernel: [drm] Initialized etnaviv 1.3.0 20151214 for etnaviv on minor 0
+jan 25 12:20:56 wandboard kernel: imx-drm display-subsystem: bound imx-ipuv3-crtc.2 (ops ipu_crtc_ops)
+jan 25 12:20:56 wandboard kernel: imx-drm display-subsystem: bound imx-ipuv3-crtc.3 (ops ipu_crtc_ops)
+jan 25 12:20:56 wandboard kernel: imx-drm display-subsystem: bound 120000.hdmi (ops dw_hdmi_imx_ops)
+jan 25 12:20:56 wandboard kernel: [drm] Initialized imx-drm 1.0.0 20120507 for display-subsystem on minor 1
+jan 25 12:20:56 wandboard kernel: imx-drm display-subsystem: [drm] Cannot find any crtc or sizes
+jan 25 12:20:56 wandboard kernel: imx-ipuv3 2400000.ipu: IPUv3H probed
+jan 25 12:20:56 wandboard kernel: imx-drm display-subsystem: [drm] Cannot find any crtc or sizes
+jan 25 12:20:56 wandboard kernel: brd: module loaded
+jan 25 12:20:56 wandboard kernel: loop: module loaded
+jan 25 12:20:56 wandboard kernel: tun: Universal TUN/TAP device driver, 1.6
+jan 25 12:20:56 wandboard kernel: CAN device driver interface
+jan 25 12:20:56 wandboard kernel: pps pps0: new PPS source ptp0
+jan 25 12:20:56 wandboard kernel: fec 2188000.ethernet eth0: registered PHC device 0
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver r8152
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver lan78xx
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver asix
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver ax88179_178a
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver cdc_ether
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver smsc95xx
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver net1080
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver cdc_subset
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver zaurus
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver MOSCHIP usb-ethernet driver
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver cdc_ncm
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver r8153_ecm
+jan 25 12:20:56 wandboard kernel: ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+jan 25 12:20:56 wandboard kernel: ehci-pci: EHCI PCI platform driver
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver usb-storage
+jan 25 12:20:56 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,tsc2046
+jan 25 12:20:56 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7843
+jan 25 12:20:56 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7845
+jan 25 12:20:56 wandboard kernel: SPI driver ads7846 has no spi_device_id for ti,ads7873
+jan 25 12:20:56 wandboard kernel: snvs_rtc 20cc000.snvs:snvs-rtc-lp: registered as rtc0
+jan 25 12:20:56 wandboard kernel: snvs_rtc 20cc000.snvs:snvs-rtc-lp: setting system clock to 2023-01-25T11:20:49 UTC (1674645649)
+jan 25 12:20:56 wandboard kernel: i2c_dev: i2c /dev entries driver
+jan 25 12:20:56 wandboard kernel: Bluetooth: HCI UART driver ver 2.3
+jan 25 12:20:56 wandboard kernel: Bluetooth: HCI UART protocol H4 registered
+jan 25 12:20:56 wandboard kernel: Bluetooth: HCI UART protocol LL registered
+jan 25 12:20:56 wandboard kernel: sdhci: Secure Digital Host Controller Interface driver
+jan 25 12:20:56 wandboard kernel: sdhci: Copyright(c) Pierre Ossman
+jan 25 12:20:56 wandboard kernel: sdhci-pltfm: SDHCI platform and OF driver helper
+jan 25 12:20:56 wandboard kernel: sdhci-esdhc-imx 2190000.mmc: Got CD GPIO
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: Entropy delay = 3200
+jan 25 12:20:56 wandboard kernel: sdhci-esdhc-imx 2198000.mmc: Got CD GPIO
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: Instantiated RNG4 SH0
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: Instantiated RNG4 SH1
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: device ID = 0x0a16010000000100 (Era 4)
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: job rings = 2, qi = 0
+jan 25 12:20:56 wandboard kernel: caam algorithms registered in /proc/crypto
+jan 25 12:20:56 wandboard kernel: mmc1: SDHCI controller on 2194000.mmc [2194000.mmc] using ADMA
+jan 25 12:20:56 wandboard kernel: caam 2100000.crypto: registering rng-caam
+jan 25 12:20:56 wandboard kernel: mmc0: SDHCI controller on 2190000.mmc [2190000.mmc] using ADMA
+jan 25 12:20:56 wandboard kernel: mmc2: SDHCI controller on 2198000.mmc [2198000.mmc] using ADMA
+jan 25 12:20:56 wandboard kernel: mmc2: host does not support reading read-only switch, assuming write-enable
+jan 25 12:20:56 wandboard kernel: mmc2: new high speed SDHC card at address aaaa
+jan 25 12:20:56 wandboard kernel: mmcblk2: mmc2:aaaa SC16G 14.8 GiB 
+jan 25 12:20:56 wandboard kernel:  mmcblk2: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+jan 25 12:20:56 wandboard kernel: mmc1: new high speed SDIO card at address 0001
+jan 25 12:20:56 wandboard kernel: random: crng init done
+jan 25 12:20:56 wandboard kernel: usbcore: registered new interface driver usbhid
+jan 25 12:20:56 wandboard kernel: usbhid: USB HID core driver
+jan 25 12:20:56 wandboard kernel: imx-ipuv3-csi imx-ipuv3-csi.0: Registered ipu1_csi0 capture as /dev/video0
+jan 25 12:20:56 wandboard kernel: imx-ipuv3 2400000.ipu: Registered ipu1_ic_prpenc capture as /dev/video1
+jan 25 12:20:56 wandboard kernel: imx-ipuv3 2400000.ipu: Registered ipu1_ic_prpvf capture as /dev/video2
+jan 25 12:20:56 wandboard kernel: imx-ipuv3-csi imx-ipuv3-csi.1: Registered ipu1_csi1 capture as /dev/video3
+jan 25 12:20:56 wandboard kernel: sgtl5000 1-000a: sgtl5000 revision 0x11
+jan 25 12:20:56 wandboard kernel: sgtl5000 1-000a: Using internal LDO instead of VDDD: check ER1 erratum
+jan 25 12:20:56 wandboard kernel: fsl-ssi-dai 2028000.ssi: No cache defaults, reading back from HW
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_INET6 protocol family
+jan 25 12:20:56 wandboard kernel: Segment Routing with IPv6
+jan 25 12:20:56 wandboard kernel: In-situ OAM (IOAM) with IPv6
+jan 25 12:20:56 wandboard kernel: sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_PACKET protocol family
+jan 25 12:20:56 wandboard kernel: can: controller area network core
+jan 25 12:20:56 wandboard kernel: NET: Registered PF_CAN protocol family
+jan 25 12:20:56 wandboard kernel: can: raw protocol
+jan 25 12:20:56 wandboard kernel: can: broadcast manager protocol
+jan 25 12:20:56 wandboard kernel: can: netlink gateway - max_hops=1
+jan 25 12:20:56 wandboard kernel: Registering SWP/SWPB emulation handler
+jan 25 12:20:56 wandboard kernel: Loading compiled-in X.509 certificates
+jan 25 12:20:56 wandboard kernel: imx_usb 2184200.usb: No over current polarity defined
+jan 25 12:20:56 wandboard kernel: ci_hdrc ci_hdrc.1: EHCI Host Controller
+jan 25 12:20:56 wandboard kernel: ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 1
+jan 25 12:20:56 wandboard kernel: ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+jan 25 12:20:56 wandboard kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.15
+jan 25 12:20:56 wandboard kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+jan 25 12:20:56 wandboard kernel: usb usb1: Product: EHCI Host Controller
+jan 25 12:20:56 wandboard kernel: usb usb1: Manufacturer: Linux 5.15.82 ehci_hcd
+jan 25 12:20:56 wandboard kernel: usb usb1: SerialNumber: ci_hdrc.1
+jan 25 12:20:56 wandboard kernel: hub 1-0:1.0: USB hub found
+jan 25 12:20:56 wandboard kernel: hub 1-0:1.0: 1 port detected
+jan 25 12:20:56 wandboard kernel: imx_thermal 20c8000.anatop:tempmon: Commercial CPU temperature grade - max:95C critical:90C passive:85C
+jan 25 12:20:56 wandboard kernel: cfg80211: Loading compiled-in X.509 certificates for regulatory database
+jan 25 12:20:56 wandboard kernel: cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+jan 25 12:20:56 wandboard kernel: ALSA device list:
+jan 25 12:20:56 wandboard kernel:   #0: imx6-wandboard-sgtl5000
+jan 25 12:20:56 wandboard kernel:   #1: imx-spdif
+jan 25 12:20:56 wandboard kernel: platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+jan 25 12:20:56 wandboard kernel: cfg80211: failed to load regulatory.db
+jan 25 12:20:56 wandboard kernel: Freeing unused kernel image (initmem) memory: 1024K
+jan 25 12:20:56 wandboard kernel: Run /init as init process
+jan 25 12:20:56 wandboard kernel:   with arguments:
+jan 25 12:20:56 wandboard kernel:     /init
+jan 25 12:20:56 wandboard kernel:   with environment:
+jan 25 12:20:56 wandboard kernel:     HOME=/
+jan 25 12:20:56 wandboard kernel:     TERM=linux
+jan 25 12:20:56 wandboard kernel: EXT4-fs (mmcblk2p6): recovery complete
+jan 25 12:20:56 wandboard kernel: EXT4-fs (mmcblk2p6): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+jan 25 12:20:56 wandboard systemd[1]: systemd 251.8+ running in system mode (-PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK -SECCOMP -GCRYPT -GNUTLS -OPENSSL -ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=hybrid)
+jan 25 12:20:56 wandboard systemd[1]: Detected architecture arm.
+jan 25 12:20:56 wandboard systemd[1]: Hostname set to <wandboard>.
+jan 25 12:20:56 wandboard systemd[1]: Initializing machine ID from random generator.
+jan 25 12:20:56 wandboard systemd[1]: Using hardware watchdog 'imx2+ watchdog', version 0, device /dev/watchdog0
+jan 25 12:20:56 wandboard systemd[1]: Watchdog running with a timeout of 10s.
+jan 25 12:20:56 wandboard systemd[1]: Queued start job for default target Multi-User System.
+jan 25 12:20:56 wandboard systemd[1]: Unnecessary job was removed for /dev/mmcblk2p6.
+jan 25 12:20:56 wandboard systemd[1]: Created slice Slice /system/getty.
+jan 25 12:20:56 wandboard systemd[1]: Created slice Slice /system/modprobe.
+jan 25 12:20:56 wandboard systemd[1]: Created slice Slice /system/serial-getty.
+jan 25 12:20:56 wandboard systemd[1]: Created slice Slice /system/systemd-fsck.
+jan 25 12:20:56 wandboard systemd[1]: Created slice User and Session Slice.
+jan 25 12:20:56 wandboard systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+jan 25 12:20:56 wandboard systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Path Units.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Remote File Systems.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Slice Units.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Swaps.
+jan 25 12:20:56 wandboard systemd[1]: Listening on initctl Compatibility Named Pipe.
+jan 25 12:20:56 wandboard systemd[1]: Journal Audit Socket was skipped because of a failed condition check (ConditionSecurity=audit).
+jan 25 12:20:56 wandboard systemd[1]: Listening on Journal Socket (/dev/log).
+jan 25 12:20:56 wandboard systemd[1]: Listening on Journal Socket.
+jan 25 12:20:56 wandboard systemd[1]: Listening on Network Service Netlink Socket.
+jan 25 12:20:56 wandboard systemd[1]: Listening on udev Control Socket.
+jan 25 12:20:56 wandboard systemd[1]: Listening on udev Kernel Socket.
+jan 25 12:20:56 wandboard systemd[1]: Listening on User Database Manager Socket.
+jan 25 12:20:56 wandboard systemd[1]: Huge Pages File System was skipped because of a failed condition check (ConditionPathExists=/sys/kernel/mm/hugepages).
+jan 25 12:20:56 wandboard systemd[1]: POSIX Message Queue File System was skipped because of a failed condition check (ConditionPathExists=/proc/sys/fs/mqueue).
+jan 25 12:20:56 wandboard systemd[1]: Mounting Kernel Debug File System...
+jan 25 12:20:56 wandboard systemd[1]: Mounting Kernel Trace File System...
+jan 25 12:20:56 wandboard systemd[1]: Create List of Static Device Nodes was skipped because of a failed condition check (ConditionFileNotEmpty=/lib/modules/5.15.82/modules.devname).
+jan 25 12:20:56 wandboard systemd[1]: Starting Load Kernel Module configfs...
+jan 25 12:20:56 wandboard systemd[1]: Starting Load Kernel Module drm...
+jan 25 12:20:56 wandboard systemd[1]: Starting Load Kernel Module fuse...
+jan 25 12:20:56 wandboard systemd[1]: Starting Journal Service...
+jan 25 12:20:56 wandboard systemd[1]: Load Kernel Modules was skipped because all trigger condition checks failed.
+jan 25 12:20:56 wandboard systemd[1]: Starting Generate network units from Kernel command line...
+jan 25 12:20:56 wandboard systemd[1]: Starting Remount Root and Kernel File Systems...
+jan 25 12:20:56 wandboard systemd[1]: Starting Apply Kernel Variables...
+jan 25 12:20:56 wandboard systemd[1]: Starting Create Static Device Nodes in /dev...
+jan 25 12:20:56 wandboard systemd[1]: Starting Coldplug All udev Devices...
+jan 25 12:20:56 wandboard systemd[1]: Mounted Kernel Debug File System.
+jan 25 12:20:56 wandboard systemd[1]: Mounted Kernel Trace File System.
+jan 25 12:20:56 wandboard systemd[1]: modprobe@configfs.service: Deactivated successfully.
+jan 25 12:20:56 wandboard systemd[1]: Finished Load Kernel Module configfs.
+jan 25 12:20:56 wandboard systemd[1]: modprobe@drm.service: Deactivated successfully.
+jan 25 12:20:56 wandboard systemd[1]: Finished Load Kernel Module drm.
+jan 25 12:20:56 wandboard systemd[1]: modprobe@fuse.service: Deactivated successfully.
+jan 25 12:20:56 wandboard systemd[1]: Finished Load Kernel Module fuse.
+jan 25 12:20:56 wandboard systemd[1]: Finished Generate network units from Kernel command line.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Preparation for Network.
+jan 25 12:20:56 wandboard systemd[1]: Mounting FUSE Control File System...
+jan 25 12:20:56 wandboard systemd[1]: Mounting Kernel Configuration File System...
+jan 25 12:20:56 wandboard systemd[1]: Finished Remount Root and Kernel File Systems.
+jan 25 12:20:56 wandboard systemd[1]: Finished Apply Kernel Variables.
+jan 25 12:20:56 wandboard systemd[1]: Finished Create Static Device Nodes in /dev.
+jan 25 12:20:56 wandboard systemd[1]: Mounted FUSE Control File System.
+jan 25 12:20:56 wandboard systemd[1]: Mounted Kernel Configuration File System.
+jan 25 12:20:56 wandboard systemd[1]: Reached target Preparation for Local File Systems.
+jan 25 12:20:56 wandboard systemd[1]: Virtual Machine and Container Storage (Compatibility) was skipped because of a failed condition check (ConditionPathExists=/var/lib/machines.raw).
+jan 25 12:20:56 wandboard systemd[1]: Reached target Containers.
+jan 25 12:20:56 wandboard systemd[1]: Rebuild Hardware Database was skipped because all trigger condition checks failed.
+jan 25 12:20:56 wandboard systemd[1]: Platform Persistent Storage Archival was skipped because of a failed condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+jan 25 12:20:56 wandboard systemd[1]: Starting Rule-based Manager for Device Events and Files...
+jan 25 12:20:56 wandboard systemd[1]: Started Rule-based Manager for Device Events and Files.
+jan 25 12:20:56 wandboard systemd[1]: Starting Network Configuration...
+jan 25 12:20:56 wandboard systemd-journald[209]: Journal started
+jan 25 12:20:56 wandboard systemd-journald[209]: Runtime Journal (/run/log/journal/d34f94ecde7748629644d3f7f2631a34) is 8.0M, max 64.0M, 56.0M free.
+jan 25 12:20:56 wandboard systemd-udevd[220]: Using default interface naming scheme 'v251'.
+jan 25 12:20:56 wandboard systemd-udevd[220]: /usr/lib/udev/rules.d/50-udev-default.rules:46 Unknown group 'sgx', ignoring
+jan 25 12:20:56 wandboard systemd-udevd[220]: /usr/lib/udev/rules.d/50-udev-default.rules:47 Unknown group 'sgx', ignoring
+jan 25 12:20:56 wandboard systemd[1]: Started Journal Service.
+jan 25 12:20:57 wandboard systemd[1]: Starting Flush Journal to Persistent Storage...
+jan 25 12:20:57 wandboard systemd-journald[209]: Time spent on flushing to /var/log/journal/d34f94ecde7748629644d3f7f2631a34 is 118.616ms for 347 entries.
+jan 25 12:20:57 wandboard systemd-journald[209]: System Journal (/var/log/journal/d34f94ecde7748629644d3f7f2631a34) is 5.7M, max 45.8M, 40.1M free.
+jan 25 12:20:57 wandboard systemd-journald[209]: Received client request to flush runtime journal.
+jan 25 12:20:57 wandboard systemd-networkd[221]: lo: Link UP
+jan 25 12:20:57 wandboard systemd-networkd[221]: lo: Gained carrier
+jan 25 12:20:57 wandboard systemd-networkd[221]: Enumeration completed
+jan 25 12:20:57 wandboard systemd[1]: Started Network Configuration.
+jan 25 12:20:57 wandboard systemd[1]: Mounting /tmp...
+jan 25 12:20:57 wandboard systemd[1]: Mounting /var/volatile...
+jan 25 12:20:57 wandboard systemd[1]: Finished Flush Journal to Persistent Storage.
+jan 25 12:20:57 wandboard systemd[1]: Mounted /tmp.
+jan 25 12:20:57 wandboard systemd[1]: Mounted /var/volatile.
+jan 25 12:20:57 wandboard systemd[1]: Bind mount volatile /var/cache was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/cache).
+jan 25 12:20:57 wandboard systemd[1]: Bind mount volatile /var/lib was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/lib).
+jan 25 12:20:57 wandboard systemd[1]: Starting Load/Save Random Seed...
+jan 25 12:20:57 wandboard systemd[1]: Bind mount volatile /var/spool was skipped because of a failed condition check (ConditionPathIsReadWrite=!/var/spool).
+jan 25 12:20:57 wandboard systemd[1]: Starting Bind mount volatile /srv...
+jan 25 12:20:57 wandboard systemd[1]: Finished Load/Save Random Seed.
+jan 25 12:20:57 wandboard systemd[1]: First Boot Complete was skipped because of a failed condition check (ConditionFirstBoot=yes).
+jan 25 12:20:57 wandboard systemd[1]: Finished Bind mount volatile /srv.
+jan 25 12:21:00 wandboard systemd-networkd[221]: eth0: Configuring with /usr/lib/systemd/network/80-wired.network.
+jan 25 12:21:00 wandboard systemd-networkd[221]: eth0: Link UP
+jan 25 12:21:00 wandboard kernel: Qualcomm Atheros AR8031/AR8033 2188000.ethernet-1:01: attached PHY driver (mii_bus:phy_addr=2188000.ethernet-1:01, irq=POLL)
+jan 25 12:21:00 wandboard systemd[1]: Finished Coldplug All udev Devices.
+jan 25 12:21:01 wandboard systemd[1]: Found device /dev/mmcblk2p5.
+jan 25 12:21:01 wandboard systemd[1]: Reached target Sound Card.
+jan 25 12:21:01 wandboard systemd[1]: Reached target Hardware activated USB gadget.
+jan 25 12:21:01 wandboard systemd[1]: Starting File System Check on /dev/mmcblk2p5...
+jan 25 12:21:01 wandboard systemd-fsck[253]: home: recovering journal
+jan 25 12:21:01 wandboard systemd-fsck[253]: home: clean, 16/128016 files, 42690/512000 blocks
+jan 25 12:21:02 wandboard systemd[1]: Finished File System Check on /dev/mmcblk2p5.
+jan 25 12:21:02 wandboard systemd[1]: Mounting Home Partition...
+jan 25 12:21:02 wandboard kernel: EXT4-fs (mmcblk2p5): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+jan 25 12:21:02 wandboard systemd[1]: Mounted Home Partition.
+jan 25 12:21:02 wandboard systemd[1]: Reached target Local File Systems.
+jan 25 12:21:02 wandboard systemd[1]: Commit a transient machine-id on disk was skipped because of a failed condition check (ConditionPathIsMountPoint=/etc/machine-id).
+jan 25 12:21:02 wandboard systemd[1]: Starting Create Volatile Files and Directories...
+jan 25 12:21:02 wandboard systemd-tmpfiles[258]: /usr/lib/tmpfiles.d/fw_printenv.conf:1: Duplicate line for path "/run/lock", ignoring.
+jan 25 12:21:02 wandboard systemd-tmpfiles[258]: /usr/lib/tmpfiles.d/legacy.conf:13: Duplicate line for path "/run/lock", ignoring.
+jan 25 12:21:02 wandboard systemd-tmpfiles[258]: "/var/tmp" already exists and is not a directory.
+jan 25 12:21:02 wandboard systemd[1]: Finished Create Volatile Files and Directories.
+jan 25 12:21:02 wandboard systemd[1]: Started Hardware RNG Entropy Gatherer Daemon.
+jan 25 12:21:02 wandboard systemd[1]: Rebuild Journal Catalog was skipped because of a failed condition check (ConditionNeedsUpdate=/var).
+jan 25 12:21:02 wandboard kernel: fec 2188000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+jan 25 12:21:02 wandboard kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+jan 25 12:21:02 wandboard systemd-networkd[221]: eth0: Gained carrier
+jan 25 12:21:02 wandboard systemd[1]: Starting Network Name Resolution...
+jan 25 12:21:02 wandboard systemd[1]: Starting Network Time Synchronization...
+jan 25 12:21:02 wandboard systemd[1]: Starting Update is Completed...
+jan 25 12:21:02 wandboard systemd-networkd[221]: eth0: DHCPv4 address 192.168.17.162/23, gateway 192.168.17.1 acquired from 192.168.17.1
+jan 25 12:21:02 wandboard systemd[1]: Starting Record System Boot/Shutdown in UTMP...
+jan 25 12:21:02 wandboard systemd[1]: Finished Record System Boot/Shutdown in UTMP.
+jan 25 12:21:02 wandboard systemd[1]: Finished Update is Completed.
+jan 25 12:21:03 wandboard rngd[259]: Initializing available sources
+jan 25 12:21:03 wandboard rngd[259]: [hwrng ]: Initialized
+jan 25 12:21:03 wandboard systemd-resolved[260]: Positive Trust Anchors:
+jan 25 12:21:03 wandboard systemd-resolved[260]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+jan 25 12:21:03 wandboard systemd-resolved[260]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+jan 25 12:21:03 wandboard systemd-resolved[260]: Using system hostname 'wandboard'.
+jan 25 12:21:03 wandboard systemd[1]: Started Network Name Resolution.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Network.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Host and Network Name Lookups.
+jan 25 12:21:03 wandboard systemd[1]: Started Network Time Synchronization.
+jan 25 12:21:03 wandboard systemd[1]: Reached target System Initialization.
+jan 25 12:21:03 wandboard systemd[1]: Started Daily Cleanup of Temporary Directories.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Boot Completion Check.
+jan 25 12:21:03 wandboard systemd[1]: Reached target System Time Set.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Timer Units.
+jan 25 12:21:03 wandboard systemd[1]: Listening on D-Bus System Message Bus Socket.
+jan 25 12:21:03 wandboard systemd[1]: Starting sshd.socket...
+jan 25 12:21:03 wandboard systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+jan 25 12:21:03 wandboard systemd-timesyncd[261]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+jan 25 12:21:03 wandboard systemd-timesyncd[261]: Initial clock synchronization to Wed 2023-01-25 11:21:03.243956 UTC.
+jan 25 12:21:03 wandboard systemd[1]: Listening on sshd.socket.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Socket Units.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Basic System.
+jan 25 12:21:03 wandboard systemd[1]: System is tainted: cgroupsv1
+jan 25 12:21:03 wandboard systemd[1]: Starting D-Bus System Message Bus...
+jan 25 12:21:03 wandboard systemd[1]: Started Getty on tty1.
+jan 25 12:21:03 wandboard systemd[1]: Started Netperf Benchmark Server.
+jan 25 12:21:03 wandboard systemd[1]: Started Serial Getty on ttymxc0.
+jan 25 12:21:03 wandboard systemd[1]: Reached target Login Prompts.
+jan 25 12:21:03 wandboard systemd[1]: Starting RAUC Good-marking Service...
+jan 25 12:21:03 wandboard netserver[269]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+jan 25 12:21:03 wandboard systemd[1]: Starting User Login Management...
+jan 25 12:21:03 wandboard systemd[1]: Starting OpenSSH Key Generation...
+jan 25 12:21:03 wandboard systemd[1]: Started D-Bus System Message Bus.
+jan 25 12:21:03 wandboard systemd[1]: Finished OpenSSH Key Generation.
+jan 25 12:21:03 wandboard dbus-daemon[267]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.0' (uid=605 pid=221 comm="/usr/lib/systemd/systemd-networkd")
+jan 25 12:21:03 wandboard dbus-daemon[267]: [system] Successfully activated service 'org.freedesktop.systemd1'
+jan 25 12:21:03 wandboard systemd[1]: Starting Hostname Service...
+jan 25 12:21:03 wandboard systemd-logind[272]: New seat seat0.
+jan 25 12:21:04 wandboard systemd[1]: Started User Login Management.
+jan 25 12:21:04 wandboard systemd-networkd[221]: eth0: Gained IPv6LL
+jan 25 12:21:04 wandboard dbus-daemon[267]: [system] Successfully activated service 'org.freedesktop.hostname1'
+jan 25 12:21:04 wandboard systemd[1]: Started Hostname Service.
+jan 25 12:21:04 wandboard systemd-networkd[221]: Could not set hostname: Access denied
+jan 25 12:21:05 wandboard dbus-daemon[267]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=278 comm="/usr/bin/rauc status mark-good")
+jan 25 12:21:05 wandboard systemd[1]: Starting RAUC Update Service...
+jan 25 12:21:05 wandboard rauc[281]: Using central status file /var/lib/rauc/central.raucs
+jan 25 12:21:05 wandboard rauc[281]: Using central status file /var/lib/rauc/central.raucs
+jan 25 12:21:05 wandboard dbus-daemon[267]: [system] Successfully activated service 'de.pengutronix.rauc'
+jan 25 12:21:05 wandboard systemd[1]: Started RAUC Update Service.
+jan 25 12:21:05 wandboard rauc[281]: rauc mark: marked slot kernel.1 as good
+jan 25 12:21:05 wandboard rauc[278]: rauc status: marked slot kernel.1 as good
+jan 25 12:21:05 wandboard systemd[1]: Finished RAUC Good-marking Service.
+jan 25 12:21:05 wandboard systemd[1]: Reached target Multi-User System.
+jan 25 12:21:05 wandboard systemd[1]: Starting Record Runlevel Change in UTMP...
+jan 25 12:21:05 wandboard systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+jan 25 12:21:05 wandboard systemd[1]: Finished Record Runlevel Change in UTMP.
+jan 25 12:21:05 wandboard systemd[1]: Startup finished in 6.155s (kernel) + 11.626s (userspace) = 17.782s.
+jan 25 12:21:07 wandboard login[270]: ROOT LOGIN  on '/dev/ttymxc0'
+jan 25 12:21:34 wandboard systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+jan 25 12:21:53 wandboard systemd[1]: Created slice Slice /system/sshd.
+jan 25 12:21:53 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48640).
+jan 25 12:21:53 wandboard sshd[308]: Accepted publickey for root from 192.168.17.13 port 48640 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:21:54 wandboard sshd[308]: Received disconnect from 192.168.17.13 port 48640:11: disconnected by user
+jan 25 12:21:54 wandboard sshd[308]: Disconnected from user root 192.168.17.13 port 48640
+jan 25 12:21:54 wandboard systemd[1]: sshd@0-192.168.17.162:22-192.168.17.13:48640.service: Deactivated successfully.
+jan 25 12:21:55 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48648).
+jan 25 12:21:55 wandboard sshd[324]: Accepted publickey for root from 192.168.17.13 port 48648 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:21:56 wandboard sshd[324]: Received disconnect from 192.168.17.13 port 48648:11: disconnected by user
+jan 25 12:21:56 wandboard sshd[324]: Disconnected from user root 192.168.17.13 port 48648
+jan 25 12:21:56 wandboard systemd[1]: sshd@1-192.168.17.162:22-192.168.17.13:48648.service: Deactivated successfully.
+jan 25 12:21:57 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48660).
+jan 25 12:21:57 wandboard sshd[349]: Accepted publickey for root from 192.168.17.13 port 48660 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:04 wandboard sshd[349]: Received disconnect from 192.168.17.13 port 48660:11: disconnected by user
+jan 25 12:22:04 wandboard sshd[349]: Disconnected from user root 192.168.17.13 port 48660
+jan 25 12:22:04 wandboard systemd[1]: sshd@2-192.168.17.162:22-192.168.17.13:48660.service: Deactivated successfully.
+jan 25 12:22:04 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48714).
+jan 25 12:22:04 wandboard sshd[365]: Accepted publickey for root from 192.168.17.13 port 48714 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:05 wandboard sshd[365]: Received disconnect from 192.168.17.13 port 48714:11: disconnected by user
+jan 25 12:22:05 wandboard sshd[365]: Disconnected from user root 192.168.17.13 port 48714
+jan 25 12:22:05 wandboard systemd[1]: sshd@3-192.168.17.162:22-192.168.17.13:48714.service: Deactivated successfully.
+jan 25 12:22:05 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48728).
+jan 25 12:22:06 wandboard sshd[381]: Accepted publickey for root from 192.168.17.13 port 48728 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:07 wandboard sshd[381]: Received disconnect from 192.168.17.13 port 48728:11: disconnected by user
+jan 25 12:22:07 wandboard sshd[381]: Disconnected from user root 192.168.17.13 port 48728
+jan 25 12:22:07 wandboard systemd[1]: sshd@4-192.168.17.162:22-192.168.17.13:48728.service: Deactivated successfully.
+jan 25 12:22:07 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48732).
+jan 25 12:22:07 wandboard sshd[397]: Accepted publickey for root from 192.168.17.13 port 48732 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:08 wandboard sshd[397]: Received disconnect from 192.168.17.13 port 48732:11: disconnected by user
+jan 25 12:22:08 wandboard sshd[397]: Disconnected from user root 192.168.17.13 port 48732
+jan 25 12:22:08 wandboard systemd[1]: sshd@5-192.168.17.162:22-192.168.17.13:48732.service: Deactivated successfully.
+jan 25 12:22:09 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48744).
+jan 25 12:22:09 wandboard sshd[413]: Accepted publickey for root from 192.168.17.13 port 48744 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:10 wandboard sshd[413]: Received disconnect from 192.168.17.13 port 48744:11: disconnected by user
+jan 25 12:22:10 wandboard sshd[413]: Disconnected from user root 192.168.17.13 port 48744
+jan 25 12:22:10 wandboard systemd[1]: sshd@6-192.168.17.162:22-192.168.17.13:48744.service: Deactivated successfully.
+jan 25 12:22:10 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48748).
+jan 25 12:22:10 wandboard sshd[431]: Accepted publickey for root from 192.168.17.13 port 48748 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:13 wandboard sshd[431]: Received disconnect from 192.168.17.13 port 48748:11: disconnected by user
+jan 25 12:22:13 wandboard sshd[431]: Disconnected from user root 192.168.17.13 port 48748
+jan 25 12:22:13 wandboard systemd[1]: sshd@7-192.168.17.162:22-192.168.17.13:48748.service: Deactivated successfully.
+jan 25 12:22:13 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48756).
+jan 25 12:22:14 wandboard sshd[456]: Accepted publickey for root from 192.168.17.13 port 48756 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:14 wandboard sshd[456]: Received disconnect from 192.168.17.13 port 48756:11: disconnected by user
+jan 25 12:22:14 wandboard sshd[456]: Disconnected from user root 192.168.17.13 port 48756
+jan 25 12:22:14 wandboard systemd[1]: sshd@8-192.168.17.162:22-192.168.17.13:48756.service: Deactivated successfully.
+jan 25 12:22:15 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48768).
+jan 25 12:22:15 wandboard sshd[468]: Accepted publickey for root from 192.168.17.13 port 48768 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:19 wandboard sshd[468]: Received disconnect from 192.168.17.13 port 48768:11: disconnected by user
+jan 25 12:22:19 wandboard sshd[468]: Disconnected from user root 192.168.17.13 port 48768
+jan 25 12:22:19 wandboard systemd[1]: sshd@9-192.168.17.162:22-192.168.17.13:48768.service: Deactivated successfully.
+jan 25 12:22:20 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48784).
+jan 25 12:22:20 wandboard sshd[497]: Accepted publickey for root from 192.168.17.13 port 48784 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:27 wandboard sshd[497]: Received disconnect from 192.168.17.13 port 48784:11: disconnected by user
+jan 25 12:22:27 wandboard sshd[497]: Disconnected from user root 192.168.17.13 port 48784
+jan 25 12:22:27 wandboard systemd[1]: sshd@10-192.168.17.162:22-192.168.17.13:48784.service: Deactivated successfully.
+jan 25 12:22:28 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48802).
+jan 25 12:22:28 wandboard sshd[516]: Accepted publickey for root from 192.168.17.13 port 48802 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:30 wandboard sshd[516]: Received disconnect from 192.168.17.13 port 48802:11: disconnected by user
+jan 25 12:22:30 wandboard sshd[516]: Disconnected from user root 192.168.17.13 port 48802
+jan 25 12:22:30 wandboard systemd[1]: sshd@11-192.168.17.162:22-192.168.17.13:48802.service: Deactivated successfully.
+jan 25 12:22:31 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48810).
+jan 25 12:22:31 wandboard sshd[545]: Accepted publickey for root from 192.168.17.13 port 48810 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:39 wandboard sshd[545]: Received disconnect from 192.168.17.13 port 48810:11: disconnected by user
+jan 25 12:22:39 wandboard sshd[545]: Disconnected from user root 192.168.17.13 port 48810
+jan 25 12:22:39 wandboard systemd[1]: sshd@12-192.168.17.162:22-192.168.17.13:48810.service: Deactivated successfully.
+jan 25 12:22:39 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48832).
+jan 25 12:22:40 wandboard sshd[563]: Accepted publickey for root from 192.168.17.13 port 48832 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:40 wandboard sshd[563]: Received disconnect from 192.168.17.13 port 48832:11: disconnected by user
+jan 25 12:22:40 wandboard sshd[563]: Disconnected from user root 192.168.17.13 port 48832
+jan 25 12:22:40 wandboard systemd[1]: sshd@13-192.168.17.162:22-192.168.17.13:48832.service: Deactivated successfully.
+jan 25 12:22:41 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48838).
+jan 25 12:22:41 wandboard sshd[571]: Accepted publickey for root from 192.168.17.13 port 48838 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:42 wandboard sshd[571]: Received disconnect from 192.168.17.13 port 48838:11: disconnected by user
+jan 25 12:22:42 wandboard sshd[571]: Disconnected from user root 192.168.17.13 port 48838
+jan 25 12:22:42 wandboard systemd[1]: sshd@14-192.168.17.162:22-192.168.17.13:48838.service: Deactivated successfully.
+jan 25 12:22:42 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48844).
+jan 25 12:22:42 wandboard sshd[586]: Accepted publickey for root from 192.168.17.13 port 48844 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:43 wandboard sshd[586]: Received disconnect from 192.168.17.13 port 48844:11: disconnected by user
+jan 25 12:22:43 wandboard sshd[586]: Disconnected from user root 192.168.17.13 port 48844
+jan 25 12:22:43 wandboard systemd[1]: sshd@15-192.168.17.162:22-192.168.17.13:48844.service: Deactivated successfully.
+jan 25 12:22:43 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48850).
+jan 25 12:22:44 wandboard sshd[596]: Accepted publickey for root from 192.168.17.13 port 48850 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+jan 25 12:22:50 wandboard kernel: hello: loading out-of-tree module taints kernel.
+jan 25 12:22:50 wandboard kernel: Hello World!
+jan 25 12:22:50 wandboard kernel: Goodbye Cruel World!
+jan 25 12:22:50 wandboard sshd[596]: Received disconnect from 192.168.17.13 port 48850:11: disconnected by user
+jan 25 12:22:50 wandboard sshd[596]: Disconnected from user root 192.168.17.13 port 48850
+jan 25 12:22:50 wandboard systemd[1]: sshd@16-192.168.17.162:22-192.168.17.13:48850.service: Deactivated successfully.
+jan 25 12:22:51 wandboard systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:48924).
+jan 25 12:22:51 wandboard sshd[618]: Accepted publickey for root from 192.168.17.13 port 48924 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE

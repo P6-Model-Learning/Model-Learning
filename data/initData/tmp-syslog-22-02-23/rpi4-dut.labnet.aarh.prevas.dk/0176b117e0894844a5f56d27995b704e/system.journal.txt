@@ -1,0 +1,114 @@
+feb 12 03:33:45 rpi4 systemd[1]: Finished Load/Save Random Seed.
+feb 12 03:33:45 rpi4 systemd-journald[153]: Oldest entry in /var/log/journal/0176b117e0894844a5f56d27995b704e/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+feb 12 03:33:45 rpi4 systemd-journald[153]: /var/log/journal/0176b117e0894844a5f56d27995b704e/system.journal: Journal header limits reached or header out-of-date, rotating.
+feb 12 03:33:45 rpi4 systemd[1]: First Boot Complete was skipped because of a failed condition check (ConditionFirstBoot=yes).
+feb 12 03:33:45 rpi4 systemd[1]: Commit a transient machine-id on disk was skipped because of a failed condition check (ConditionPathIsMountPoint=/etc/machine-id).
+feb 12 03:33:45 rpi4 systemd[1]: Started Network Time Synchronization.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target System Time Set.
+feb 12 03:33:45 rpi4 systemd-resolved[216]: Positive Trust Anchors:
+feb 12 03:33:45 rpi4 systemd-resolved[216]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+feb 12 03:33:45 rpi4 systemd-resolved[216]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+feb 12 03:33:45 rpi4 systemd-resolved[216]: Using system hostname 'rpi4'.
+feb 12 03:33:45 rpi4 systemd[1]: Started Network Name Resolution.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Network.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Host and Network Name Lookups.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target System Initialization.
+feb 12 03:33:45 rpi4 systemd[1]: Started Daily Cleanup of Temporary Directories.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Boot Completion Check.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Timer Units.
+feb 12 03:33:45 rpi4 systemd[1]: Listening on D-Bus System Message Bus Socket.
+feb 12 03:33:45 rpi4 systemd[1]: Starting sshd.socket...
+feb 12 03:33:45 rpi4 systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+feb 12 03:33:45 rpi4 systemd[1]: Listening on sshd.socket.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Socket Units.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Basic System.
+feb 12 03:33:45 rpi4 systemd[1]: System is tainted: cgroupsv1
+feb 12 03:33:45 rpi4 systemd[1]: Starting D-Bus System Message Bus...
+feb 12 03:33:45 rpi4 systemd[1]: Started Getty on tty1.
+feb 12 03:33:45 rpi4 systemd[1]: Started Netperf Benchmark Server.
+feb 12 03:33:45 rpi4 systemd[1]: Serial Getty on ttyAMA1 was skipped because of a failed condition check (ConditionPathExists=/dev/ttyAMA1).
+feb 12 03:33:45 rpi4 systemd[1]: Started Serial Getty on ttyS0.
+feb 12 03:33:45 rpi4 systemd[1]: Reached target Login Prompts.
+feb 12 03:33:45 rpi4 systemd[1]: Starting RAUC Good-marking Service...
+feb 12 03:33:45 rpi4 systemd[1]: Starting User Login Management...
+feb 12 03:33:45 rpi4 systemd[1]: Starting OpenSSH Key Generation...
+feb 12 03:33:45 rpi4 netserver[225]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+feb 12 03:33:45 rpi4 systemd[1]: Finished OpenSSH Key Generation.
+feb 12 03:33:45 rpi4 systemd[1]: Started D-Bus System Message Bus.
+feb 12 03:33:45 rpi4 systemd-logind[228]: New seat seat0.
+feb 12 03:33:45 rpi4 systemd[1]: Started User Login Management.
+feb 12 03:33:46 rpi4 systemd-networkd[175]: eth0: Gained carrier
+feb 12 03:33:46 rpi4 kernel: bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+feb 12 03:33:46 rpi4 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+feb 12 03:33:46 rpi4 systemd-networkd[175]: eth0: DHCPv4 address 192.168.17.167/23, gateway 192.168.17.1 acquired from 192.168.17.1
+feb 12 03:33:46 rpi4 dbus-daemon[223]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=605 pid=175 comm="/usr/lib/systemd/systemd-networkd")
+feb 12 03:33:46 rpi4 systemd-timesyncd[217]: Network configuration changed, trying to establish connection.
+feb 12 03:33:46 rpi4 systemd[1]: Starting Hostname Service...
+feb 12 03:34:05 rpi4 systemd-timesyncd[217]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+feb 12 03:34:05 rpi4 systemd-timesyncd[217]: Initial clock synchronization to Sun 2023-02-12 02:34:04.999489 UTC.
+feb 12 03:34:05 rpi4 systemd-resolved[216]: Clock change detected. Flushing caches.
+feb 12 03:34:05 rpi4 dbus-daemon[223]: [system] Successfully activated service 'org.freedesktop.hostname1'
+feb 12 03:34:05 rpi4 systemd[1]: Started Hostname Service.
+feb 12 03:34:05 rpi4 systemd-networkd[175]: Could not set hostname: Access denied
+feb 12 03:34:05 rpi4 dbus-daemon[223]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=233 comm="/usr/bin/rauc status mark-good")
+feb 12 03:34:05 rpi4 systemd[1]: Starting RAUC Update Service...
+feb 12 03:34:05 rpi4 rauc[238]: Using central status file /var/lib/rauc/central.raucs
+feb 12 03:34:05 rpi4 rauc[238]: Using central status file /var/lib/rauc/central.raucs
+feb 12 03:34:05 rpi4 dbus-daemon[223]: [system] Successfully activated service 'de.pengutronix.rauc'
+feb 12 03:34:05 rpi4 systemd[1]: Started RAUC Update Service.
+feb 12 03:34:05 rpi4 rauc[238]: rauc mark: marked slot kernel.1 as good
+feb 12 03:34:05 rpi4 rauc[233]: rauc status: marked slot kernel.1 as good
+feb 12 03:34:05 rpi4 systemd[1]: Finished RAUC Good-marking Service.
+feb 12 03:34:05 rpi4 systemd[1]: Reached target Multi-User System.
+feb 12 03:34:05 rpi4 systemd[1]: Starting Record Runlevel Change in UTMP...
+feb 12 03:34:05 rpi4 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+feb 12 03:34:05 rpi4 systemd[1]: Finished Record Runlevel Change in UTMP.
+feb 12 03:34:05 rpi4 systemd[1]: Startup finished in 1.520s (kernel) + 4.234s (userspace) = 5.754s.
+feb 12 03:34:06 rpi4 systemd-networkd[175]: eth0: Gained IPv6LL
+feb 12 03:34:06 rpi4 login[226]: ROOT LOGIN  on '/dev/ttyS0'
+feb 12 03:34:10 rpi4 systemd[1]: Created slice Slice /system/sshd.
+feb 12 03:34:10 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:38822).
+feb 12 03:34:10 rpi4 sshd[267]: Accepted publickey for root from 192.168.17.13 port 38822 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 12 03:34:11 rpi4 sshd[267]: Received disconnect from 192.168.17.13 port 38822:11: disconnected by user
+feb 12 03:34:11 rpi4 sshd[267]: Disconnected from user root 192.168.17.13 port 38822
+feb 12 03:34:11 rpi4 systemd[1]: sshd@0-192.168.17.167:22-192.168.17.13:38822.service: Deactivated successfully.
+feb 12 03:34:11 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:38824).
+feb 12 03:34:11 rpi4 sshd[272]: Accepted publickey for root from 192.168.17.13 port 38824 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 12 03:34:19 rpi4 rauc[238]: input bundle: /tmp/system-rpi4.raucb
+feb 12 03:34:19 rpi4 rauc[238]: Active slot bootname: B
+feb 12 03:34:19 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: started
+feb 12 03:34:19 rpi4 rauc[238]: Reading bundle: /tmp/system-rpi4.raucb
+feb 12 03:34:19 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Checking and mounting bundle...
+feb 12 03:34:19 rpi4 rauc[238]: Verifying bundle signature... 
+feb 12 03:34:20 rpi4 rauc[238]: Verified detached signature by 'O = Test Org, CN = Test Org Development-1'
+feb 12 03:34:20 rpi4 rauc[238]: Mounting bundle '/tmp/system-rpi4.raucb' to '/run/rauc/bundle'
+feb 12 03:34:20 rpi4 kernel: loop0: detected capacity change from 0 to 146698
+feb 12 03:34:20 rpi4 kernel: loop0: detected capacity change from 146698 to 146696
+feb 12 03:34:20 rpi4 rauc[238]: Configured loop device '/dev/loop0' for 75108352 bytes
+feb 12 03:34:20 rpi4 rauc[238]: Starting pre install handler: /usr/libexec/rauc-pre-install.sh
+feb 12 03:34:20 rpi4 rauc[238]: Marking target slot kernel.0 as non-bootable...
+feb 12 03:34:20 rpi4 rauc[238]: Checking image type for slot type: raw
+feb 12 03:34:20 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slots...
+feb 12 03:34:20 rpi4 rauc[238]: Image detected as type: *.img
+feb 12 03:34:20 rpi4 rauc[238]: Updating /dev/disk/by-partlabel/rootfs-A with /run/rauc/bundle/base-rootfs.squashfs.img
+feb 12 03:34:20 rpi4 rauc[238]: opening slot device /dev/disk/by-partlabel/rootfs-A
+feb 12 03:34:20 rpi4 rauc[238]: writing data to device /dev/disk/by-partlabel/rootfs-A
+feb 12 03:34:20 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Checking slot rootfs.0
+feb 12 03:34:20 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.0
+feb 12 03:34:29 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.0 status
+feb 12 03:34:29 rpi4 rauc[238]: Checking image type for slot type: raw
+feb 12 03:34:29 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot rootfs.0 done
+feb 12 03:34:29 rpi4 rauc[238]: Image detected as type: *.vfat
+feb 12 03:34:29 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Checking slot kernel.0
+feb 12 03:34:29 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot kernel.0
+feb 12 03:34:29 rpi4 rauc[238]: Updating /dev/disk/by-partlabel/kernel-A with /run/rauc/bundle/pil-kernelfs-rpi4.vfat
+feb 12 03:34:29 rpi4 rauc[238]: opening slot device /dev/disk/by-partlabel/kernel-A
+feb 12 03:34:29 rpi4 rauc[238]: writing data to device /dev/disk/by-partlabel/kernel-A
+feb 12 03:34:35 rpi4 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+feb 12 03:34:37 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot kernel.0 status
+feb 12 03:34:37 rpi4 rauc[238]: Marking target slot kernel.0 as bootable...
+feb 12 03:34:37 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: Updating slot kernel.0 done
+feb 12 03:34:38 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: All slots updated
+feb 12 03:34:38 rpi4 rauc[238]: Starting post install handler: /usr/libexec/rauc-post-install.sh
+feb 12 03:34:38 rpi4 rauc[238]: installing /tmp/system-rpi4.raucb: finished
+feb 12 03:34:38 rpi4 rauc[238]: installing `/tmp/system-rpi4.raucb` succeeded

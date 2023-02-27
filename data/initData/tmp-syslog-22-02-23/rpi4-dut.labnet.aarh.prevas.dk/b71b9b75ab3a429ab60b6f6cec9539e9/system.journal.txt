@@ -1,0 +1,163 @@
+nov 08 15:00:19 rpi4 systemd-timesyncd[218]: System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2023-02-11 02:45:38 UTC
+feb 11 03:45:38 rpi4 systemd-journald[153]: Oldest entry in /var/log/journal/b71b9b75ab3a429ab60b6f6cec9539e9/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+feb 11 03:45:38 rpi4 systemd-journald[153]: /var/log/journal/b71b9b75ab3a429ab60b6f6cec9539e9/system.journal: Journal header limits reached or header out-of-date, rotating.
+feb 11 03:45:38 rpi4 kernel: random: crng init done
+feb 11 03:45:38 rpi4 systemd[1]: Finished Load/Save Random Seed.
+feb 11 03:45:38 rpi4 systemd[1]: First Boot Complete was skipped because of a failed condition check (ConditionFirstBoot=yes).
+feb 11 03:45:38 rpi4 systemd[1]: Commit a transient machine-id on disk was skipped because of a failed condition check (ConditionPathIsMountPoint=/etc/machine-id).
+feb 11 03:45:38 rpi4 systemd[1]: Started Network Time Synchronization.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target System Time Set.
+feb 11 03:45:38 rpi4 systemd-resolved[217]: Positive Trust Anchors:
+feb 11 03:45:38 rpi4 systemd-resolved[217]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+feb 11 03:45:38 rpi4 systemd-resolved[217]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+feb 11 03:45:38 rpi4 systemd-resolved[217]: Using system hostname 'rpi4'.
+feb 11 03:45:38 rpi4 systemd[1]: Started Network Name Resolution.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Network.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Host and Network Name Lookups.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target System Initialization.
+feb 11 03:45:38 rpi4 systemd[1]: Started Daily Cleanup of Temporary Directories.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Boot Completion Check.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Timer Units.
+feb 11 03:45:38 rpi4 systemd[1]: Listening on D-Bus System Message Bus Socket.
+feb 11 03:45:38 rpi4 systemd[1]: Starting sshd.socket...
+feb 11 03:45:38 rpi4 systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+feb 11 03:45:38 rpi4 systemd[1]: Listening on sshd.socket.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Socket Units.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Basic System.
+feb 11 03:45:38 rpi4 systemd[1]: System is tainted: cgroupsv1
+feb 11 03:45:38 rpi4 systemd[1]: Starting D-Bus System Message Bus...
+feb 11 03:45:38 rpi4 systemd[1]: Started Getty on tty1.
+feb 11 03:45:38 rpi4 systemd[1]: Started Netperf Benchmark Server.
+feb 11 03:45:38 rpi4 systemd[1]: Serial Getty on ttyAMA1 was skipped because of a failed condition check (ConditionPathExists=/dev/ttyAMA1).
+feb 11 03:45:38 rpi4 systemd[1]: Started Serial Getty on ttyS0.
+feb 11 03:45:38 rpi4 systemd[1]: Reached target Login Prompts.
+feb 11 03:45:38 rpi4 systemd[1]: Starting RAUC Good-marking Service...
+feb 11 03:45:38 rpi4 systemd[1]: Starting User Login Management...
+feb 11 03:45:38 rpi4 systemd[1]: Starting OpenSSH Key Generation...
+feb 11 03:45:38 rpi4 netserver[226]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+feb 11 03:45:38 rpi4 systemd[1]: Finished OpenSSH Key Generation.
+feb 11 03:45:38 rpi4 systemd-logind[229]: New seat seat0.
+feb 11 03:45:38 rpi4 systemd[1]: Started D-Bus System Message Bus.
+feb 11 03:45:38 rpi4 systemd[1]: Started User Login Management.
+feb 11 03:45:38 rpi4 dbus-daemon[224]: [system] Successfully activated service 'org.freedesktop.systemd1'
+feb 11 03:45:39 rpi4 systemd-networkd[175]: eth0: Gained carrier
+feb 11 03:45:39 rpi4 kernel: bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+feb 11 03:45:39 rpi4 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+feb 11 03:45:39 rpi4 systemd-networkd[175]: eth0: DHCPv4 address 192.168.17.167/23, gateway 192.168.17.1 acquired from 192.168.17.1
+feb 11 03:45:39 rpi4 dbus-daemon[224]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=605 pid=175 comm="/usr/lib/systemd/systemd-networkd")
+feb 11 03:45:39 rpi4 systemd-timesyncd[218]: Network configuration changed, trying to establish connection.
+feb 11 03:46:14 rpi4 systemd-timesyncd[218]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+feb 11 03:46:14 rpi4 systemd-timesyncd[218]: Initial clock synchronization to Sat 2023-02-11 02:46:14.466933 UTC.
+feb 11 03:46:14 rpi4 systemd-resolved[217]: Clock change detected. Flushing caches.
+feb 11 03:46:14 rpi4 systemd[1]: Starting Hostname Service...
+feb 11 03:46:14 rpi4 dbus-daemon[224]: [system] Successfully activated service 'org.freedesktop.hostname1'
+feb 11 03:46:14 rpi4 systemd[1]: Started Hostname Service.
+feb 11 03:46:14 rpi4 systemd-networkd[175]: Could not set hostname: Access denied
+feb 11 03:46:14 rpi4 dbus-daemon[224]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=234 comm="/usr/bin/rauc status mark-good")
+feb 11 03:46:14 rpi4 systemd[1]: Starting RAUC Update Service...
+feb 11 03:46:14 rpi4 rauc[239]: Using central status file /var/lib/rauc/central.raucs
+feb 11 03:46:14 rpi4 rauc[239]: Using central status file /var/lib/rauc/central.raucs
+feb 11 03:46:14 rpi4 dbus-daemon[224]: [system] Successfully activated service 'de.pengutronix.rauc'
+feb 11 03:46:14 rpi4 systemd[1]: Started RAUC Update Service.
+feb 11 03:46:14 rpi4 rauc[239]: rauc mark: marked slot kernel.1 as good
+feb 11 03:46:14 rpi4 rauc[234]: rauc status: marked slot kernel.1 as good
+feb 11 03:46:15 rpi4 systemd[1]: Finished RAUC Good-marking Service.
+feb 11 03:46:15 rpi4 systemd[1]: Reached target Multi-User System.
+feb 11 03:46:15 rpi4 systemd[1]: Starting Record Runlevel Change in UTMP...
+feb 11 03:46:15 rpi4 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+feb 11 03:46:15 rpi4 systemd[1]: Finished Record Runlevel Change in UTMP.
+feb 11 03:46:15 rpi4 systemd[1]: Startup finished in 1.500s (kernel) + 4.297s (userspace) = 5.798s.
+feb 11 03:46:16 rpi4 systemd-networkd[175]: eth0: Gained IPv6LL
+feb 11 03:46:16 rpi4 login[227]: ROOT LOGIN  on '/dev/ttyS0'
+feb 11 03:46:44 rpi4 systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+feb 11 03:46:56 rpi4 systemd[1]: Created slice Slice /system/sshd.
+feb 11 03:46:56 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44360).
+feb 11 03:46:57 rpi4 sshd[265]: Accepted publickey for root from 192.168.17.13 port 44360 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:46:57 rpi4 sshd[265]: Received disconnect from 192.168.17.13 port 44360:11: disconnected by user
+feb 11 03:46:57 rpi4 sshd[265]: Disconnected from user root 192.168.17.13 port 44360
+feb 11 03:46:57 rpi4 systemd[1]: sshd@0-192.168.17.167:22-192.168.17.13:44360.service: Deactivated successfully.
+feb 11 03:46:57 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44366).
+feb 11 03:46:58 rpi4 sshd[280]: Accepted publickey for root from 192.168.17.13 port 44366 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:46:59 rpi4 sshd[280]: Received disconnect from 192.168.17.13 port 44366:11: disconnected by user
+feb 11 03:46:59 rpi4 sshd[280]: Disconnected from user root 192.168.17.13 port 44366
+feb 11 03:46:59 rpi4 systemd[1]: sshd@1-192.168.17.167:22-192.168.17.13:44366.service: Deactivated successfully.
+feb 11 03:46:59 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44374).
+feb 11 03:46:59 rpi4 sshd[304]: Accepted publickey for root from 192.168.17.13 port 44374 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:05 rpi4 sshd[304]: Received disconnect from 192.168.17.13 port 44374:11: disconnected by user
+feb 11 03:47:05 rpi4 sshd[304]: Disconnected from user root 192.168.17.13 port 44374
+feb 11 03:47:05 rpi4 systemd[1]: sshd@2-192.168.17.167:22-192.168.17.13:44374.service: Deactivated successfully.
+feb 11 03:47:06 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44388).
+feb 11 03:47:06 rpi4 sshd[319]: Accepted publickey for root from 192.168.17.13 port 44388 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:06 rpi4 sshd[319]: Received disconnect from 192.168.17.13 port 44388:11: disconnected by user
+feb 11 03:47:06 rpi4 sshd[319]: Disconnected from user root 192.168.17.13 port 44388
+feb 11 03:47:06 rpi4 systemd[1]: sshd@3-192.168.17.167:22-192.168.17.13:44388.service: Deactivated successfully.
+feb 11 03:47:07 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44392).
+feb 11 03:47:07 rpi4 sshd[334]: Accepted publickey for root from 192.168.17.13 port 44392 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:07 rpi4 sshd[334]: Received disconnect from 192.168.17.13 port 44392:11: disconnected by user
+feb 11 03:47:07 rpi4 sshd[334]: Disconnected from user root 192.168.17.13 port 44392
+feb 11 03:47:07 rpi4 systemd[1]: sshd@4-192.168.17.167:22-192.168.17.13:44392.service: Deactivated successfully.
+feb 11 03:47:08 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44400).
+feb 11 03:47:08 rpi4 sshd[349]: Accepted publickey for root from 192.168.17.13 port 44400 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:08 rpi4 sshd[349]: Received disconnect from 192.168.17.13 port 44400:11: disconnected by user
+feb 11 03:47:08 rpi4 sshd[349]: Disconnected from user root 192.168.17.13 port 44400
+feb 11 03:47:08 rpi4 systemd[1]: sshd@5-192.168.17.167:22-192.168.17.13:44400.service: Deactivated successfully.
+feb 11 03:47:09 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44404).
+feb 11 03:47:09 rpi4 sshd[364]: Accepted publickey for root from 192.168.17.13 port 44404 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:09 rpi4 sshd[364]: Received disconnect from 192.168.17.13 port 44404:11: disconnected by user
+feb 11 03:47:09 rpi4 sshd[364]: Disconnected from user root 192.168.17.13 port 44404
+feb 11 03:47:09 rpi4 systemd[1]: sshd@6-192.168.17.167:22-192.168.17.13:44404.service: Deactivated successfully.
+feb 11 03:47:10 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44410).
+feb 11 03:47:10 rpi4 sshd[381]: Accepted publickey for root from 192.168.17.13 port 44410 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:12 rpi4 sshd[381]: Received disconnect from 192.168.17.13 port 44410:11: disconnected by user
+feb 11 03:47:12 rpi4 sshd[381]: Disconnected from user root 192.168.17.13 port 44410
+feb 11 03:47:12 rpi4 systemd[1]: sshd@7-192.168.17.167:22-192.168.17.13:44410.service: Deactivated successfully.
+feb 11 03:47:12 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44418).
+feb 11 03:47:13 rpi4 sshd[405]: Accepted publickey for root from 192.168.17.13 port 44418 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:13 rpi4 sshd[405]: Received disconnect from 192.168.17.13 port 44418:11: disconnected by user
+feb 11 03:47:13 rpi4 sshd[405]: Disconnected from user root 192.168.17.13 port 44418
+feb 11 03:47:13 rpi4 systemd[1]: sshd@8-192.168.17.167:22-192.168.17.13:44418.service: Deactivated successfully.
+feb 11 03:47:14 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44446).
+feb 11 03:47:14 rpi4 sshd[416]: Accepted publickey for root from 192.168.17.13 port 44446 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:17 rpi4 sshd[416]: Received disconnect from 192.168.17.13 port 44446:11: disconnected by user
+feb 11 03:47:17 rpi4 sshd[416]: Disconnected from user root 192.168.17.13 port 44446
+feb 11 03:47:17 rpi4 systemd[1]: sshd@9-192.168.17.167:22-192.168.17.13:44446.service: Deactivated successfully.
+feb 11 03:47:17 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44484).
+feb 11 03:47:17 rpi4 sshd[446]: Accepted publickey for root from 192.168.17.13 port 44484 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:22 rpi4 sshd[446]: Received disconnect from 192.168.17.13 port 44484:11: disconnected by user
+feb 11 03:47:22 rpi4 sshd[446]: Disconnected from user root 192.168.17.13 port 44484
+feb 11 03:47:22 rpi4 systemd[1]: sshd@10-192.168.17.167:22-192.168.17.13:44484.service: Deactivated successfully.
+feb 11 03:47:22 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44518).
+feb 11 03:47:22 rpi4 sshd[464]: Accepted publickey for root from 192.168.17.13 port 44518 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:24 rpi4 sshd[464]: Received disconnect from 192.168.17.13 port 44518:11: disconnected by user
+feb 11 03:47:24 rpi4 sshd[464]: Disconnected from user root 192.168.17.13 port 44518
+feb 11 03:47:24 rpi4 systemd[1]: sshd@11-192.168.17.167:22-192.168.17.13:44518.service: Deactivated successfully.
+feb 11 03:47:24 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44522).
+feb 11 03:47:24 rpi4 sshd[494]: Accepted publickey for root from 192.168.17.13 port 44522 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:29 rpi4 sshd[494]: Received disconnect from 192.168.17.13 port 44522:11: disconnected by user
+feb 11 03:47:29 rpi4 sshd[494]: Disconnected from user root 192.168.17.13 port 44522
+feb 11 03:47:29 rpi4 systemd[1]: sshd@12-192.168.17.167:22-192.168.17.13:44522.service: Deactivated successfully.
+feb 11 03:47:30 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44538).
+feb 11 03:47:30 rpi4 sshd[511]: Accepted publickey for root from 192.168.17.13 port 44538 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:30 rpi4 sshd[511]: Received disconnect from 192.168.17.13 port 44538:11: disconnected by user
+feb 11 03:47:30 rpi4 sshd[511]: Disconnected from user root 192.168.17.13 port 44538
+feb 11 03:47:30 rpi4 systemd[1]: sshd@13-192.168.17.167:22-192.168.17.13:44538.service: Deactivated successfully.
+feb 11 03:47:31 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44544).
+feb 11 03:47:31 rpi4 sshd[518]: Accepted publickey for root from 192.168.17.13 port 44544 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:31 rpi4 sshd[518]: Received disconnect from 192.168.17.13 port 44544:11: disconnected by user
+feb 11 03:47:31 rpi4 sshd[518]: Disconnected from user root 192.168.17.13 port 44544
+feb 11 03:47:31 rpi4 systemd[1]: sshd@14-192.168.17.167:22-192.168.17.13:44544.service: Deactivated successfully.
+feb 11 03:47:32 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44548).
+feb 11 03:47:32 rpi4 sshd[532]: Accepted publickey for root from 192.168.17.13 port 44548 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:32 rpi4 sshd[532]: Received disconnect from 192.168.17.13 port 44548:11: disconnected by user
+feb 11 03:47:32 rpi4 sshd[532]: Disconnected from user root 192.168.17.13 port 44548
+feb 11 03:47:32 rpi4 systemd[1]: sshd@15-192.168.17.167:22-192.168.17.13:44548.service: Deactivated successfully.
+feb 11 03:47:33 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44556).
+feb 11 03:47:33 rpi4 sshd[541]: Accepted publickey for root from 192.168.17.13 port 44556 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE
+feb 11 03:47:35 rpi4 kernel: hello: loading out-of-tree module taints kernel.
+feb 11 03:47:35 rpi4 kernel: Hello World!
+feb 11 03:47:35 rpi4 kernel: Goodbye Cruel World!
+feb 11 03:47:36 rpi4 sshd[541]: Received disconnect from 192.168.17.13 port 44556:11: disconnected by user
+feb 11 03:47:36 rpi4 sshd[541]: Disconnected from user root 192.168.17.13 port 44556
+feb 11 03:47:36 rpi4 systemd[1]: sshd@16-192.168.17.167:22-192.168.17.13:44556.service: Deactivated successfully.
+feb 11 03:47:36 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:44576).
+feb 11 03:47:36 rpi4 sshd[562]: Accepted publickey for root from 192.168.17.13 port 44576 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE

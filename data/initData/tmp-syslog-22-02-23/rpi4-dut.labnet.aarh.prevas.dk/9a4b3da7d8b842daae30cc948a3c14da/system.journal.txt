@@ -1,0 +1,72 @@
+nov 08 15:00:19 rpi4 systemd-timesyncd[220]: System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2023-02-11 02:41:51 UTC
+feb 11 03:41:51 rpi4 systemd-journald[157]: Oldest entry in /var/log/journal/9a4b3da7d8b842daae30cc948a3c14da/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+feb 11 03:41:51 rpi4 systemd-journald[157]: /var/log/journal/9a4b3da7d8b842daae30cc948a3c14da/system.journal: Journal header limits reached or header out-of-date, rotating.
+feb 11 03:41:51 rpi4 systemd[1]: Finished Load/Save Random Seed.
+feb 11 03:41:51 rpi4 systemd[1]: First Boot Complete was skipped because of a failed condition check (ConditionFirstBoot=yes).
+feb 11 03:41:51 rpi4 systemd[1]: Commit a transient machine-id on disk was skipped because of a failed condition check (ConditionPathIsMountPoint=/etc/machine-id).
+feb 11 03:41:51 rpi4 systemd[1]: Started Network Time Synchronization.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target System Time Set.
+feb 11 03:41:51 rpi4 systemd-resolved[219]: Positive Trust Anchors:
+feb 11 03:41:51 rpi4 systemd-resolved[219]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+feb 11 03:41:51 rpi4 systemd-resolved[219]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+feb 11 03:41:51 rpi4 systemd-resolved[219]: Using system hostname 'rpi4'.
+feb 11 03:41:51 rpi4 systemd[1]: Started Network Name Resolution.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Network.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Host and Network Name Lookups.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target System Initialization.
+feb 11 03:41:51 rpi4 systemd[1]: Started Daily Cleanup of Temporary Directories.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Boot Completion Check.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Timer Units.
+feb 11 03:41:51 rpi4 systemd[1]: Listening on D-Bus System Message Bus Socket.
+feb 11 03:41:51 rpi4 systemd[1]: Starting sshd.socket...
+feb 11 03:41:51 rpi4 systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+feb 11 03:41:51 rpi4 systemd[1]: Listening on sshd.socket.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Socket Units.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Basic System.
+feb 11 03:41:51 rpi4 systemd[1]: System is tainted: cgroupsv1
+feb 11 03:41:51 rpi4 systemd[1]: Starting D-Bus System Message Bus...
+feb 11 03:41:51 rpi4 systemd[1]: Started Getty on tty1.
+feb 11 03:41:51 rpi4 systemd[1]: Started Netperf Benchmark Server.
+feb 11 03:41:51 rpi4 systemd[1]: Serial Getty on ttyAMA1 was skipped because of a failed condition check (ConditionPathExists=/dev/ttyAMA1).
+feb 11 03:41:51 rpi4 systemd[1]: Started Serial Getty on ttyS0.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Login Prompts.
+feb 11 03:41:51 rpi4 systemd[1]: RAUC Good-marking Service was skipped because of a failed condition check (ConditionKernelCommandLine=!rauc.slot=A).
+feb 11 03:41:51 rpi4 systemd[1]: Starting User Login Management...
+feb 11 03:41:51 rpi4 systemd[1]: Starting OpenSSH Key Generation...
+feb 11 03:41:51 rpi4 netserver[228]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+feb 11 03:41:51 rpi4 systemd[1]: Finished OpenSSH Key Generation.
+feb 11 03:41:51 rpi4 systemd-logind[230]: New seat seat0.
+feb 11 03:41:51 rpi4 systemd[1]: Started D-Bus System Message Bus.
+feb 11 03:41:51 rpi4 systemd[1]: Started User Login Management.
+feb 11 03:41:51 rpi4 systemd[1]: Reached target Multi-User System.
+feb 11 03:41:51 rpi4 systemd[1]: Starting Record Runlevel Change in UTMP...
+feb 11 03:41:51 rpi4 dbus-daemon[226]: [system] Successfully activated service 'org.freedesktop.systemd1'
+feb 11 03:41:51 rpi4 systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+feb 11 03:41:51 rpi4 systemd[1]: Finished Record Runlevel Change in UTMP.
+feb 11 03:41:51 rpi4 systemd[1]: Startup finished in 1.508s (kernel) + 2.807s (userspace) = 4.315s.
+feb 11 03:41:52 rpi4 systemd-networkd[176]: eth0: Gained carrier
+feb 11 03:41:52 rpi4 kernel: bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+feb 11 03:41:52 rpi4 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+feb 11 03:41:52 rpi4 systemd-networkd[176]: eth0: DHCPv4 address 192.168.17.167/23, gateway 192.168.17.1 acquired from 192.168.17.1
+feb 11 03:41:52 rpi4 dbus-daemon[226]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=605 pid=176 comm="/usr/lib/systemd/systemd-networkd")
+feb 11 03:41:52 rpi4 systemd-timesyncd[220]: Network configuration changed, trying to establish connection.
+feb 11 03:42:21 rpi4 systemd-timesyncd[220]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+feb 11 03:42:21 rpi4 systemd-timesyncd[220]: Initial clock synchronization to Sat 2023-02-11 02:42:21.428461 UTC.
+feb 11 03:42:21 rpi4 systemd-resolved[219]: Clock change detected. Flushing caches.
+feb 11 03:42:21 rpi4 systemd[1]: Starting Hostname Service...
+feb 11 03:42:21 rpi4 login[229]: ROOT LOGIN  on '/dev/ttyS0'
+feb 11 03:42:21 rpi4 dbus-daemon[226]: [system] Successfully activated service 'org.freedesktop.hostname1'
+feb 11 03:42:21 rpi4 systemd[1]: Started Hostname Service.
+feb 11 03:42:21 rpi4 systemd-networkd[176]: Could not set hostname: Access denied
+feb 11 03:42:23 rpi4 systemd-networkd[176]: eth0: Gained IPv6LL
+feb 11 03:42:25 rpi4 dbus-daemon[226]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=244 comm="rauc status --output-format=json")
+feb 11 03:42:25 rpi4 systemd[1]: Starting RAUC Update Service...
+feb 11 03:42:25 rpi4 rauc[247]: Using central status file /var/lib/rauc/central.raucs
+feb 11 03:42:25 rpi4 rauc[247]: Using central status file /var/lib/rauc/central.raucs
+feb 11 03:42:25 rpi4 dbus-daemon[226]: [system] Successfully activated service 'de.pengutronix.rauc'
+feb 11 03:42:25 rpi4 systemd[1]: Started RAUC Update Service.
+feb 11 03:42:26 rpi4 rauc[247]: rauc mark: marked slot kernel.0 as good
+feb 11 03:42:26 rpi4 systemd[1]: Reloading.
+feb 11 03:42:28 rpi4 systemd[1]: Created slice Slice /system/sshd.
+feb 11 03:42:28 rpi4 systemd[1]: Started OpenSSH Per-Connection Daemon (192.168.17.13:43574).
+feb 11 03:42:28 rpi4 sshd[291]: Accepted publickey for root from 192.168.17.13 port 43574 ssh2: RSA SHA256:GL/1YDPbsoWPq+6ArCYQJ5O7m1p5+i3W9qmGrBO/EdE

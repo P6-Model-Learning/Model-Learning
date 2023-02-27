@@ -1,0 +1,60 @@
+jan 25 12:15:46 wandboard systemd[1]: Started Network Time Synchronization.
+jan 25 12:16:24 wandboard systemd-journald[210]: Oldest entry in /var/log/journal/f5a97f5746b940e59c3363beb1b8ac7a/system.journal is older than the configured file retention duration (1month), suggesting rotation.
+jan 25 12:16:24 wandboard systemd-journald[210]: /var/log/journal/f5a97f5746b940e59c3363beb1b8ac7a/system.journal: Journal header limits reached or header out-of-date, rotating.
+jan 25 12:15:46 wandboard systemd[1]: Reached target System Time Set.
+jan 25 12:15:46 wandboard systemd-resolved[260]: Positive Trust Anchors:
+jan 25 12:15:46 wandboard systemd-resolved[260]: . IN DS 20326 8 2 e06d44b80b8f1d39a95c0b0d7c65d08458e880409bbc683457104237c7f8ec8d
+jan 25 12:15:46 wandboard systemd-resolved[260]: Negative trust anchors: home.arpa 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa d.f.ip6.arpa corp home internal intranet lan local private test
+jan 25 12:15:46 wandboard systemd-resolved[260]: Using system hostname 'wandboard'.
+jan 25 12:16:24 wandboard systemd-timesyncd[261]: Contacted time server 192.168.17.1:123 (192.168.17.1).
+jan 25 12:16:24 wandboard systemd-timesyncd[261]: Initial clock synchronization to Wed 2023-01-25 11:16:24.766063 UTC.
+jan 25 12:16:24 wandboard systemd[1]: Started Network Name Resolution.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Network.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Host and Network Name Lookups.
+jan 25 12:16:24 wandboard systemd[1]: Reached target System Initialization.
+jan 25 12:16:24 wandboard systemd[1]: Started Daily Cleanup of Temporary Directories.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Boot Completion Check.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Timer Units.
+jan 25 12:16:24 wandboard systemd[1]: Listening on D-Bus System Message Bus Socket.
+jan 25 12:16:24 wandboard systemd[1]: Starting sshd.socket...
+jan 25 12:16:24 wandboard systemd[1]: Vardata hook was skipped because of a failed condition check (ConditionFileIsExecutable=/var/pil/vardata_hook).
+jan 25 12:16:24 wandboard systemd[1]: Listening on sshd.socket.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Socket Units.
+jan 25 12:16:24 wandboard systemd[1]: Reached target Basic System.
+jan 25 12:16:24 wandboard systemd[1]: System is tainted: cgroupsv1
+jan 25 12:16:24 wandboard systemd[1]: Starting D-Bus System Message Bus...
+jan 25 12:16:24 wandboard systemd[1]: Started Getty on tty1.
+jan 25 12:16:25 wandboard systemd[1]: Started Netperf Benchmark Server.
+jan 25 12:16:25 wandboard systemd[1]: Started Serial Getty on ttymxc0.
+jan 25 12:16:25 wandboard systemd[1]: Reached target Login Prompts.
+jan 25 12:16:25 wandboard systemd[1]: Starting RAUC Good-marking Service...
+jan 25 12:16:25 wandboard netserver[270]: Starting netserver with host 'IN(6)ADDR_ANY' port '12865' and family AF_UNSPEC
+jan 25 12:16:25 wandboard systemd[1]: Starting User Login Management...
+jan 25 12:16:25 wandboard systemd[1]: Starting OpenSSH Key Generation...
+jan 25 12:16:25 wandboard systemd[1]: Started D-Bus System Message Bus.
+jan 25 12:16:25 wandboard dbus-daemon[268]: [system] Activating systemd to hand-off: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.1' (uid=605 pid=228 comm="/usr/lib/systemd/systemd-networkd")
+jan 25 12:16:25 wandboard dbus-daemon[268]: [system] Successfully activated service 'org.freedesktop.systemd1'
+jan 25 12:16:25 wandboard systemd[1]: Starting Hostname Service...
+jan 25 12:16:25 wandboard systemd-logind[273]: New seat seat0.
+jan 25 12:16:25 wandboard systemd-networkd[228]: eth0: Gained IPv6LL
+jan 25 12:16:25 wandboard systemd[1]: Started User Login Management.
+jan 25 12:16:25 wandboard systemd[1]: Finished OpenSSH Key Generation.
+jan 25 12:16:25 wandboard dbus-daemon[268]: [system] Successfully activated service 'org.freedesktop.hostname1'
+jan 25 12:16:25 wandboard systemd[1]: Started Hostname Service.
+jan 25 12:16:25 wandboard systemd-networkd[228]: Could not set hostname: Access denied
+jan 25 12:16:26 wandboard dbus-daemon[268]: [system] Activating via systemd: service name='de.pengutronix.rauc' unit='rauc.service' requested by ':1.6' (uid=0 pid=279 comm="/usr/bin/rauc status mark-good")
+jan 25 12:16:27 wandboard systemd[1]: Starting RAUC Update Service...
+jan 25 12:16:27 wandboard rauc[282]: Using central status file /var/lib/rauc/central.raucs
+jan 25 12:16:27 wandboard rauc[282]: Using central status file /var/lib/rauc/central.raucs
+jan 25 12:16:27 wandboard dbus-daemon[268]: [system] Successfully activated service 'de.pengutronix.rauc'
+jan 25 12:16:27 wandboard systemd[1]: Started RAUC Update Service.
+jan 25 12:16:27 wandboard rauc[282]: rauc mark: marked slot kernel.1 as good
+jan 25 12:16:27 wandboard rauc[279]: rauc status: marked slot kernel.1 as good
+jan 25 12:16:27 wandboard systemd[1]: Finished RAUC Good-marking Service.
+jan 25 12:16:27 wandboard systemd[1]: Reached target Multi-User System.
+jan 25 12:16:27 wandboard systemd[1]: Starting Record Runlevel Change in UTMP...
+jan 25 12:16:27 wandboard systemd[1]: systemd-update-utmp-runlevel.service: Deactivated successfully.
+jan 25 12:16:27 wandboard systemd[1]: Finished Record Runlevel Change in UTMP.
+jan 25 12:16:27 wandboard systemd[1]: Startup finished in 5.449s (kernel) + 11.745s (userspace) = 17.194s.
+jan 25 12:16:28 wandboard login[271]: ROOT LOGIN  on '/dev/ttymxc0'
+jan 25 12:16:34 wandboard systemd[1]: Reloading.
