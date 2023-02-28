@@ -30,6 +30,6 @@ class Reader:
                     print((len(path) - 1) * '---', os.path.basename(root))
                     print((len(path) - 1) * '   ' + ' |__', file)
 
-
+#test
 reader = Reader()
 reader.read_journals()
