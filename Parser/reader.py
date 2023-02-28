@@ -1,20 +1,21 @@
-import glob
 import os
-from systemd import journal
+import fnmatch
 
 
 class Reader:
-    dataPath = ""
-    fileName = ""
-    fileExtension = ""
+    def __int__(self):
+        pass
 
-    def __init__(self, dataPath, fileName, fileExtension) -> None:
-        self.dataPath = dataPath
-        self.fileName = fileName
-        self.fileExtension = fileExtension
+    def readJorunals(self):
+        pass
 
-    os.chdir(dataPath)
-    for file in glob.glob(fileName):
-        if file.endswith(fileExtension):
-            # do some parsing magic
-            pass
+    def printDir(self):
+        for root, dirs, files in os.walk(os.pardir):
+            path = root.split(os.sep)
+            print((len(path) - 1) * '---', os.path.basename(root))
+            for file in files:
+                if file.startswith("system.journal") and file.endswith(".journal"):
+                    print((len(path) - 1) * '   ' + ' |__', file)
+
+reader = Reader()
+reader.printDir()
