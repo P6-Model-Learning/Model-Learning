@@ -1,11 +1,13 @@
-from Parser import reader
+from Parser import reader, pruner
 import json
 
 read = reader.Reader()
+pruner = pruner.Pruner()
 
-r = read.reader()
+boards = read.getBoards()
 
-d = read.parseData(r[0])
+d = read.parseData(boards[0])
+# pruner.prune(d)
 
 dJSON = json.dumps(d, indent=2, sort_keys=True, default=str)
 
