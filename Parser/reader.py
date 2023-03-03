@@ -31,7 +31,7 @@ class Reader:
                     j.get_next(skip=1)
                     j.log_level(level=7)
                     j.add_match("SYSLOG_IDENTIFIER=systemd")
-                    data.append(("trace" + str(i), (file,[entry["MESSAGE"] for entry in j])))
+                    data.append({"trace" + str(i): [entry for entry in j]})
                     i += 1
 
         return data

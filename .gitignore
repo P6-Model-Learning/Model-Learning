@@ -24,3 +24,6 @@ hs_err_pid*
 
 # test file for outputs
 out.json
+
+# random python things
+__pycache__/
