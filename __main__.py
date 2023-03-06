@@ -10,7 +10,7 @@ boards = read.getBoards()
 # når vi skal bruge alle boards i data
 d = []
 d.append(read.parseData(boards[0]))
-pruner.prune(d)
+pruner.statePrune(d)
 
 dJSON = json.dumps(d, indent=2, sort_keys=True, default=str)
 
