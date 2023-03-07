@@ -21,9 +21,6 @@ d.append(read.parseData(boards[0]))
 if args.prune:
     pruner.badKTail(d)
 
-if args.prune:
-    pruner.badKTail(d)
-
 dJSON = json.dumps(d, indent=2, sort_keys=True, default=str)
 
 with open("out.json", "w") as outfile:
