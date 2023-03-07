@@ -11,25 +11,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataController {
-
+    private boolean  allBoards = false;
     public List<Trace> getTraces() throws IOException, ParseException {
         return getTraces(null);
     }
     public List<Trace> getTraces(String[] args) throws IOException, ParseException {
-
+        ParseArgs(args);
         JSONParser parser = new JSONParser();
         JSONArray a;
         Process p = Runtime.getRuntime().exec("python __main__.py");
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
 
-        return ExtractTraces(a);
+        return GetOneBoard(ExtractTracesForAllBoards(a), 0);
     }
 
-    private static List<Trace> ExtractTraces(JSONArray a) {
-        ArrayList<Trace> traces = new ArrayList<>();
+    private void ParseArgs(String[] args) {
+        if(args != null){
+            for (String arg : args) {
+                if (arg.equals("--ab")) {
+                    allBoards = true;
+                }
+            }
+        }
+    }
+
+    private List<Trace> GetOneBoard(List<List<Trace>> allBoardTraces, int index) {
+        return allBoardTraces.get(index);
+    }
+
+    private List<List<Trace>> ExtractTracesForAllBoards(JSONArray a) {
+        ArrayList<List<Trace>> allBoardTraces = new ArrayList<>();
+        int currentBoard = 0;
         for (Object b : a) {
             JSONArray board = (JSONArray) b;
+            allBoardTraces.add(new ArrayList<>());
             for (Object t : board) {
                 JSONArray trace = (JSONArray) t;
                 List<Event> events = new ArrayList<>();
@@ -38,10 +54,10 @@ public class DataController {
                     String eventMessage = (String) event.get("MESSAGE");
                     events.add(new Event(eventMessage));
                 }
-                traces.add(new Trace(events));
+                allBoardTraces.get(currentBoard).add(new Trace(events));
             }
+            currentBoard++;
         }
-        return traces;
+        return allBoardTraces;
     }
-
 }

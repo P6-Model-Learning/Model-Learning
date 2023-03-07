@@ -11,7 +11,7 @@ public class Trace implements Iterable<Event> {
         this.events = events;
     }
 
-    private static int idCount = 1;
+    private static int idCount = 0;
     private final int id;
     private final List<Event> events;
 
