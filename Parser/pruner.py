@@ -5,8 +5,10 @@ class Pruner():
     def badKTail(self, data: dict[list]):
         pruned_data = data
 
+        in_sequence = []
         log_index = 0
         for boards in data:
+            print("Checking for sequential entries on " + boards[0][0]["_HOSTNAME"])
             for traces in boards:
                 for logs in traces:
                     trace1 = boards.index(traces)
@@ -25,9 +27,10 @@ class Pruner():
                                 end_msg = msg11
                             else:
                                 break
-                        print(str(trace1) + " & " + str(trace2) + ". " + str(follows) + ":" + strt_msg + "->" + end_msg)
+                        in_sequence.append(follows)
+                        print(str(trace2) + " & " + str(trace1) + ". " + str(follows) + ":" + strt_msg + "->" + end_msg)
             log_index += 1
-        
+        print("smallest No of entries in sequence is " + str(min(in_sequence)) + " at index: " + str(in_sequence.index(min(in_sequence))+1))
 
     def prune(self, data: dict[list]):
         print("Pruning now")
