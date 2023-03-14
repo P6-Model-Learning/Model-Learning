@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
 
-public class PTA implements Graph<PTANode, Event> {
+public class PTA implements Graph<PTANode, Edge> {
     private  PTANode root;
 
     public PTA(Event info){
@@ -31,13 +31,13 @@ public class PTA implements Graph<PTANode, Event> {
     }
 
     @Override
-    public Collection<Event> getOutgoingEdges(PTANode node) {
-        return null;
+    public Collection<Edge> getOutgoingEdges(PTANode node) {
+        return node.getEdges();
     }
 
     @Override
-    public PTANode getTarget(Event edge) {
-        return null;
+    public PTANode getTarget(Edge edge) {
+        return root.getTarget(edge, this.root);
     }
 
     @Override

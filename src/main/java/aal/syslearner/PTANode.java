@@ -8,6 +8,7 @@ public class PTANode {
     private List<PTANode> children = new ArrayList<PTANode>() {
     };
     private Event info;
+    private List<Edge> edges = new ArrayList<Edge>(){};
 
     public PTANode(Event info){
         this.info = info;
@@ -15,6 +16,8 @@ public class PTANode {
     public void addChild(PTANode child){
         child.parent = this;
         this.children.add(child);
+        Edge edge = new Edge(this, child, this.info);
+        this.edges.add(edge);
     }
 
     public List<PTANode> getChildren() {
@@ -34,6 +37,34 @@ public class PTANode {
             if(child.getInfo().getMessage().equals(node.getInfo().getMessage())){
                 return child;
             }
+        }
+        return null;
+    }
+
+    public List<Edge> getEdges(){
+        return this.edges;
+    }
+    public Edge getEdge(String id){
+        for(Edge edge : this.edges){
+            if(edge.getId().equals(id)){
+                return edge;
+            }
+        }
+        return null;
+    }
+    public boolean inEdges(Edge edge){
+        if (this.edges.contains(edge)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public PTANode getTarget(Edge edge, PTANode root){
+        if(this.inEdges(edge)){
+            return this;
+        }
+        for(PTANode child : root.children){
+            child.getTarget(edge, child);
         }
         return null;
     }
