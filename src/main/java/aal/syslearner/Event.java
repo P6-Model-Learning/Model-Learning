@@ -1,6 +1,8 @@
 package aal.syslearner;
 
-public class Event{
+import de.learnlib.datastructure.pta.pta.AbstractBasePTAState;
+
+public class Event extends AbstractBasePTAState<Object, Object, Event> {
     public Event(String message){
         this.message = message;
     }
@@ -19,5 +21,10 @@ public class Event{
         Event other = (Event) obj;
 
         return this.message.equals(other.message);
+    }
+
+    @Override
+    protected Event createState() {
+        return null;
     }
 }

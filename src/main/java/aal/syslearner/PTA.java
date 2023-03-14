@@ -1,9 +1,13 @@
 package aal.syslearner;
 
-import java.util.Iterator;
-import java.util.List;
+import net.automatalib.graphs.Graph;
 
-public class PTA {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Stack;
+
+public class PTA implements Graph<PTANode, Event> {
     private  PTANode root;
 
     public PTA(Event info){
@@ -24,5 +28,31 @@ public class PTA {
             }
         }
         return tree;
+    }
+
+    @Override
+    public Collection<Event> getOutgoingEdges(PTANode node) {
+        return null;
+    }
+
+    @Override
+    public PTANode getTarget(Event edge) {
+        return null;
+    }
+
+    @Override
+    public Collection<PTANode> getNodes() {
+        Collection<PTANode> nodes = new ArrayList<>();
+        Stack<PTANode> processNodes = new Stack<>();
+        PTANode node = root;
+        processNodes.push(node);
+        while(!(processNodes.empty())) {
+            node = processNodes.pop();
+            nodes.add(node);
+            for (PTANode child : node.getChildren()) {
+                processNodes.push(child);
+            }
+        }
+        return nodes;
     }
 }

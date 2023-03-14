@@ -35,7 +35,7 @@ public class PTANode {
                 return child;
             }
         }
-        throw new RuntimeException("Node not in children");
+        return null;
     }
     public PTANode getParent() {
         return parent;
