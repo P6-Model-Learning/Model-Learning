@@ -15,17 +15,20 @@ public class AalSysLearner
         Event startEvent = new Event("start");
         PTA tree = new PTA(startEvent);
         final Alphabet<Character> alphabet = Alphabets.characters('a', 'b');
-        List<Trace> traces = null;
         try {
-            traces = dc.getTraces();
-            tree = tree.BuildPTA(traces);
-            System.out.println(tree.toString());
+            List<List<Trace>> traces = dc.getTraces();
+            //tree = tree.BuildPTA(traces);
+            //System.out.println(tree.toString());
+            var pta = Converter.makePrefixTreeAcceptor(traces);
+            System.out.println("showing the goods");
+            Visualization.visualize(pta);
         }
         catch (ParseException | IOException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Visualization.visualize(tree);
+
     }
 }
+
