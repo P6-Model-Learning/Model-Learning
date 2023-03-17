@@ -20,4 +20,14 @@ public class Event{
 
         return this.message.equals(other.message);
     }
+
+    @Override
+    public String toString() {
+        return message;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.message.hashCode();
+    }
 }

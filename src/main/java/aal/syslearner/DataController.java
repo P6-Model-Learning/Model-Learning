@@ -12,10 +12,10 @@ import java.util.List;
 
 public class DataController {
     private boolean  allBoards = false;
-    public List<Trace> getTraces() throws IOException, ParseException {
+    public List<List<Trace>> getTraces() throws IOException, ParseException {
         return getTraces(null);
     }
-    public List<Trace> getTraces(String[] args) throws IOException, ParseException {
+    public List<List<Trace>> getTraces(String[] args) throws IOException, ParseException {
         ParseArgs(args);
         JSONParser parser = new JSONParser();
         JSONArray a;
@@ -23,7 +23,7 @@ public class DataController {
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
 
-        return GetOneBoard(ExtractTracesForAllBoards(a), 0);
+        return ExtractTracesForAllBoards(a);
     }
 
     private void ParseArgs(String[] args) {
@@ -34,10 +34,6 @@ public class DataController {
                 }
             }
         }
-    }
-
-    private List<Trace> GetOneBoard(List<List<Trace>> allBoardTraces, int index) {
-        return allBoardTraces.get(index);
     }
 
     private List<List<Trace>> ExtractTracesForAllBoards(JSONArray a) {
