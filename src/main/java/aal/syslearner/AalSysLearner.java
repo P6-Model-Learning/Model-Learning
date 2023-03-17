@@ -13,7 +13,6 @@ public class AalSysLearner
     public static void main(String args[]) throws IOException {
         DataController dc = new DataController();
         Event startEvent = new Event("start");
-        PTA tree = new PTA(startEvent);
         final Alphabet<Character> alphabet = Alphabets.characters('a', 'b');
         try {
             List<List<Trace>> traces = dc.getTraces();
