@@ -25,4 +25,9 @@ public class Event{
     public String toString() {
         return message;
     }
+
+    @Override
+    public int hashCode() {
+        return this.message.hashCode();
+    }
 }
