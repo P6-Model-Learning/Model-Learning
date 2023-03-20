@@ -12,6 +12,8 @@
 
 # Log file
 *.log
+*.journal
+OutputJournals/
 
 # BlueJ files
 *.ctxt
