@@ -9,7 +9,10 @@ declare -i files_copied=0
 #Get amount of files to copy from first positional parameter - Set limit to 100 if no parameter is provided
 declare -i amount_of_files=${1:-100}
 
-echo Making output directory
+echo Deleting existing output directory
+rm -r $output_dir
+
+echo Making new output directory
 mkdir $output_dir
 
 echo SSH into BBB to get latest modified journal subdirectory
@@ -36,7 +39,7 @@ for sub_dir in $sorted_journal_sub_directories; do
 
         #Ignore latest instance of system.journal 
         if $ignore_system_journal && [[ "$journal" == "system.journal" ]]; then
-            echo Latest instance of system.journal skipped
+            echo Skipping latest instance of system.journal
             ignore_system_journal=false
             continue
         fi
