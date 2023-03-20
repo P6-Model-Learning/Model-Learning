@@ -1,5 +1,7 @@
-package aal.syslearner;
+package KTail;
 
+import aal.syslearner.Event;
+import aal.syslearner.Trace;
 import net.automatalib.automata.fsa.impl.compact.CompactDFA;
 import net.automatalib.words.impl.MapAlphabet;
 

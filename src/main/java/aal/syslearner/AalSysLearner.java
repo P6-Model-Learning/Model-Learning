@@ -1,5 +1,7 @@
 package aal.syslearner;
 
+import KTail.Converter;
+import KTail.KTailsComputation;
 import net.automatalib.visualization.Visualization;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.Alphabets;
@@ -19,6 +21,8 @@ public class AalSysLearner
             //tree = tree.BuildPTA(traces);
             //System.out.println(tree.toString());
             var pta = Converter.makePrefixTreeAcceptor(traces);
+            var computation = new KTailsComputation(pta, pta.getInputAlphabet());
+            computation.getKFuturesOf(5, pta.getInitialState());
             System.out.println("showing the goods");
             Visualization.visualize(pta);
         }
