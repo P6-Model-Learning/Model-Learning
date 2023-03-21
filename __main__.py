@@ -1,27 +1,31 @@
-from Parser import reader, pruner
-import json
+from Parser import reader, pruner, journalParser
 import argparse
 
 parser = argparse.ArgumentParser(description="Print JSON from parsed syslog data")
 
 parser.add_argument('-p','--prune', dest='prune', help='prune the data to remove trivial sequential entries', action="store_true")
+parser.add_argument('-i', '--init', dest='init', help='parse initial boot data for boards', action='store_true')
+parser.add_argument('-o', '--out', dest='out', help='output the json file at current working directory', action='store_true')
 
 args = parser.parse_args()
 
-read = reader.Reader()
-pruner = pruner.Pruner()
+journal = None
+prune = None
 
-boards = read.getBoards()
+#check for 'data type' wether init data or new data
+if args.init:
+    journal = reader.Reader()
+else:
+    journal = journalParser.JournalParser()
 
-# TODO SIGURD: Der skal obviously lige laves lidt om i logikken her
-# når vi skal bruge alle boards i data
-d = []
-d.append(read.parseData(boards[0]))
+
+boards = journal.getBoards()
+data = journal.parse()
 
 if args.prune:
-    pruner.badKTail(d)
+    prune = pruner.Pruner()
+    prune.badKTail()
 
-dJSON = json.dumps(d, indent=2, sort_keys=True, default=str)
-
-with open("out.json", "w") as outfile:
-    outfile.write(dJSON)
+if args.out:
+    with open('out.json', 'w') as outfile:
+        outfile.write(journal.parseToJSON(data))

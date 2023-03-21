@@ -1,5 +1,6 @@
 import os
 from systemd import journal
+import json
 
 
 class Reader:
@@ -15,10 +16,10 @@ class Reader:
                                .split('-dut')[0], os.path.relpath(root, os.getcwd())))
         return boards
 
-    def parseData(self, path: tuple):
+    def parse(self):
         data = []
 
-        for root, dirs, files in os.walk(path[1]):
+        for root, dirs, files in os.walk(os.getcwd()):
             path = root.split(os.path.sep)
             for file in files:
                 if file.startswith('system.journal') and file.endswith('.journal'):
@@ -31,6 +32,9 @@ class Reader:
                         trace.append(entry)
                     data.append(trace)
         return data
+
+    def parseToJSON(self, data):
+        return json.dumps(data, sort_keys=True, default=str)
 
     def make_entry_dict(self, j: journal):
         pass
