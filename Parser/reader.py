@@ -32,6 +32,26 @@ class Reader:
                         trace.append(entry)
                     data.append(trace)
         return data
+    
+    def parseSimple(self):
+        data  =[]
+        
+        for root, dirs, files in os.walk(os.getcwd()):
+            path  =root.split(os.path.sep)
+            for file in files:
+                if file.startswith('system.journal') and file.endswith('.journal'):
+                    trace = []
+                    j = journal.Reader(path=root)
+                    j.get_next(skip=1)
+                    j.log_level(level=7)
+                    j.add_match("SYSLOG_IDENTIFIER=systemd")
+                    for entry in j:
+                        trace.append({
+                            entry['MESSAGE'],
+                            entry['_HOSTNAME']
+                        })
+                    data.append(trace)
+        return data
 
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str)
