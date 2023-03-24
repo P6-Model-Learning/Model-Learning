@@ -1,16 +1,19 @@
 package aal.syslearner.Symbolic;
 
-public class SymbolicTimedEvent {
-    public SymbolicTimedEvent(String event, String symbolicTime){
-        this.event = event;
+import aal.syslearner.Event;
+import aal.syslearner.IEvent;
+
+public class SymbolicTimedEvent implements IEvent {
+    public SymbolicTimedEvent(String message, String symbolicTime){
+        this.message = message;
         this.symbolicTime = symbolicTime;
     }
 
-    private final String event;
+    private final String message;
     private final String symbolicTime;
 
-    public String getEvent(){
-        return this.event;
+    public String getMessage(){
+        return this.message;
     }
 
     public String getSymbolicTime(){
@@ -18,10 +21,25 @@ public class SymbolicTimedEvent {
     }
 
     @Override
+    public boolean equals(Object obj){
+    if (!(obj instanceof SymbolicTimedEvent)){
+        return false;
+    }
+    SymbolicTimedEvent other = (SymbolicTimedEvent) obj;
+
+    return this.message.equals(other.getMessage()) && this.symbolicTime == other.getSymbolicTime();
+    }
+
+    @Override
     public String toString() {
         return "SymbolicTimedEvent{" +
-                "event=" + event +
+                "mage=" + message +
                 ", symbolicTime=" + symbolicTime +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return this.message.hashCode() + this.symbolicTime.hashCode();
     }
 }

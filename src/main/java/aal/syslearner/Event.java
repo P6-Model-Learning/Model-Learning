@@ -2,7 +2,7 @@ package aal.syslearner;
 
 import java.util.Optional;
 
-public class Event{
+public class Event implements IEvent{
     public Event(String message){
         this.message = message;
         this.timeStamp = 0;

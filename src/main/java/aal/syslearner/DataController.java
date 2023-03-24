@@ -44,7 +44,7 @@ public class DataController {
             allBoardTraces.add(new ArrayList<>());
             for (Object t : board) {
                 JSONArray trace = (JSONArray) t;
-                List<Event> events = new ArrayList<>();
+                List<IEvent> events = new ArrayList<>();
                 for (Object e : trace) {
                     JSONObject event = (JSONObject) e;
                     String eventMessage = (String) event.get("MESSAGE");

@@ -5,26 +5,26 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class Trace implements Iterable<Event> {
-    public Trace(List<Event> events){
+public class Trace implements Iterable<IEvent> {
+    public Trace(List<IEvent> events){
         id = idCount++;
         this.events = events;
     }
 
     private static int idCount = 0;
     private final int id;
-    private final List<Event> events;
+    private final List<IEvent> events;
 
     public int getId(){
         return id;
     }
 
-    public List<Event> getEvents(){
+    public List<IEvent> getEvents(){
         return events;
     }
 
     @Override
-    public Iterator<Event> iterator() {
+    public Iterator<IEvent> iterator() {
         return this.events.iterator();
     }
 
@@ -34,7 +34,7 @@ public class Trace implements Iterable<Event> {
     }
 
     @Override
-    public Spliterator<Event> spliterator() {
+    public Spliterator<IEvent> spliterator() {
         return Iterable.super.spliterator();
     }
 }
