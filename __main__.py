@@ -14,6 +14,7 @@ args = parser.parse_args()
 
 journal = None
 prune = None
+
 data = None
 board = None
 
