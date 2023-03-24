@@ -15,6 +15,7 @@ args = parser.parse_args()
 journal = None
 prune = None
 data = None
+board = None
 
 #check for 'data type' wether init data or new data
 if args.init:
@@ -29,21 +30,18 @@ if args.printboards:
     print('Boards in data:')
     for i in boards:
         print(' * ', i)
+    quit()
 
-if args.boards:
-    print('Choose a board from the list:')
-    for i in boards:
-        print(' * ' + i)
-    x = input()
-    while x not in boards:
-        print("board not in inputs check again")
-        x  =input()
-    print('yay')
+if args.boards and args.boards in boards:
+    board = args.boards
+elif args.boards and args.boards not in boards:
+    raise Exception("Boards was not found in data... Quitting.")
+    quit()
 
 if args.simplify:
-    data = journal.parseSimple()
+    data = journal.parseSimple(board)
 else:
-    data = journal.parse()
+    data = journal.parse(board)
 
 if args.prune:
     prune = pruner.Pruner()

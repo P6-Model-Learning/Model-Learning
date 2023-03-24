@@ -2,14 +2,14 @@ import os
 from systemd import journal
 import json
 
-class JournalParser:
+class JournalParser:    
     startStr = "Test start line inserted"
     endStr = "Active journal rotated"
 
     def getBoards(self):
         pass
 
-    def parse(self):
+    def parse(self, board:str):
         data = []
         startTime = None
         for root, dirs, files in os.walk(os.getcwd()):
@@ -17,6 +17,7 @@ class JournalParser:
                 if file.endswith('.journal'):
                     trace = []
                     j = journal.Reader(path=root)
+                    if board != None: j.add_match("_HOSTNAME={board}".format(board = board))
                     j.get_next(skip=1)
                     j.log_level(level=7)
                     for entry in j:
@@ -27,9 +28,9 @@ class JournalParser:
                             trace.append(entry)
                     data.append(trace)
                     startTime = None
-        return data
+        return list(filter(None, data))
     
-    def parseSimple(self):
+    def parseSimple(self, board:str):
         data = []
         start_time = None
         for root, dirs, files in os.walk(os.getcwd()):
@@ -37,6 +38,7 @@ class JournalParser:
                 if file.endswith('.journal'):
                     trace = []
                     j = journal.Reader(path=root)
+                    if board != None: j.add_match("_HOSTNAME={board}".format(board = board))
                     j.get_next(skip=1)
                     j.log_level(level=7)
                     for entry in j:
@@ -55,7 +57,7 @@ class JournalParser:
                             })
                     data.append(trace)
                     start_time = None
-        return data
+        return list(filter(None, data))
     
     def getBoards(self) -> list:
         boards = []
