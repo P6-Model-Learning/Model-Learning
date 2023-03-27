@@ -44,14 +44,18 @@ class JournalParser:
                     for entry in j:
                         if entry['MESSAGE'] == self.startStr:
                             start_time = entry['_SOURCE_MONOTONIC_TIMESTAMP']
+                            entry['TIMEDELTA'] = start_time
                             trace.append({
                                 entry['_SOURCE_MONOTONIC_TIMESTAMP'],
+                                entry['TIMEDELTA'],
                                 entry['MESSAGE'],
                                 entry['_HOSTNAME']
                             })
                         elif start_time != None:
+                            entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append({
                                 entry['_SOURCE_MONOTONIC_TIMESTAMP'],
+                                entry['TIMEDELTA'],
                                 entry['MESSAGE'],
                                 entry['_HOSTNAME']
                             })
