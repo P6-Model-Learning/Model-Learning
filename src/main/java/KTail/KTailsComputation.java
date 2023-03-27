@@ -1,7 +1,7 @@
 package KTail;
 
 import aal.syslearner.Event;
-import net.automatalib.automata.fsa.impl.compact.CompactDFA;
+import net.automatalib.automata.fsa.NFA;
 import net.automatalib.commons.util.Pair;
 import net.automatalib.words.Alphabet;
 
@@ -9,11 +9,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class KTailsComputation {
-    private final CompactDFA<Event> model;
+    private final NFA<Integer, Event> model;
     private final Map<Integer, Map<Integer, Set<List<Event>>>> kFutureCache;
     private final Alphabet<Event> inputs;
 
-    public KTailsComputation(CompactDFA<Event> model, Alphabet<Event> inputs) {
+    public KTailsComputation(NFA<Integer, Event> model, Alphabet<Event> inputs) {
         this.model = model;
         this.inputs = inputs;
 

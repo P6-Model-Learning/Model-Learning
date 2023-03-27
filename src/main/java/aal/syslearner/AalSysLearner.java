@@ -1,7 +1,7 @@
 package aal.syslearner;
 
 import KTail.Converter;
-import KTail.KTailsComputation;
+import KTail.KTailsMerge;
 import net.automatalib.visualization.Visualization;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.Alphabets;
@@ -21,17 +21,13 @@ public class AalSysLearner
             //tree = tree.BuildPTA(traces);
             //System.out.println(tree.toString());
             var pta = Converter.makePrefixTreeAcceptor(traces);
-            var computation = new KTailsComputation(pta, pta.getInputAlphabet());
-            computation.getKFuturesOf(5, pta.getInitialState());
+            var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(3);
             System.out.println("showing the goods");
-            Visualization.visualize(pta);
+            Visualization.visualize(mergedGraph);
         }
         catch (ParseException | IOException e) {
             throw new RuntimeException(e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
-
     }
 }
 
