@@ -21,8 +21,9 @@ public class AalSysLearner
             //tree = tree.BuildPTA(traces);
             //System.out.println(tree.toString());
             var pta = Converter.makePrefixTreeAcceptor(traces);
-            var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(3);
+            var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(2);
             System.out.println("showing the goods");
+            System.out.println(pta.getStates().size() + "  :  " + mergedGraph.getStates().size());
             Visualization.visualize(mergedGraph);
         }
         catch (ParseException | IOException e) {
