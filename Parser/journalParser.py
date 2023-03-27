@@ -25,7 +25,7 @@ class JournalParser:
                             start_time = entry['_SOURCE_MONOTONIC_TIMESTAMP']
                             entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append(entry)
-                        elif startTime != None:
+                        elif start_time != None:
                             entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append(entry)
                     data.append(trace)
