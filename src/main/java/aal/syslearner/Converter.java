@@ -62,14 +62,14 @@ public class Converter {
                 Event event = (Event)iEvent;
                 var timedEventInterval = timedEventIntervals.get(event.getMessage());
                 if (timedEventInterval == null){
-                    TimedEventInterval newTimedInterval = new TimedEventInterval(event.getTimeStamp(), event.getTimeStamp(), event.getMessage());
+                    TimedEventInterval newTimedInterval = new TimedEventInterval(event.getTimestamp(), event.getTimestamp(), event.getMessage());
                     timedEventIntervals.put(event.getMessage(), newTimedInterval);
                 } else {
-                    if (event.getTimeStamp() == timedEventInterval.getMinTimestamp()){
-                        timedEventInterval.setMinTimeStamp(event.getTimeStamp());
+                    if (event.getTimestamp() < timedEventInterval.getMinTimestamp()){
+                        timedEventInterval.setMinTimestamp(event.getTimestamp());
                         timedEventIntervals.put(event.getMessage(), timedEventInterval);
-                    } else if (event.getTimeStamp() == timedEventInterval.getMaxTimestamp()) {
-                        timedEventInterval.setMaxTimestamp(event.getTimeStamp());
+                    } else if (event.getTimestamp() > timedEventInterval.getMaxTimestamp()) {
+                        timedEventInterval.setMaxTimestamp(event.getTimestamp());
                         timedEventIntervals.put(event.getMessage(), timedEventInterval);
                     }
                 }

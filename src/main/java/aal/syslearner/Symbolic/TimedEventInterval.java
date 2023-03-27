@@ -15,7 +15,7 @@ public class TimedEventInterval{
         return minTimestamp;
     }
 
-    public void setMinTimeStamp(double minTimestamp){
+    public void setMinTimestamp(double minTimestamp){
         this.minTimestamp = minTimestamp;
     }
 

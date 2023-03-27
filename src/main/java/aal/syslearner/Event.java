@@ -5,21 +5,21 @@ import java.util.Optional;
 public class Event implements IEvent{
     public Event(String message){
         this.message = message;
-        this.timeStamp = 0;
+        this.timestamp = 0;
     }
     public Event(String message, double timeStamp){
         this.message = message;
-        this.timeStamp = timeStamp;
+        this.timestamp = timeStamp;
     }
 
     private final String message;
-    private final double timeStamp;
+    private final double timestamp;
 
     public String getMessage(){
         return message;
     }
 
-    public double getTimeStamp() { return timeStamp; }
+    public double getTimestamp() { return timestamp; }
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Event)){
@@ -27,16 +27,16 @@ public class Event implements IEvent{
         }
         Event other = (Event) obj;
 
-        return this.message.equals(other.message) && this.timeStamp == other.timeStamp;
+        return this.message.equals(other.message) && this.timestamp == other.timestamp;
     }
 
     @Override
     public String toString() {
-        return "<" + message + "," + timeStamp + ">";
+        return "<" + message + "," + timestamp + ">";
     }
 
     @Override
     public int hashCode() {
-        return this.message.hashCode() + 31 * ((int) this.timeStamp); // Not sure about this tbh
+        return this.message.hashCode() + 31 * ((int) this.timestamp); // Not sure about this tbh
     }
 }
