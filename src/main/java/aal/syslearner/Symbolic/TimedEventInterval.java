@@ -31,6 +31,10 @@ public class TimedEventInterval{
         return message;
     }
 
+    public String getSymbolicTime(){
+        return this.minTimestamp + "," + this.maxTimestamp;
+    }
+
     @Override public String toString() {
         return "<" + this.message + ",[" + this.minTimestamp + "," + this.maxTimestamp + "]" + ">";
     }

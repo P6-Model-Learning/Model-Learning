@@ -13,10 +13,14 @@ public class Trace implements Iterable<IEvent> {
 
     private static int idCount = 0;
     private final int id;
-    private final List<IEvent> events;
+    private List<IEvent> events;
 
     public int getId(){
         return id;
+    }
+
+    public void setEvents(List<IEvent> events) {
+        this.events = events;
     }
 
     public List<IEvent> getEvents(){

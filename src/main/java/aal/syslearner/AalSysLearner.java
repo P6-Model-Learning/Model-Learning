@@ -16,6 +16,8 @@ public class AalSysLearner
             List<List<Trace>> traces = dc.getTraces();
             //tree = tree.BuildPTA(traces);
             //System.out.println(tree.toString());
+            List<Trace> symbolicBoard = Converter.makeBoardSymbolic(traces.get(0));
+            //traces.set(0, )
             var pta = Converter.makePrefixTreeAcceptor(traces);
             System.out.println("showing the goods");
             Visualization.visualize(pta);

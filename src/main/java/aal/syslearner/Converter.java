@@ -1,13 +1,11 @@
 package aal.syslearner;
 
+import aal.syslearner.Symbolic.SymbolicTimedEvent;
 import aal.syslearner.Symbolic.TimedEventInterval;
 import net.automatalib.automata.fsa.impl.compact.CompactDFA;
 import net.automatalib.words.impl.MapAlphabet;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Converter {
@@ -40,10 +38,19 @@ public class Converter {
         return dfa;
     }
 
-    private  static List<Trace> makeTimedEventsSymbolic(List<Trace> board){
+    //Replace events in board with symbolic timed events
+    public static List<Trace> makeBoardSymbolic(List<Trace> board){
         HashMap<String, TimedEventInterval> timedEventIntervals = makeTimedEventIntervals(board);
-        // Do some funky shit here >_<
-        return null;
+        for (Trace trace : board) {
+            List<IEvent> symbolicTrace = new ArrayList<>();
+            for (IEvent event : trace) {
+                TimedEventInterval timedEventInterval = timedEventIntervals.get(event.getMessage());
+                symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime()));
+            }
+            trace.setEvents(symbolicTrace);
+        }
+
+        return board;
     }
 
 

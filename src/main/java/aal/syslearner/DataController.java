@@ -19,7 +19,7 @@ public class DataController {
         ParseArgs(args);
         JSONParser parser = new JSONParser();
         JSONArray a;
-        Process p = Runtime.getRuntime().exec("python __main__.py");
+        Process p = Runtime.getRuntime().exec("python3 __main__.py");
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
 
