@@ -4,7 +4,6 @@ import json
 
 class JournalParser:    
     startStr = "Test start line inserted"
-    endStr = "Active journal rotated"
 
     def getBoards(self):
         pass
