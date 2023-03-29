@@ -60,10 +60,7 @@ class Reader:
         return list(filter(None, data))
 
     def parseToJSON(self, data):
-        return json.dumps(data, sort_keys=True, default=str)
-
-    def parseToJSON(self, data):
-        return json.dumps(data, sort_keys=True, default=str)
+        return json.dumps(data, sort_keys=True, default=str, indent=3)
 
     def make_entry_dict(self, j: journal):
         pass
