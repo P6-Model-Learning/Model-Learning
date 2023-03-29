@@ -26,7 +26,7 @@ public class AalSysLearner
             System.out.println(pta.getStates().size() + "  :  " + mergedGraph.getStates().size());
             Visualization.visualize(mergedGraph);
         }
-        catch (ParseException | IOException e) {
+        catch (ParseException | IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
