@@ -50,7 +50,7 @@ if args.prune:
 
 if args.out:
     with open('{args}.json'.format(args=args.out), 'w') as outfile:
-        outfile.write(journal.parseToJSON(data))
+        outfile.write(journal.parseToJSON([data]))
 else:
     with open('out.json', 'w') as outfile:
-        outfile.write(journal.parseToJSON(data))
+        outfile.write(journal.parseToJSON([data]))
