@@ -32,7 +32,7 @@ class Reader:
                         entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
                         trace.append(entry)
                     data.append(trace)
-        return list(filter(None, data))
+        return data
     
     def parseSimple(self, board:str):
         data  =[]
