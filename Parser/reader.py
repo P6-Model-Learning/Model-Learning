@@ -50,14 +50,14 @@ class Reader:
                     for entry in j:
                         if start_date == None: start_date = entry['__MONOTONIC_TIMESTAMP'][0]
                         entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_date).total_seconds()
-                        trace.append({
+                        trace.append([
                             entry['MESSAGE'],
                             entry['_HOSTNAME'],
                             entry['__MONOTONIC_TIMESTAMP'],
                             entry['TIMEDELTA']
-                        })
+                        ])
                     data.append(trace)
-        return list(filter(None, data))
+        return data
 
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str, indent=3)
