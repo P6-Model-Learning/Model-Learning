@@ -1,6 +1,7 @@
 import os
 from systemd import journal
 import json
+import datetime
 
 
 class Reader:
@@ -15,7 +16,7 @@ class Reader:
 
     def parse(self, board:str):
         data = []
-
+        start_time = None
         for root, dirs, files in os.walk(os.getcwd()):
             path = root.split(os.path.sep)
             for file in files:
@@ -27,13 +28,15 @@ class Reader:
                     j.log_level(level=7)
                     j.add_match("SYSLOG_IDENTIFIER=systemd")
                     for entry in j:
+                        if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                        entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
                         trace.append(entry)
                     data.append(trace)
         return list(filter(None, data))
     
     def parseSimple(self, board:str):
         data  =[]
-        
+        start_date = None
         for root, dirs, files in os.walk(os.getcwd()):
             path  =root.split(os.path.sep)
             for file in files:
@@ -45,10 +48,13 @@ class Reader:
                     if board != None: j.add_match("_HOSTNAME={board}".format(board = board))
                     trace = []
                     for entry in j:
+                        if start_date == None: start_date = entry['__MONOTONIC_TIMESTAMP'][0]
+                        entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_date).total_seconds()
                         trace.append({
                             entry['MESSAGE'],
                             entry['_HOSTNAME'],
-                            entry['__MONOTONIC_TIMESTAMP']
+                            entry['__MONOTONIC_TIMESTAMP'],
+                            entry['TIMEDELTA']
                         })
                     data.append(trace)
         return list(filter(None, data))

@@ -4,14 +4,13 @@ import json
 
 class JournalParser:    
     startStr = "Test start line inserted"
-    endStr = "Active journal rotated"
 
     def getBoards(self):
         pass
 
     def parse(self, board:str):
         data = []
-        startTime = None
+        start_time = None
         for root, dirs, files in os.walk(os.getcwd()):
             for file in files:
                 if file.endswith('.journal'):
@@ -22,9 +21,11 @@ class JournalParser:
                     j.log_level(level=7)
                     for entry in j:
                         if entry['MESSAGE'] == self.startStr:
-                            startTime = entry['_SOURCE_MONOTONIC_TIMESTAMP']
+                            start_time = entry['_SOURCE_MONOTONIC_TIMESTAMP']
+                            entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append(entry)
-                        elif startTime != None:
+                        elif start_time != None:
+                            entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append(entry)
                     data.append(trace)
                     startTime = None
@@ -44,14 +45,18 @@ class JournalParser:
                     for entry in j:
                         if entry['MESSAGE'] == self.startStr:
                             start_time = entry['_SOURCE_MONOTONIC_TIMESTAMP']
+                            entry['TIMEDELTA'] = start_time
                             trace.append({
                                 entry['_SOURCE_MONOTONIC_TIMESTAMP'],
+                                entry['TIMEDELTA'],
                                 entry['MESSAGE'],
                                 entry['_HOSTNAME']
                             })
                         elif start_time != None:
+                            entry['TIMEDELTA'] = entry['_SOURCE_MONOTONIC_TIMESTAMP'] - start_time
                             trace.append({
                                 entry['_SOURCE_MONOTONIC_TIMESTAMP'],
+                                entry['TIMEDELTA'],
                                 entry['MESSAGE'],
                                 entry['_HOSTNAME']
                             })
