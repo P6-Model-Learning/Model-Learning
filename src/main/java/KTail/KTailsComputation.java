@@ -1,6 +1,7 @@
 package KTail;
 
 import aal.syslearner.Event;
+import aal.syslearner.IEvent;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.commons.util.Pair;
 import net.automatalib.words.Alphabet;
@@ -9,11 +10,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class KTailsComputation {
-    private final NFA<Integer, Event> model;
-    private final Map<Integer, Map<Integer, Set<List<Event>>>> kFutureCache;
-    private final Alphabet<Event> inputs;
+    private final NFA<Integer, IEvent> model;
+    private final Map<Integer, Map<Integer, Set<List<IEvent>>>> kFutureCache;
+    private final Alphabet<IEvent> inputs;
 
-    public KTailsComputation(NFA<Integer, Event> model, Alphabet<Event> inputs) {
+    public KTailsComputation(NFA<Integer, IEvent> model, Alphabet<IEvent> inputs) {
         this.model = model;
         this.inputs = inputs;
 
@@ -22,11 +23,11 @@ public class KTailsComputation {
 
         //Base case for k future is just the full set of locations
         kFutureCache.put(0, model.getStates().stream().map(
-                location -> Pair.of(location, Set.of(List.<Event>of()))
+                location -> Pair.of(location, Set.of(List.<IEvent>of()))
         ).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)));
     }
 
-    public Set<List<Event>> getKFuturesOf(int k, Integer location) {
+    public Set<List<IEvent>> getKFuturesOf(int k, Integer location) {
         computeKFuturesUpTo(k);
         return kFutureCache.get(k).get(location);
     }
@@ -53,7 +54,7 @@ public class KTailsComputation {
         var shorterFutures = kFutureCache.get(k - 1);
         var futures = inputs.stream().flatMap(input -> model.getTransitions(location, input).stream().flatMap(
                 transition -> shorterFutures.get(model.getSuccessor(transition)).stream().map(future -> {
-                    List<Event> newFuture = new LinkedList<>();
+                    List<IEvent> newFuture = new LinkedList<>();
                     newFuture.add(input);
                     newFuture.addAll(future);
                     return newFuture;

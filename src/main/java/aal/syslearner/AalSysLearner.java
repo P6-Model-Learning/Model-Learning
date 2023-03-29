@@ -14,12 +14,13 @@ public class AalSysLearner
 {
     public static void main(String args[]) throws IOException {
         DataController dc = new DataController();
-        Event startEvent = new Event("start");
-        final Alphabet<Character> alphabet = Alphabets.characters('a', 'b');
         try {
             List<List<Trace>> traces = dc.getTraces();
             //tree = tree.BuildPTA(traces);
             //System.out.println(tree.toString());
+            List<Trace> symbolicBoard = Converter.makeBoardSymbolic(traces.get(0));
+            traces.set(0, symbolicBoard);
+            
             var pta = Converter.makePrefixTreeAcceptor(traces);
             var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(2);
             System.out.println("showing the goods");

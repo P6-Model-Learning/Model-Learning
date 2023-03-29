@@ -34,7 +34,7 @@ OutputJournals/
 hs_err_pid*
 
 # test file for outputs
-out.json
+*.json
 
 # random python things
 __pycache__/
