@@ -13,14 +13,16 @@ import java.util.List;
 
 public class DataController {
     private boolean  allBoards = false;
-    public List<List<Trace>> getTraces() throws IOException, ParseException {
+    public List<List<Trace>> getTraces() throws IOException, ParseException, InterruptedException {
         return getTraces(null);
     }
-    public List<List<Trace>> getTraces(String[] args) throws IOException, ParseException {
+    public List<List<Trace>> getTraces(String[] args) throws IOException, ParseException, InterruptedException {
         ParseArgs(args);
         JSONParser parser = new JSONParser();
         JSONArray a;
-        Process p = Runtime.getRuntime().exec("python3 __main__.py");
+
+        Process p = Runtime.getRuntime().exec("python __main__.py -i");
+        p.waitFor();
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
 
@@ -40,10 +42,12 @@ public class DataController {
     private List<List<Trace>> ExtractTracesForAllBoards(JSONArray a) {
         ArrayList<List<Trace>> allBoardTraces = new ArrayList<>();
         int currentBoard = 0;
+        int i = 0;
         for (Object b : a) {
             JSONArray board = (JSONArray) b;
             allBoardTraces.add(new ArrayList<>());
             for (Object t : board) {
+                if (i > 4) break;
                 JSONArray trace = (JSONArray) t;
                 List<IEvent> events = new ArrayList<>();
                 for (Object e : trace) {
@@ -54,6 +58,7 @@ public class DataController {
                     events.add(new Event(eventMessage, eventTimestamp));
                 }
                 allBoardTraces.get(currentBoard).add(new Trace(events));
+                i++;
             }
             currentBoard++;
         }

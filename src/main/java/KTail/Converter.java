@@ -1,7 +1,10 @@
-package aal.syslearner;
+package KTail;
 
 import aal.syslearner.Symbolic.SymbolicTimedEvent;
 import aal.syslearner.Symbolic.TimedEventInterval;
+import aal.syslearner.IEvent;
+import aal.syslearner.Event;
+import aal.syslearner.Trace;
 import net.automatalib.automata.fsa.impl.compact.CompactDFA;
 import net.automatalib.words.impl.MapAlphabet;
 
