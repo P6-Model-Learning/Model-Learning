@@ -12,14 +12,15 @@ import java.util.List;
 
 public class DataController {
     private boolean  allBoards = false;
-    public List<List<Trace>> getTraces() throws IOException, ParseException {
+    public List<List<Trace>> getTraces() throws IOException, ParseException, InterruptedException {
         return getTraces(null);
     }
-    public List<List<Trace>> getTraces(String[] args) throws IOException, ParseException {
+    public List<List<Trace>> getTraces(String[] args) throws IOException, ParseException, InterruptedException {
         ParseArgs(args);
         JSONParser parser = new JSONParser();
         JSONArray a;
         Process p = Runtime.getRuntime().exec("python __main__.py");
+        p.waitFor();
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
 
