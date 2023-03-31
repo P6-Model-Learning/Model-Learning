@@ -27,16 +27,16 @@ public class Event implements IEvent{
         }
         Event other = (Event) obj;
 
-        return this.message.equals(other.message) && this.timestamp == other.timestamp;
+        return this.message.equals(other.message);
     }
 
     @Override
     public String toString() {
-        return "<" + message + "," + timestamp + ">";
+        return message;
     }
 
     @Override
     public int hashCode() {
-        return this.message.hashCode() + 31 * ((int) this.timestamp); // Not sure about this tbh
+        return this.message.hashCode();
     }
 }
