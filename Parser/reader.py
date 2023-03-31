@@ -26,10 +26,16 @@ class Reader:
         for root, dirs, files in os.walk(os.getcwd()):
             path = root.split(os.path.sep)
             for file in files:
-                if file.endswith('.journal') and file.startswith('system.journal'):
-                    trace = self.__parseInitTrace(simple=simple, file=file, root=root)
-                    if trace[1] != None:
-                        data[boards.index(trace[1])].append(trace[0])
+                if init:
+                    if file.endswith('.journal') and file.startswith('system.journal'):
+                        trace = self.__parseInitTrace(simple=simple, file=file, root=root)
+                        if trace[1] != None:
+                            data[boards.index(trace[1])].append(trace[0])
+                else:
+                    if file.endswith('.journal'):
+                        trace = self.__parseTestTrace(simple=simple, file=file, root=root, start_string=start_string)
+                        if trace[1] != None:
+                            data[boards.index(trace[1])].append(trace[0])
         return data
         
     def __parseInitTrace(self, simple, file, root):
@@ -59,6 +65,36 @@ class Reader:
                     entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
                     trace.append(entry)
                 return trace, board
+    
+    def __parseTestTrace(self, simple, file, root, start_string):
+        if file.endswith('.journal'):
+            start_string = start_string
+            start_time = None
+            board = None
+            trace = []
+            j = journal.Reader(path=root)
+            j.get_next(skip=1)
+            j.log_level(level=7)
+            j.add_match("SYSLOG_IDENTIFIER=systemd")
+            if simple:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    entry = {'MESSAGE':entry['MESSAGE'],
+                             '_HOSTNAME':entry['_HOSTNAME'],
+                             '__MONOTONIC_TIMESTAMP':entry['__MONOTONIC_TIMESTAMP'],
+                             'TIMEDELTA':entry['TIMEDELTA']}
+                    trace.append(entry)
+                return trace, board
+            else:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    trace.append(entry)
+                return trace, board
+    
 
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str, indent=4)

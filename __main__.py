@@ -1,4 +1,4 @@
-from Parser import reader, pruner, journalParser
+from Parser import reader
 import argparse
 
 parser = argparse.ArgumentParser(description="Print JSON from parsed syslog data")
