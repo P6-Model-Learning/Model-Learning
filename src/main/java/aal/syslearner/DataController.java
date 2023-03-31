@@ -62,7 +62,6 @@ public class DataController {
                     }
                     eventCount++;
                 }
-
                 allBoardTraces.get(currentBoard).add(new Trace(events));
                 i++;
             }
