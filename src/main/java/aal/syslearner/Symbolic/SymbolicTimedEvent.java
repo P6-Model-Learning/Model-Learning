@@ -27,19 +27,16 @@ public class SymbolicTimedEvent implements IEvent {
     }
     SymbolicTimedEvent other = (SymbolicTimedEvent) obj;
 
-    return this.message.equals(other.getMessage()) && this.symbolicTime == other.getSymbolicTime();
+    return this.message.equals(other.getMessage()) && this.symbolicTime.equals(other.getSymbolicTime());
     }
 
     @Override
     public String toString() {
-        return "SymbolicTimedEvent{" +
-                "mage=" + message +
-                ", symbolicTime=" + symbolicTime +
-                '}';
+        return message + "," + symbolicTime;
     }
 
     @Override
     public int hashCode() {
-        return this.message.hashCode() + this.symbolicTime.hashCode();
+        return this.message.hashCode();
     }
 }

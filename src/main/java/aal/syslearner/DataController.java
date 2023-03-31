@@ -21,7 +21,7 @@ public class DataController {
         JSONParser parser = new JSONParser();
         JSONArray a;
 
-        Process p = Runtime.getRuntime().exec("python __main__.py -i");
+        Process p = Runtime.getRuntime().exec("python3 __main__.py -i");
         p.waitFor();
 
         a = (JSONArray) parser.parse(new FileReader("out.json"));
@@ -61,6 +61,7 @@ public class DataController {
                 i++;
             }
             currentBoard++;
+            break;
         }
         return allBoardTraces;
     }

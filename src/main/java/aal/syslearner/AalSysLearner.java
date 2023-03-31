@@ -22,7 +22,7 @@ public class AalSysLearner
             traces.set(0, symbolicBoard);
             
             var pta = Converter.makePrefixTreeAcceptor(traces);
-            var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(2);
+            var mergedGraph = new KTailsMerge(pta, pta.getInputAlphabet()).mergeLocations(1);
             System.out.println("showing the goods");
             System.out.println(pta.getStates().size() + "  :  " + mergedGraph.getStates().size());
             Visualization.visualize(mergedGraph);
