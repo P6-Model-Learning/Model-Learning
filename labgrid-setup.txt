@@ -1,0 +1,15 @@
+sudo cp -r labgrid-test-suite/ ~/Documents/
+
+#Create a new directory for images
+mkdir -p work/images
+sudo chown -R user labgrid-test-suite/
+cd ~/Documents/labgrid-test-suite/work/images
+cp /media/arthur/e685db6a-ecd2-447d-a111-e0b2e64c7818/*.tar.xz .
+tar -xf sdk-x86_64-linux-cortexa8hf-neon-pil-2023.02-2247.tar.xz 
+tar -xf  testtoolsfs-pil-2023.02-2247.tar.xz 
+tar -xf machine-pil-2023.02-2247.tar.xz 
+
+#Fix group for Docker
+sudo nano /etc/group
+./script.sh
+
