@@ -30,9 +30,15 @@ public class Converter {
             for (IEvent event : trace) {
                 var maybeTarget = dfa.getSuccessor(source, event);
                 if (maybeTarget == null) {
-                    var target = dfa.addState();
-                    dfa.addTransition(source, event, target);
-                    source = target;
+                    if(event.isTerminating()) {
+                        var target = dfa.addState(true);
+                        dfa.addTransition(source, event, target);
+                        source = target;
+                    } else {
+                        var target = dfa.addState();
+                        dfa.addTransition(source, event, target);
+                        source = target;
+                    }
                 } else {
                     source = maybeTarget;
                 }
@@ -46,9 +52,15 @@ public class Converter {
         HashMap<String, TimedEventInterval> timedEventIntervals = makeTimedEventIntervals(board);
         for (Trace trace : board) {
             List<IEvent> symbolicTrace = new ArrayList<>();
+            int eventCount = 1;
             for (IEvent event : trace) {
                 TimedEventInterval timedEventInterval = timedEventIntervals.get(event.getMessage());
-                symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime()));
+                if(eventCount == trace.getEvents().size()){
+                    symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime(), true));
+                } else {
+                    symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime()));
+                }
+                eventCount++;
             }
             trace.setEvents(symbolicTrace);
         }

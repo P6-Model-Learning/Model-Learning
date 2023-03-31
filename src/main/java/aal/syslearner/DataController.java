@@ -42,20 +42,27 @@ public class DataController {
     private List<List<Trace>> ExtractTracesForAllBoards(JSONArray a) {
         ArrayList<List<Trace>> allBoardTraces = new ArrayList<>();
         int currentBoard = 0;
-        int i = 0;
         for (Object b : a) {
+            int i = 0;
             JSONArray board = (JSONArray) b;
             allBoardTraces.add(new ArrayList<>());
             for (Object t : board) {
                 if (i > 4) break; // Set the amount of traces from each board
                 JSONArray trace = (JSONArray) t;
+                int eventCount = 1;
                 List<IEvent> events = new ArrayList<>();
                 for (Object e : trace) {
                     JSONObject event = (JSONObject) e;
                     String eventMessage = (String) event.get("MESSAGE");
                     double eventTimestamp = (double) event.get("TIMEDELTA");
-                    events.add(new Event(eventMessage, eventTimestamp));
+                    if(eventCount == trace.size()){
+                        events.add(new Event(eventMessage, eventTimestamp, true));
+                    } else {
+                        events.add(new Event(eventMessage, eventTimestamp));
+                    }
+                    eventCount++;
                 }
+
                 allBoardTraces.get(currentBoard).add(new Trace(events));
                 i++;
             }
