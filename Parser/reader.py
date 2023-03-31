@@ -1,8 +1,6 @@
 import os
 from systemd import journal
 import json
-import datetime
-
 
 class Reader:
     def getBoards(self) -> list:
@@ -98,11 +96,3 @@ class Reader:
 
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str, indent=4)
-
-    def print_dir(self):
-        for root, dirs, files in os.walk(os.pardir):
-            path = root.split(os.sep)
-            for file in files:
-                if file.startswith("system.journal") and file.endswith(".journal"):
-                    print((len(path) - 1) * '---', os.path.basename(root))
-                    print((len(path) - 1) * '   ' + ' |__', file)
