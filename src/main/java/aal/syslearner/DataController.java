@@ -49,18 +49,12 @@ public class DataController {
             for (Object t : board) {
                 if (i > 4) break; // Set the amount of traces from each board
                 JSONArray trace = (JSONArray) t;
-                int eventCount = 1;
                 List<IEvent> events = new ArrayList<>();
                 for (Object e : trace) {
                     JSONObject event = (JSONObject) e;
                     String eventMessage = (String) event.get("MESSAGE");
                     double eventTimestamp = (double) event.get("TIMEDELTA");
-                    if(eventCount == trace.size()){
-                        events.add(new Event(eventMessage, eventTimestamp, true));
-                    } else {
-                        events.add(new Event(eventMessage, eventTimestamp));
-                    }
-                    eventCount++;
+                    events.add(new Event(eventMessage, eventTimestamp));
                 }
                 allBoardTraces.get(currentBoard).add(new Trace(events));
                 i++;

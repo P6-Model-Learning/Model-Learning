@@ -27,21 +27,23 @@ public class Converter {
 
         for (Trace trace : boards.get(0)) {
             var source = initial;
-            for (IEvent event : trace) {
+            int finalEvent = trace.getEvents().size() - 1;
+            for (int i = 0; i < finalEvent; i++) {
+                IEvent event = trace.getEvents().get(i);
                 var maybeTarget = dfa.getSuccessor(source, event);
                 if (maybeTarget == null) {
-                    if(event.isTerminating()) {
-                        var target = dfa.addState(true);
-                        dfa.addTransition(source, event, target);
-                        source = target;
-                    } else {
-                        var target = dfa.addState();
-                        dfa.addTransition(source, event, target);
-                        source = target;
-                    }
+                    var target = dfa.addState();
+                    dfa.addTransition(source, event, target);
+                    source = target;
                 } else {
                     source = maybeTarget;
                 }
+            }
+
+            var maybeTarget = dfa.getSuccessor(source, trace.getEvents().get(finalEvent));
+            if (maybeTarget == null) {
+                var target = dfa.addState(true);
+                dfa.addTransition(source, trace.getEvents().get(finalEvent), target);
             }
         }
         return dfa;
@@ -52,15 +54,9 @@ public class Converter {
         HashMap<String, TimedEventInterval> timedEventIntervals = makeTimedEventIntervals(board);
         for (Trace trace : board) {
             List<IEvent> symbolicTrace = new ArrayList<>();
-            int eventCount = 1;
             for (IEvent event : trace) {
                 TimedEventInterval timedEventInterval = timedEventIntervals.get(event.getMessage());
-                if(eventCount == trace.getEvents().size()){
-                    symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime(), true));
-                } else {
-                    symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime()));
-                }
-                eventCount++;
+                symbolicTrace.add(new SymbolicTimedEvent(event.getMessage(), timedEventInterval.getSymbolicTime()));
             }
             trace.setEvents(symbolicTrace);
         }

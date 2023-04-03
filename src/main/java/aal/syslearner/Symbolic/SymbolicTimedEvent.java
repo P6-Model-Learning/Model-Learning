@@ -7,18 +7,10 @@ public class SymbolicTimedEvent implements IEvent {
     public SymbolicTimedEvent(String message, String symbolicTime){
         this.message = message;
         this.symbolicTime = symbolicTime;
-        this.terminating = false;
-    }
-
-    public SymbolicTimedEvent(String message, String symbolicTime, boolean terminating) {
-        this.message = message;
-        this.symbolicTime = symbolicTime;
-        this.terminating = terminating;
     }
 
     private final String message;
     private final String symbolicTime;
-    private final boolean terminating;
 
     public String getMessage(){
         return message;
@@ -27,8 +19,6 @@ public class SymbolicTimedEvent implements IEvent {
     public String getSymbolicTime(){
         return symbolicTime;
     }
-
-    public boolean isTerminating() { return terminating; }
 
     @Override
     public boolean equals(Object obj){
