@@ -99,9 +99,12 @@ class Reader:
                 return trace, board
     
     def __pruneMSG(self, msg):
-        ip_regex = re.compile('[(](?:[0-9]{1,3}\.){3}[0-9]{1,3}[:][0-9]*[)]')
+        ip_daemon_regex = re.compile('@[0-9]*-(([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*-?)*')
+        ip_regex = re.compile('[(]?(1-)?(?:[0-9]{1,3}\.){3}[0-9]{1,3}[:][0-9]*-*[)]?')
         time_regex = re.compile('(in)\s[0-9]*.[0-9]*s.*')
         sys_mode_regex = re.compile('(in system mode )[(](\s*([-]|[+])\w*\s*)*\s*(\w*[-]\w*[=]\w*)[)]')
+        if re.search(ip_daemon_regex, msg): #Goes first as @ is an identifier of hostname IP
+            msg = re.sub(ip_daemon_regex, '@hostname', msg)
         if re.search(ip_regex, msg): 
             msg = re.sub(ip_regex, '', msg)
         if re.search(time_regex, msg): 
