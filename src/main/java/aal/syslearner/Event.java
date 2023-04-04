@@ -1,15 +1,23 @@
 package aal.syslearner;
 
-public class Event{
+import java.util.Optional;
+
+public class Event implements IEvent{
     public Event(String message){
         this.message = message;
+        this.timestamp = 0;
+    }
+    public Event(String message, double timeStamp){
+        this.message = message;
+        this.timestamp = timeStamp;
     }
 
     private final String message;
+    private final double timestamp;
 
-    public String getMessage(){
-        return message;
-    }
+    public String getMessage(){ return message; }
+
+    public double getTimestamp() { return timestamp; }
 
     @Override
     public boolean equals(Object obj) {
