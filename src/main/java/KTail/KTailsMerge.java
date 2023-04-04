@@ -2,6 +2,8 @@ package KTail;
 
 import aal.syslearner.Event;
 import aal.syslearner.IEvent;
+import aal.syslearner.Symbolic.SymbolicTimedEvent;
+import com.sun.jdi.InterfaceType;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
 import net.automatalib.commons.util.Pair;
@@ -56,8 +58,7 @@ public class KTailsMerge {
                 }
             }
         }
-
-        return merged;
+        return collapseTrivialSequences(merged, 0);
     }
 
 
@@ -86,5 +87,50 @@ public class KTailsMerge {
         return locationFutures.stream().allMatch(List::isEmpty) && maybeFutureValues.stream().allMatch(List::isEmpty) ||
                 (locationFutures.stream().anyMatch(list -> !list.isEmpty()) && locationFutures.stream().allMatch(list ->
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
+    }
+
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, int source){
+        int sequenceLength;
+        ArrayList<Integer> statesInSequence = new ArrayList<>(source);
+        Collection<IEvent> inputs = model.getLocalInputs(source);
+        IEvent input = null;
+
+        while (inputs != null && inputs.size() == 1) {
+            statesInSequence.add(source);
+            input = model.getLocalInputs(source).iterator().next();
+            source = model.getSuccessors(source, input).iterator().next();
+            inputs = model.getLocalInputs(source);
+        }
+
+        statesInSequence.add(source);
+        sequenceLength = statesInSequence.size();
+        if (sequenceLength >= 5) {
+            for (int i = 0; i < sequenceLength - 1; i++) {
+                model.removeAllTransitions(statesInSequence.get(i));
+            }
+
+            for (int i = 1; i < sequenceLength - 1; i++) {
+                //TODO: Remove states in between
+            }
+
+            if (input.getClass() == SymbolicTimedEvent.class) {
+                input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
+                        (((SymbolicTimedEvent) input).getSymbolicTime()));
+            }   else {
+                input = new Event("Collapsed trivial sequence ending with: " + input.getMessage());
+            }
+
+            model.addAlphabetSymbol(input);
+            model.addTransition(statesInSequence.get(0), input, statesInSequence.get(sequenceLength - 1));
+        }
+
+        //TODO: Something breaks here
+        if (inputs != null && inputs.size() > 1) {
+            for (IEvent event : inputs) {
+                source = model.getSuccessors(source, event).iterator().next();
+                model = collapseTrivialSequences(model, source);
+            }
+        }
+        return model;
     }
 }
