@@ -27,7 +27,9 @@ public class Converter {
 
         for (Trace trace : boards.get(0)) {
             var source = initial;
-            for (IEvent event : trace) {
+            int finalEvent = trace.getEvents().size() - 1;
+            for (int i = 0; i < finalEvent; i++) {
+                IEvent event = trace.getEvents().get(i);
                 var maybeTarget = dfa.getSuccessor(source, event);
                 if (maybeTarget == null) {
                     var target = dfa.addState();
@@ -36,6 +38,12 @@ public class Converter {
                 } else {
                     source = maybeTarget;
                 }
+            }
+
+            var maybeTarget = dfa.getSuccessor(source, trace.getEvents().get(finalEvent));
+            if (maybeTarget == null) {
+                var target = dfa.addState(true);
+                dfa.addTransition(source, trace.getEvents().get(finalEvent), target);
             }
         }
         return dfa;
