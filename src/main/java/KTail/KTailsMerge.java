@@ -90,11 +90,12 @@ public class KTailsMerge {
     }
 
     private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, int source){
-        int sequenceLength;
+        int sequenceLength, target;
         ArrayList<Integer> statesInSequence = new ArrayList<>(source);
         Collection<IEvent> inputs = model.getLocalInputs(source);
         IEvent input = null;
 
+        calculateAmountOfParents(model);
         while (inputs != null && inputs.size() == 1) {
             statesInSequence.add(source);
             input = model.getLocalInputs(source).iterator().next();
@@ -127,10 +128,23 @@ public class KTailsMerge {
         //TODO: Something breaks here
         if (inputs != null && inputs.size() > 1) {
             for (IEvent event : inputs) {
-                source = model.getSuccessors(source, event).iterator().next();
-                model = collapseTrivialSequences(model, source);
+                target = model.getSuccessors(source, event).iterator().next();
+                model = collapseTrivialSequences(model, target);
             }
         }
         return model;
+    }
+
+    //TODO: Implementation lacking
+    private HashMap<Integer, Integer> calculateAmountOfParents(CompactNFA<IEvent> model){
+        HashMap<Integer, Integer> parentsForStates = new HashMap<>();
+        for (int state : model.getStates()){
+            for (IEvent input : model.getLocalInputs(state)){
+                for (int transition : model.getTransitions(state, input)){
+                    int parents = parentsForStates.get(state);
+                }
+            }
+        }
+        return parentsForStates;
     }
 }
