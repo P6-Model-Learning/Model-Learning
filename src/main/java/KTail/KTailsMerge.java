@@ -19,6 +19,7 @@ public class KTailsMerge {
     public final KTailsComputation computation;
     public final Alphabet<IEvent> alphabet;
     public NFA<Integer, IEvent> model;
+    private HashMap<Integer, Integer> parents = new HashMap<>();
     public KTailsMerge(NFA<Integer, IEvent> model, Alphabet<IEvent> alphabet) {
         this.model = model;
         this.alphabet = alphabet;
@@ -58,7 +59,8 @@ public class KTailsMerge {
                 }
             }
         }
-        return collapseTrivialSequences(merged, 0);
+        calculateParents(merged);
+        return collapseTrivialSequences(merged, 0, new HashSet<>());
     }
 
 
@@ -89,22 +91,33 @@ public class KTailsMerge {
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
     }
 
-    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, int source){
-        int sequenceLength, target;
-        ArrayList<Integer> statesInSequence = new ArrayList<>(source);
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, int source, HashSet<Integer> visitedTransitions){
+        int sequenceLength;
+        ArrayList<Integer> statesInSequence = new ArrayList<>();
         Collection<IEvent> inputs = model.getLocalInputs(source);
         IEvent input = null;
 
-        calculateAmountOfParents(model);
         while (inputs != null && inputs.size() == 1) {
-            statesInSequence.add(source);
             input = model.getLocalInputs(source).iterator().next();
+            // Break if sequence branches nondeterministically
+            if(model.getSuccessors(source, input).size() != 1){
+                break;
+            }
+
+            // Break if multiple parents
+            if(parents.get(source) != 1){
+                break;
+            }
+
+            statesInSequence.add(source);
+            visitedTransitions.add(model.getTransitions(source, input).iterator().next());
             source = model.getSuccessors(source, input).iterator().next();
             inputs = model.getLocalInputs(source);
         }
 
         statesInSequence.add(source);
         sequenceLength = statesInSequence.size();
+        //TODO: Determine length of trivial sequence
         if (sequenceLength >= 5) {
             for (int i = 0; i < sequenceLength - 1; i++) {
                 model.removeAllTransitions(statesInSequence.get(i));
@@ -123,28 +136,38 @@ public class KTailsMerge {
 
             model.addAlphabetSymbol(input);
             model.addTransition(statesInSequence.get(0), input, statesInSequence.get(sequenceLength - 1));
+            System.out.println("Collapsed the following states in trivial sequence: " + statesInSequence);
         }
 
-        //TODO: Something breaks here
-        if (inputs != null && inputs.size() > 1) {
+        if (inputs != null && inputs.size() != 0) {
             for (IEvent event : inputs) {
-                target = model.getSuccessors(source, event).iterator().next();
-                model = collapseTrivialSequences(model, target);
+                for (Integer transition : model.getTransitions(source, event)){
+                    if(visitedTransitions.contains(transition)){
+                        continue;
+                    }
+                    visitedTransitions.add(transition);
+                    model = collapseTrivialSequences(model, model.getSuccessor(transition), visitedTransitions);
+                }
             }
         }
         return model;
     }
 
-    //TODO: Implementation lacking
-    private HashMap<Integer, Integer> calculateAmountOfParents(CompactNFA<IEvent> model){
-        HashMap<Integer, Integer> parentsForStates = new HashMap<>();
-        for (int state : model.getStates()){
-            for (IEvent input : model.getLocalInputs(state)){
-                for (int transition : model.getTransitions(state, input)){
-                    int parents = parentsForStates.get(state);
+    private void calculateParents(CompactNFA<IEvent> model){
+        Integer successor;
+        parents.put(0,1);
+        for (Integer state : model.getStates()){
+            for(IEvent input : model.getLocalInputs(state)){
+                for(Integer transition : model.getTransitions(state, input)){
+                    successor = model.getSuccessor(transition);
+
+                    if(parents.get(successor) == null){
+                        parents.put(successor, 1);
+                    } else {
+                        parents.put(successor, parents.get(successor) + 1);
+                    }
                 }
             }
         }
-        return parentsForStates;
     }
 }
