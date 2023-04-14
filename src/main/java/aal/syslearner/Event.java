@@ -15,11 +15,10 @@ public class Event implements IEvent{
     private final String message;
     private final double timestamp;
 
-    public String getMessage(){
-        return message;
-    }
+    public String getMessage(){ return message; }
 
     public double getTimestamp() { return timestamp; }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Event)){

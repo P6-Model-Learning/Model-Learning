@@ -1,8 +1,7 @@
 import os
 from systemd import journal
 import json
-import datetime
-
+import re
 
 class Reader:
     def getBoards(self) -> list:
@@ -11,64 +10,108 @@ class Reader:
         for root, dirs, files in os.walk(os.getcwd()):
             if root not in boards and (os.path.basename(root)).endswith('.prevas.dk'):
                 boards.append(((os.path.basename(root))
-                               .split('-dut')[0], os.path.relpath(root, os.getcwd())))
+                               .split('-dut')[0]))
         return boards
 
-    def parse(self, board:str):
+    def parseBoards(self, boards, simple, init):
         data = []
+        boards = self.getBoards()
+        start_string = None
         start_time = None
+        
+        for i in boards:
+            data.append([])
+        
         for root, dirs, files in os.walk(os.getcwd()):
             path = root.split(os.path.sep)
             for file in files:
-                if file.startswith('system.journal') and file.endswith('.journal'):
-                    trace = []
-                    j = journal.Reader(path=root)
-                    if board != None: j.add_match("_HOSTNAME={board}".format(board = board))
-                    j.get_next(skip=1)
-                    j.log_level(level=7)
-                    j.add_match("SYSLOG_IDENTIFIER=systemd")
-                    for entry in j:
-                        if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
-                        entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
-                        trace.append(entry)
-                    data.append(trace)
+                if init:
+                    if file.endswith('.journal') and file.startswith('system.journal'):
+                        trace = self.__parseInitTrace(simple=simple, file=file, root=root)
+                        if trace[1] != None:
+                            data[boards.index(trace[1])].append(trace[0])
+                else:
+                    if file.endswith('.journal'):
+                        trace = self.__parseTestTrace(simple=simple, file=file, root=root, start_string=start_string)
+                        if trace[1] != None:
+                            data[boards.index(trace[1])].append(trace[0])
         return data
+        
+    def __parseInitTrace(self, simple, file, root):
+        if file.startswith('system.journal') and file.endswith('.journal'):
+            start_time = None
+            board = None
+            trace = []
+            j = journal.Reader(path=root)
+            j.get_next(skip=1)
+            j.log_level(level=7)
+            j.add_match("SYSLOG_IDENTIFIER=systemd")
+            if simple:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    entry = {'MESSAGE':entry['MESSAGE'],
+                             'SIMPLE_MESSAGE':self.__pruneMSG(entry['MESSAGE']),
+                             '_HOSTNAME':entry['_HOSTNAME'],
+                             '__MONOTONIC_TIMESTAMP':entry['__MONOTONIC_TIMESTAMP'],
+                             'TIMEDELTA':entry['TIMEDELTA']}
+                    trace.append(entry)
+                return trace, board
+            else:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    entry['SIMPLE_MESSAGE'] = self.__pruneMSG(entry['MESSAGE'])
+                    trace.append(entry)
+                return trace, board
     
-    def parseSimple(self, board:str):
-        data  =[]
-        start_date = None
-        for root, dirs, files in os.walk(os.getcwd()):
-            path  =root.split(os.path.sep)
-            for file in files:
-                if file.startswith('system.journal') and file.endswith('.journal'):
-                    j = journal.Reader(path=root)
-                    j.get_next(skip=1)
-                    j.log_level(level=7)
-                    j.add_match("SYSLOG_IDENTIFIER=systemd")
-                    if board != None: j.add_match("_HOSTNAME={board}".format(board = board))
-                    trace = []
-                    for entry in j:
-                        if start_date == None: start_date = entry['__MONOTONIC_TIMESTAMP'][0]
-                        entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_date).total_seconds()
-                        trace.append([
-                            entry['MESSAGE'],
-                            entry['_HOSTNAME'],
-                            entry['__MONOTONIC_TIMESTAMP'],
-                            entry['TIMEDELTA']
-                        ])
-                    data.append(trace)
-        return data
+    def __parseTestTrace(self, simple, file, root, start_string):
+        if file.endswith('.journal'):
+            start_string = start_string
+            start_time = None
+            board = None
+            trace = []
+            j = journal.Reader(path=root)
+            j.get_next(skip=1)
+            j.log_level(level=7)
+            j.add_match("SYSLOG_IDENTIFIER=systemd")
+            if simple:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    entry = {'MESSAGE':entry['MESSAGE'],
+                             'SIMPLE_MESSAGE': self.__pruneMSG(entry['MESSAGE']),
+                             '_HOSTNAME':entry['_HOSTNAME'],
+                             '__MONOTONIC_TIMESTAMP':entry['__MONOTONIC_TIMESTAMP'],
+                             'TIMEDELTA':entry['TIMEDELTA']}
+                    trace.append(entry)
+                return trace, board
+            else:
+                for entry in j:
+                    if board == None: board = entry['_HOSTNAME']
+                    if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
+                    entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
+                    entry['SIMPLE_MESSAGE'] = self.__pruneMSG(entry['MESSAGE'])
+                    trace.append(entry)
+                return trace, board
+    
+    def __pruneMSG(self, msg):
+        ip_daemon_regex = re.compile('@[0-9]*-(([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*-?)*')
+        ip_regex = re.compile('[(]?(1-)?(?:[0-9]{1,3}\.){3}[0-9]{1,3}[:][0-9]*-*[)]?')
+        time_regex = re.compile('(in)\s[0-9]*.[0-9]*s.*')
+        sys_mode_regex = re.compile('(in system mode )[(](\s*([-]|[+])\w*\s*)*\s*(\w*[-]\w*[=]\w*)[)]')
+        if re.search(ip_daemon_regex, msg): #Goes first as @ is an identifier of hostname IP
+            msg = re.sub(ip_daemon_regex, '@hostname', msg)
+        if re.search(ip_regex, msg): 
+            msg = re.sub(ip_regex, '', msg)
+        if re.search(time_regex, msg): 
+            msg =  re.sub(time_regex, '', msg)
+        if re.search(sys_mode_regex, msg):
+            msg = re.sub(sys_mode_regex, '', msg)
+        return msg
 
     def parseToJSON(self, data):
-        return json.dumps(data, sort_keys=True, default=str, indent=3)
-
-    def make_entry_dict(self, j: journal):
-        pass
-
-    def print_dir(self):
-        for root, dirs, files in os.walk(os.pardir):
-            path = root.split(os.sep)
-            for file in files:
-                if file.startswith("system.journal") and file.endswith(".journal"):
-                    print((len(path) - 1) * '---', os.path.basename(root))
-                    print((len(path) - 1) * '   ' + ' |__', file)
+        return json.dumps(data, sort_keys=True, default=str, indent=4)

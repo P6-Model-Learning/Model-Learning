@@ -1,4 +1,4 @@
-from Parser import reader, pruner, journalParser
+from Parser import reader
 import argparse
 
 parser = argparse.ArgumentParser(description="Print JSON from parsed syslog data")
@@ -12,19 +12,12 @@ parser.add_argument('--print', dest='printboards', help='prints all boards in da
 
 args = parser.parse_args()
 
-journal = None
+journal = reader.Reader()
 prune = None
 
 data = None
 board = None
-
-#check for 'data type' wether init data or new data
-if args.init:
-    journal = reader.Reader()
-else:
-    journal = journalParser.JournalParser()
-
-boards = dict(journal.getBoards())
+boards = journal.getBoards()
 
 #check if non-parsing args
 if args.printboards:
@@ -39,18 +32,15 @@ elif args.boards and args.boards not in boards:
     raise Exception("Boards was not found in data... Quitting.")
     quit()
 
-if args.simplify:
-    data = journal.parseSimple(board)
-else:
-    data = journal.parse(board)
+data = journal.parseBoards(boards, args.simplify, args.init)
 
 if args.prune:
     prune = pruner.Pruner()
     prune.badKTail()
 
-if args.out:
+if args.out != None:
     with open('{args}.json'.format(args=args.out), 'w') as outfile:
-        outfile.write(journal.parseToJSON([data]))
+        outfile.write(journal.parseToJSON(data))
 else:
     with open('out.json', 'w') as outfile:
-        outfile.write(journal.parseToJSON([data]))
+        outfile.write(journal.parseToJSON(data))

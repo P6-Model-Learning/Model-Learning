@@ -13,11 +13,11 @@ public class SymbolicTimedEvent implements IEvent {
     private final String symbolicTime;
 
     public String getMessage(){
-        return this.message;
+        return message;
     }
 
     public String getSymbolicTime(){
-        return this.symbolicTime;
+        return symbolicTime;
     }
 
     @Override
