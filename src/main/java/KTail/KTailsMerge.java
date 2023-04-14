@@ -4,7 +4,9 @@ import aal.syslearner.Event;
 import aal.syslearner.IEvent;
 import aal.syslearner.Symbolic.SymbolicTimedEvent;
 import com.sun.jdi.InterfaceType;
+import net.automatalib.automata.ShrinkableAutomaton;
 import net.automatalib.automata.fsa.NFA;
+import net.automatalib.automata.fsa.impl.FastNFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
 import net.automatalib.commons.util.Pair;
 import net.automatalib.words.Alphabet;
@@ -19,7 +21,6 @@ public class KTailsMerge {
     public final KTailsComputation computation;
     public final Alphabet<IEvent> alphabet;
     public NFA<Integer, IEvent> model;
-    private HashMap<Integer, Integer> parents = new HashMap<>();
     public KTailsMerge(NFA<Integer, IEvent> model, Alphabet<IEvent> alphabet) {
         this.model = model;
         this.alphabet = alphabet;
@@ -59,7 +60,6 @@ public class KTailsMerge {
                 }
             }
         }
-        calculateParents(merged);
         return collapseTrivialSequences(merged, 0, new HashSet<>());
     }
 
@@ -91,10 +91,13 @@ public class KTailsMerge {
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
     }
 
-    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, int source, HashSet<Integer> visitedTransitions){
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, Integer source, HashSet<Integer> visitedTransitions){
         int sequenceLength;
         ArrayList<Integer> statesInSequence = new ArrayList<>();
+        CompactNFA<IEvent> collapsedModel = new CompactNFA<>(new GrowingMapAlphabet<>());
         Collection<IEvent> inputs = model.getLocalInputs(source);
+        HashMap<Integer, Integer> correspondingLocations = new HashMap<>();
+        HashMap<Integer, Integer> parents = calculateParents(model);
         IEvent input = null;
 
         while (inputs != null && inputs.size() == 1) {
@@ -121,10 +124,7 @@ public class KTailsMerge {
         if (sequenceLength >= 5) {
             for (int i = 0; i < sequenceLength - 1; i++) {
                 model.removeAllTransitions(statesInSequence.get(i));
-            }
-
-            for (int i = 1; i < sequenceLength - 1; i++) {
-                //TODO: Remove states in between
+                visitedTransitions.remove(statesInSequence.get(i));
             }
 
             if (input.getClass() == SymbolicTimedEvent.class) {
@@ -137,23 +137,53 @@ public class KTailsMerge {
             model.addAlphabetSymbol(input);
             model.addTransition(statesInSequence.get(0), input, statesInSequence.get(sequenceLength - 1));
             System.out.println("Collapsed the following states in trivial sequence: " + statesInSequence);
+
+            for (Integer location : model.getStates()){
+                if(!statesInSequence.get(0).equals(location) && !statesInSequence.get(sequenceLength-1).equals(location) && statesInSequence.contains(location)) continue;
+
+                if(collapsedModel.getStates().isEmpty()){
+                    correspondingLocations.put(location, collapsedModel.addInitialState());
+                } else {
+                    correspondingLocations.put(location, collapsedModel.addState());
+                }
+            }
+
+            for (Integer location : model.getStates()) {
+                if(!correspondingLocations.containsKey(location)) continue;
+                Integer newLocation = correspondingLocations.get(location);
+                for (IEvent event : model.getLocalInputs(location)) {
+                    for (Integer transition : model.getTransitions(location, event)) {
+                        Integer target = correspondingLocations.get(model.getSuccessor(transition));
+
+                        collapsedModel.addAlphabetSymbol(event);
+                        collapsedModel.addTransition(newLocation, event, target);
+                    }
+                }
+            }
+        } else {
+            collapsedModel = model;
         }
 
+        //TODO: Handle collapsedModel
         if (inputs != null && inputs.size() != 0) {
+            if(!correspondingLocations.isEmpty()){
+                source = correspondingLocations.get(source);
+            }
             for (IEvent event : inputs) {
-                for (Integer transition : model.getTransitions(source, event)){
+                for (Integer transition : collapsedModel.getTransitions(source, event)){
                     if(visitedTransitions.contains(transition)){
                         continue;
                     }
                     visitedTransitions.add(transition);
-                    model = collapseTrivialSequences(model, model.getSuccessor(transition), visitedTransitions);
+                    collapsedModel = collapseTrivialSequences(collapsedModel, collapsedModel.getSuccessor(transition), visitedTransitions);
                 }
             }
         }
-        return model;
+        return collapsedModel;
     }
 
-    private void calculateParents(CompactNFA<IEvent> model){
+    private HashMap<Integer, Integer> calculateParents(CompactNFA<IEvent> model){
+        HashMap<Integer, Integer> parents = new HashMap<>();
         Integer successor;
         parents.put(0,1);
         for (Integer state : model.getStates()){
@@ -169,5 +199,6 @@ public class KTailsMerge {
                 }
             }
         }
+        return parents;
     }
 }
