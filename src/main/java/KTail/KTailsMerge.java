@@ -96,10 +96,11 @@ public class KTailsMerge {
         ArrayList<Integer> statesInSequence = new ArrayList<>();
         CompactNFA<IEvent> collapsedModel = new CompactNFA<>(new GrowingMapAlphabet<>());
         Collection<IEvent> inputs = model.getLocalInputs(source);
-        HashMap<Integer, Integer> correspondingLocations = new HashMap<>();
+        HashMap<Integer, Integer> correspondingStates = new HashMap<>();
         HashMap<Integer, Integer> parents = calculateParents(model);
         IEvent input = null;
 
+        // Iterate till either reaching the end of sequence or multiple inputs are available from source
         while (inputs != null && inputs.size() == 1) {
             input = model.getLocalInputs(source).iterator().next();
             // Break if sequence branches nondeterministically
@@ -120,13 +121,16 @@ public class KTailsMerge {
 
         statesInSequence.add(source);
         sequenceLength = statesInSequence.size();
-        //TODO: Determine length of trivial sequence
+
+        // Enter if sequence meets length requirement of trivial sequence
         if (sequenceLength >= 5) {
+            // Remove transitions in trivial sequence from model
             for (int i = 0; i < sequenceLength - 1; i++) {
                 model.removeAllTransitions(statesInSequence.get(i));
                 visitedTransitions.remove(statesInSequence.get(i));
             }
 
+            // Create input for collapsed sequence
             if (input.getClass() == SymbolicTimedEvent.class) {
                 input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
                         (((SymbolicTimedEvent) input).getSymbolicTime()));
@@ -136,27 +140,31 @@ public class KTailsMerge {
 
             model.addAlphabetSymbol(input);
             model.addTransition(statesInSequence.get(0), input, statesInSequence.get(sequenceLength - 1));
-            System.out.println("Collapsed the following states in trivial sequence: " + statesInSequence);
+            System.out.println("Collapsed states in trivial sequence: " + statesInSequence);
 
-            for (Integer location : model.getStates()){
-                if(!statesInSequence.get(0).equals(location) && !statesInSequence.get(sequenceLength-1).equals(location) && statesInSequence.contains(location)) continue;
+            // Build new states and create reference to state in original model
+            for (Integer state : model.getStates()){
+                if(!statesInSequence.get(0).equals(state) && !statesInSequence.get(sequenceLength-1).equals(state)
+                        && statesInSequence.contains(state))
+                    continue;
 
                 if(collapsedModel.getStates().isEmpty()){
-                    correspondingLocations.put(location, collapsedModel.addInitialState());
+                    correspondingStates.put(state, collapsedModel.addInitialState());
                 } else {
-                    correspondingLocations.put(location, collapsedModel.addState());
+                    correspondingStates.put(state, collapsedModel.addState());
                 }
             }
 
-            for (Integer location : model.getStates()) {
-                if(!correspondingLocations.containsKey(location)) continue;
-                Integer newLocation = correspondingLocations.get(location);
-                for (IEvent event : model.getLocalInputs(location)) {
-                    for (Integer transition : model.getTransitions(location, event)) {
-                        Integer target = correspondingLocations.get(model.getSuccessor(transition));
+            // Create alphabet and transitions for collapsed model
+            for (Integer state : model.getStates()) {
+                if(!correspondingStates.containsKey(state)) continue;
+                Integer newSource = correspondingStates.get(state);
+                for (IEvent event : model.getLocalInputs(state)) {
+                    for (Integer transition : model.getTransitions(state, event)) {
+                        Integer target = correspondingStates.get(model.getSuccessor(transition));
 
                         collapsedModel.addAlphabetSymbol(event);
-                        collapsedModel.addTransition(newLocation, event, target);
+                        collapsedModel.addTransition(newSource, event, target);
                     }
                 }
             }
@@ -164,11 +172,14 @@ public class KTailsMerge {
             collapsedModel = model;
         }
 
-        //TODO: Handle collapsedModel
-        if (inputs != null && inputs.size() != 0) {
-            if(!correspondingLocations.isEmpty()){
-                source = correspondingLocations.get(source);
+        // Enter if not the last state in a sequence/branching
+        if (inputs != null) {
+            // If model has been altered
+            if(!correspondingStates.isEmpty()){
+                source = correspondingStates.get(source);
             }
+
+            //Recursively call method to search the succesor of each transition going from source
             for (IEvent event : inputs) {
                 for (Integer transition : collapsedModel.getTransitions(source, event)){
                     if(visitedTransitions.contains(transition)){
