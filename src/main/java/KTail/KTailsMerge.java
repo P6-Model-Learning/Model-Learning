@@ -1,7 +1,7 @@
 package KTail;
 
-import aal.syslearner.Event;
 import aal.syslearner.IEvent;
+import com.google.common.collect.MoreCollectors;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
 import net.automatalib.commons.util.Pair;
@@ -37,34 +37,45 @@ public class KTailsMerge {
         ).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
 
         //Collect target transitions
+        var targetTransitions = collectTargetTransitions(mergesInto, mergedLocations);
 
-        var newTransitions = new HashMap<>();
+        for (var transitionSet : targetTransitions.entrySet()) {
+            var from = transitionSet.getKey().getFirst();
+            var to = transitionSet.getKey().getSecond();
+            for (var transition : transitionSet.getValue().values()) {
+                var mergedInput = transition.stream().collect(MoreCollectors.onlyElement());
+                merged.addAlphabetSymbol(mergedInput);
+                merged.addTransition(from, mergedInput, to);
+            }
+        }
+        return merged;
+    }
+
+    private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
+        var targetTransitions = new HashMap<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>>();
+
         for (var location : model.getStates()) {
             var source = mergedLocations.get(mergesInto.get(location));
             if (source == null ) continue;
-            //For each input in the alphabet
             for (var input : alphabet) {
-                // For each transition triggered by the input on the location
                 for (var transition : model.getTransitions(location, input)) {
                     var target = mergedLocations.get(mergesInto.get(model.getSuccessor(transition)));
-                    if (target == null) continue;
+                    if (target == null) {continue;}
 
                     //TODO Sigurd: Project inputs in a way that makes sense
                     var newInput = input;
-                    merged.addAlphabetSymbol(newInput);
-                    merged.addTransition(source, newInput, target);
+                    targetTransitions.computeIfAbsent(Pair.of(source, target), ignored -> new HashMap<>())
+                            .computeIfAbsent(newInput, ignored -> new HashSet<>()).add(input);
                 }
             }
         }
-
-        return merged;
+        return targetTransitions;
     }
 
 
     private Map<Integer, Integer> computeMerges(int k) {
         var mergesInto = new HashMap<Integer, Integer>();
         var maybeFutures = new HashMap<Integer, Set<List<IEvent>>>();
-        maybeFutures.put(null, Set.of(List.of()));
 
         again:
         for (var location : model.getStates()) {

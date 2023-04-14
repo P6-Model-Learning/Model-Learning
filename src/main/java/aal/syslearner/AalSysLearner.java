@@ -3,8 +3,6 @@ package aal.syslearner;
 import KTail.Converter;
 import KTail.KTailsMerge;
 import net.automatalib.visualization.Visualization;
-import net.automatalib.words.Alphabet;
-import net.automatalib.words.impl.Alphabets;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
