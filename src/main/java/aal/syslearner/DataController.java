@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class DataController {
                 List<IEvent> events = new ArrayList<>();
                 for (Object e : trace) {
                     JSONObject event = (JSONObject) e;
-                    String eventMessage = (String) event.get("MESSAGE");
+                    String eventMessage = (String) event.get("SIMPLE_MESSAGE");
                     double eventTimestamp = (double) event.get("TIMEDELTA");
                     events.add(new Event(eventMessage, eventTimestamp));
                 }

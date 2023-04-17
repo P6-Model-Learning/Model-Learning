@@ -1,14 +1,13 @@
 package KTail;
 
-import aal.syslearner.Event;
 import aal.syslearner.IEvent;
+import aal.syslearner.Event;
 import aal.syslearner.Symbolic.SymbolicTimedEvent;
-import com.sun.jdi.InterfaceType;
-import net.automatalib.automata.ShrinkableAutomaton;
+import com.google.common.collect.MoreCollectors;
 import net.automatalib.automata.fsa.NFA;
-import net.automatalib.automata.fsa.impl.FastNFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
 import net.automatalib.commons.util.Pair;
+import net.automatalib.visualization.Visualization;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.GrowingMapAlphabet;
 
@@ -41,33 +40,45 @@ public class KTailsMerge {
         ).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
 
         //Collect target transitions
+        var targetTransitions = collectTargetTransitions(mergesInto, mergedLocations);
 
-        var newTransitions = new HashMap<>();
-        for (var location : model.getStates()) {
-            var source = mergedLocations.get(mergesInto.get(location));
-            if (source == null ) continue;
-            //For each input in the alphabet
-            for (var input : alphabet) {
-                // For each transition triggered by the input on the location
-                for (var transition : model.getTransitions(location, input)) {
-                    var target = mergedLocations.get(mergesInto.get(model.getSuccessor(transition)));
-                    if (target == null) continue;
-
-                    //TODO Sigurd: Project inputs in a way that makes sense
-                    var newInput = input;
-                    merged.addAlphabetSymbol(newInput);
-                    merged.addTransition(source, newInput, target);
-                }
+        for (var transitionSet : targetTransitions.entrySet()) {
+            var from = transitionSet.getKey().getFirst();
+            var to = transitionSet.getKey().getSecond();
+            for (var transition : transitionSet.getValue().values()) {
+                var mergedInput = transition.stream().collect(MoreCollectors.onlyElement());
+                merged.addAlphabetSymbol(mergedInput);
+                merged.addTransition(from, mergedInput, to);
             }
         }
         return collapseTrivialSequences(merged, 0, new HashSet<>());
+    }
+
+    private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
+        var targetTransitions = new HashMap<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>>();
+
+        for (var location : model.getStates()) {
+            var source = mergedLocations.get(mergesInto.get(location));
+            if (source == null ) continue;
+            for (var input : alphabet) {
+                for (var transition : model.getTransitions(location, input)) {
+                    var target = mergedLocations.get(mergesInto.get(model.getSuccessor(transition)));
+                    if (target == null) {continue;}
+
+                    //TODO Sigurd: Project inputs in a way that makes sense
+                    var newInput = input;
+                    targetTransitions.computeIfAbsent(Pair.of(source, target), ignored -> new HashMap<>())
+                            .computeIfAbsent(newInput, ignored -> new HashSet<>()).add(input);
+                }
+            }
+        }
+        return targetTransitions;
     }
 
 
     private Map<Integer, Integer> computeMerges(int k) {
         var mergesInto = new HashMap<Integer, Integer>();
         var maybeFutures = new HashMap<Integer, Set<List<IEvent>>>();
-        maybeFutures.put(null, Set.of(List.of()));
 
         again:
         for (var location : model.getStates()) {
@@ -95,7 +106,13 @@ public class KTailsMerge {
         int sequenceLength;
         ArrayList<Integer> statesInSequence = new ArrayList<>();
         CompactNFA<IEvent> collapsedModel = new CompactNFA<>(new GrowingMapAlphabet<>());
-        Collection<IEvent> inputs = model.getLocalInputs(source);
+        Collection<IEvent> inputs = null;
+        try {
+            inputs = model.getLocalInputs(source);
+        } catch (Exception e) {
+            System.out.println("Fucky wucky happened with source = " + source + " : " + e.getMessage() + " : #States = " + model.getStates().size());
+            Visualization.visualize(model);
+        }
         HashMap<Integer, Integer> correspondingStates = new HashMap<>();
         HashMap<Integer, Integer> parents = calculateParents(model);
         IEvent input = null;
@@ -179,13 +196,17 @@ public class KTailsMerge {
                 source = correspondingStates.get(source);
             }
 
-            //Recursively call method to search the succesor of each transition going from source
+            //Recursively call method to search the successor of each transition going from source
             for (IEvent event : inputs) {
                 for (Integer transition : collapsedModel.getTransitions(source, event)){
                     if(visitedTransitions.contains(transition)){
                         continue;
                     }
                     visitedTransitions.add(transition);
+                    int successor = collapsedModel.getSuccessor(transition);
+                    if(successor > collapsedModel.getStates().size()){
+                        continue;
+                    }
                     collapsedModel = collapseTrivialSequences(collapsedModel, collapsedModel.getSuccessor(transition), visitedTransitions);
                 }
             }

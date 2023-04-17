@@ -1,6 +1,5 @@
 package KTail;
 
-import aal.syslearner.Event;
 import aal.syslearner.IEvent;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.commons.util.Pair;
@@ -60,6 +59,12 @@ public class KTailsComputation {
                     return newFuture;
                 })
         )).collect(Collectors.toSet());
+
+        // This might be a hack, but it fixes the tail of the ktails algorithm
+        if (futures.size() == 0) {
+            futures = shorterFutures.get(location);
+        }
+
         kFutureCache.get(k).put(location, futures);
     }
 }
