@@ -7,7 +7,6 @@ import com.google.common.collect.MoreCollectors;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
 import net.automatalib.commons.util.Pair;
-import net.automatalib.visualization.Visualization;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.GrowingMapAlphabet;
 
@@ -51,7 +50,7 @@ public class KTailsMerge {
                 merged.addTransition(from, mergedInput, to);
             }
         }
-        return collapseTrivialSequences(merged, 0, new HashSet<>());
+        return collapseTrivialSequences(merged);
     }
 
     private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
@@ -102,20 +101,84 @@ public class KTailsMerge {
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
     }
 
-    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, Integer source, HashSet<Integer> visitedTransitions){
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model){
+        CompactNFA<IEvent> collapsed = null;
+        HashMap<Integer, Integer> correspondingStates = new HashMap<>();
+        IEvent input;
+        HashMap<Integer, Integer> parents = calculateParents(model);
+        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents);
+
+        // If no trivial Sequences exist return
+        if (trivialSequences.size() == 0) {
+            return model;
+        }
+
+        // Remove trivial sequences
+        for (List<Integer> sequence : trivialSequences) {
+            collapsed = new CompactNFA<>(new GrowingMapAlphabet<>());
+            input = model.getLocalInputs(sequence.get(sequence.size() - 2)).iterator().next();
+
+            // Remove transitions in trivial sequence from model
+            for (int i = 0; i < sequence.size() - 1; i++) {
+                model.removeAllTransitions(sequence.get(i));
+            }
+
+            // Create input for collapsed sequence
+            if (input.getClass() == SymbolicTimedEvent.class) {
+                input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
+                        (((SymbolicTimedEvent) input).getSymbolicTime()));
+            } else {
+                input = new Event("Collapsed trivial sequence ending with: " + input.getMessage());
+            }
+
+            model.addAlphabetSymbol(input);
+            model.addTransition(sequence.get(0), input, sequence.get(sequence.size() - 1));
+
+            // Build new states and create reference to state in original model
+            for (Integer state : model.getStates()){
+                if(!sequence.get(0).equals(state) && !sequence.get(sequence.size() - 1).equals(state)
+                        && sequence.contains(state))
+                    continue;
+
+                if(collapsed.getStates().isEmpty()){
+                    correspondingStates.put(state, collapsed.addInitialState());
+                } else {
+                    correspondingStates.put(state, collapsed.addState());
+                }
+            }
+
+            // Create alphabet and transitions for collapsed model
+            for (Integer state : model.getStates()) {
+                if (!correspondingStates.containsKey(state)) continue;
+                Integer newSource = correspondingStates.get(state);
+                for (IEvent event : model.getLocalInputs(state)) {
+                    for (Integer transition : model.getTransitions(state, event)) {
+                        Integer target = correspondingStates.get(model.getSuccessor(transition));
+                        collapsed.addAlphabetSymbol(event);
+                        collapsed.addTransition(newSource, event, target);
+                    }
+                }
+            }
+
+            model = collapsed;
+
+            // Update trivial sequences to match change of model
+            for (int i = trivialSequences.indexOf(sequence) + 1; i < trivialSequences.size(); i++){
+                ArrayList<Integer> modifiedSequence = trivialSequences.get(i);
+                modifiedSequence.replaceAll(correspondingStates::get);
+                trivialSequences.set(i, modifiedSequence);
+            }
+        }
+
+        return collapsed;
+    }
+
+    private ArrayList<ArrayList<Integer>> determineTrivialSequences(ArrayList<ArrayList<Integer>> trivialSequences, CompactNFA<IEvent> model,
+                                                                Integer source, HashSet<Integer> visited, HashMap<Integer, Integer> parents){
         int sequenceLength;
         ArrayList<Integer> statesInSequence = new ArrayList<>();
-        CompactNFA<IEvent> collapsedModel = new CompactNFA<>(new GrowingMapAlphabet<>());
-        Collection<IEvent> inputs = null;
-        try {
-            inputs = model.getLocalInputs(source);
-        } catch (Exception e) {
-            System.out.println("Fucky wucky happened with source = " + source + " : " + e.getMessage() + " : #States = " + model.getStates().size());
-            Visualization.visualize(model);
-        }
-        HashMap<Integer, Integer> correspondingStates = new HashMap<>();
-        HashMap<Integer, Integer> parents = calculateParents(model);
-        IEvent input = null;
+        Collection<IEvent> inputs = model.getLocalInputs(source);
+        IEvent input;
 
         // Iterate till either reaching the end of sequence or multiple inputs are available from source
         while (inputs != null && inputs.size() == 1) {
@@ -131,7 +194,7 @@ public class KTailsMerge {
             }
 
             statesInSequence.add(source);
-            visitedTransitions.add(model.getTransitions(source, input).iterator().next());
+            visited.add(model.getTransitions(source, input).iterator().next());
             source = model.getSuccessors(source, input).iterator().next();
             inputs = model.getLocalInputs(source);
         }
@@ -141,77 +204,24 @@ public class KTailsMerge {
 
         // Enter if sequence meets length requirement of trivial sequence
         if (sequenceLength >= 5) {
-            // Remove transitions in trivial sequence from model
-            for (int i = 0; i < sequenceLength - 1; i++) {
-                model.removeAllTransitions(statesInSequence.get(i));
-                visitedTransitions.remove(statesInSequence.get(i));
-            }
-
-            // Create input for collapsed sequence
-            if (input.getClass() == SymbolicTimedEvent.class) {
-                input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
-                        (((SymbolicTimedEvent) input).getSymbolicTime()));
-            }   else {
-                input = new Event("Collapsed trivial sequence ending with: " + input.getMessage());
-            }
-
-            model.addAlphabetSymbol(input);
-            model.addTransition(statesInSequence.get(0), input, statesInSequence.get(sequenceLength - 1));
-            System.out.println("Collapsed states in trivial sequence: " + statesInSequence);
-
-            // Build new states and create reference to state in original model
-            for (Integer state : model.getStates()){
-                if(!statesInSequence.get(0).equals(state) && !statesInSequence.get(sequenceLength-1).equals(state)
-                        && statesInSequence.contains(state))
-                    continue;
-
-                if(collapsedModel.getStates().isEmpty()){
-                    correspondingStates.put(state, collapsedModel.addInitialState());
-                } else {
-                    correspondingStates.put(state, collapsedModel.addState());
-                }
-            }
-
-            // Create alphabet and transitions for collapsed model
-            for (Integer state : model.getStates()) {
-                if(!correspondingStates.containsKey(state)) continue;
-                Integer newSource = correspondingStates.get(state);
-                for (IEvent event : model.getLocalInputs(state)) {
-                    for (Integer transition : model.getTransitions(state, event)) {
-                        Integer target = correspondingStates.get(model.getSuccessor(transition));
-
-                        collapsedModel.addAlphabetSymbol(event);
-                        collapsedModel.addTransition(newSource, event, target);
-                    }
-                }
-            }
-        } else {
-            collapsedModel = model;
+            trivialSequences.add(statesInSequence);
+            System.out.println("States in trivial sequence: " + statesInSequence);
         }
 
         // Enter if not the last state in a sequence/branching
         if (inputs != null) {
-            // If model has been altered
-            if(!correspondingStates.isEmpty()){
-                source = correspondingStates.get(source);
-            }
-
             //Recursively call method to search the successor of each transition going from source
             for (IEvent event : inputs) {
-                for (Integer transition : collapsedModel.getTransitions(source, event)){
-                    if(visitedTransitions.contains(transition)){
+                for (Integer transition : model.getTransitions(source, event)){
+                    if(visited.contains(transition)){
                         continue;
                     }
-                    visitedTransitions.add(transition);
-                    int successor = collapsedModel.getSuccessor(transition);
-                    if(successor > collapsedModel.getStates().size()){
-                        continue;
-                    }
-                    collapsedModel = collapseTrivialSequences(collapsedModel, collapsedModel.getSuccessor(transition), visitedTransitions);
+                    visited.add(transition);
+                    trivialSequences = determineTrivialSequences(trivialSequences, model, model.getSuccessor(transition), visited, parents);
                 }
             }
         }
-        return collapsedModel;
+        return trivialSequences;
     }
 
     private HashMap<Integer, Integer> calculateParents(CompactNFA<IEvent> model){
