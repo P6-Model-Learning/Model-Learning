@@ -1,6 +1,8 @@
 package KTail;
 
 import aal.syslearner.IEvent;
+import aal.syslearner.Event;
+import aal.syslearner.Symbolic.SymbolicTimedEvent;
 import com.google.common.collect.MoreCollectors;
 import net.automatalib.automata.fsa.NFA;
 import net.automatalib.automata.fsa.impl.compact.CompactNFA;
@@ -48,7 +50,7 @@ public class KTailsMerge {
                 merged.addTransition(from, mergedInput, to);
             }
         }
-        return merged;
+        return collapseTrivialSequences(merged);
     }
 
     private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
@@ -97,5 +99,148 @@ public class KTailsMerge {
         return locationFutures.stream().allMatch(List::isEmpty) && maybeFutureValues.stream().allMatch(List::isEmpty) ||
                 (locationFutures.stream().anyMatch(list -> !list.isEmpty()) && locationFutures.stream().allMatch(list ->
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
+    }
+
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model){
+        CompactNFA<IEvent> collapsed = null;
+        HashMap<Integer, Integer> correspondingStates = new HashMap<>();
+        IEvent input;
+        HashMap<Integer, Integer> parents = calculateParents(model);
+        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents);
+
+        // If no trivial Sequences exist return
+        if (trivialSequences.size() == 0) {
+            return model;
+        }
+
+        // Remove trivial sequences
+        for (List<Integer> sequence : trivialSequences) {
+            collapsed = new CompactNFA<>(new GrowingMapAlphabet<>());
+            input = model.getLocalInputs(sequence.get(sequence.size() - 2)).iterator().next();
+
+            // Remove transitions in trivial sequence from model
+            for (int i = 0; i < sequence.size() - 1; i++) {
+                model.removeAllTransitions(sequence.get(i));
+            }
+
+            // Create input for collapsed sequence
+            if (input.getClass() == SymbolicTimedEvent.class) {
+                input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
+                        (((SymbolicTimedEvent) input).getSymbolicTime()));
+            } else {
+                input = new Event("Collapsed trivial sequence ending with: " + input.getMessage());
+            }
+
+            model.addAlphabetSymbol(input);
+            model.addTransition(sequence.get(0), input, sequence.get(sequence.size() - 1));
+
+            // Build new states and create reference to state in original model
+            for (Integer state : model.getStates()){
+                if(!sequence.get(0).equals(state) && !sequence.get(sequence.size() - 1).equals(state)
+                        && sequence.contains(state))
+                    continue;
+
+                if(collapsed.getStates().isEmpty()){
+                    correspondingStates.put(state, collapsed.addInitialState());
+                } else {
+                    correspondingStates.put(state, collapsed.addState());
+                }
+            }
+
+            // Create alphabet and transitions for collapsed model
+            for (Integer state : model.getStates()) {
+                if (!correspondingStates.containsKey(state)) continue;
+                Integer newSource = correspondingStates.get(state);
+                for (IEvent event : model.getLocalInputs(state)) {
+                    for (Integer transition : model.getTransitions(state, event)) {
+                        Integer target = correspondingStates.get(model.getSuccessor(transition));
+                        collapsed.addAlphabetSymbol(event);
+                        collapsed.addTransition(newSource, event, target);
+                    }
+                }
+            }
+
+            model = collapsed;
+
+            // Update trivial sequences to match change of model
+            for (int i = trivialSequences.indexOf(sequence) + 1; i < trivialSequences.size(); i++){
+                ArrayList<Integer> modifiedSequence = trivialSequences.get(i);
+                modifiedSequence.replaceAll(correspondingStates::get);
+                trivialSequences.set(i, modifiedSequence);
+            }
+        }
+
+        return collapsed;
+    }
+
+    private ArrayList<ArrayList<Integer>> determineTrivialSequences(ArrayList<ArrayList<Integer>> trivialSequences, CompactNFA<IEvent> model,
+                                                                Integer source, HashSet<Integer> visited, HashMap<Integer, Integer> parents){
+        int sequenceLength;
+        ArrayList<Integer> statesInSequence = new ArrayList<>();
+        Collection<IEvent> inputs = model.getLocalInputs(source);
+        IEvent input;
+
+        // Iterate till either reaching the end of sequence or multiple inputs are available from source
+        while (inputs != null && inputs.size() == 1) {
+            input = model.getLocalInputs(source).iterator().next();
+            // Break if sequence branches nondeterministically
+            if(model.getSuccessors(source, input).size() != 1){
+                break;
+            }
+
+            // Break if multiple parents
+            if(parents.get(source) != 1){
+                break;
+            }
+
+            statesInSequence.add(source);
+            visited.add(model.getTransitions(source, input).iterator().next());
+            source = model.getSuccessors(source, input).iterator().next();
+            inputs = model.getLocalInputs(source);
+        }
+
+        statesInSequence.add(source);
+        sequenceLength = statesInSequence.size();
+
+        // Enter if sequence meets length requirement of trivial sequence
+        if (sequenceLength >= 5) {
+            trivialSequences.add(statesInSequence);
+            System.out.println("States in trivial sequence: " + statesInSequence);
+        }
+
+        // Enter if not the last state in a sequence/branching
+        if (inputs != null) {
+            //Recursively call method to search the successor of each transition going from source
+            for (IEvent event : inputs) {
+                for (Integer transition : model.getTransitions(source, event)){
+                    if(visited.contains(transition)){
+                        continue;
+                    }
+                    visited.add(transition);
+                    trivialSequences = determineTrivialSequences(trivialSequences, model, model.getSuccessor(transition), visited, parents);
+                }
+            }
+        }
+        return trivialSequences;
+    }
+
+    private HashMap<Integer, Integer> calculateParents(CompactNFA<IEvent> model){
+        HashMap<Integer, Integer> parents = new HashMap<>();
+        Integer successor;
+        parents.put(0,1);
+        for (Integer state : model.getStates()){
+            for(IEvent input : model.getLocalInputs(state)){
+                for(Integer transition : model.getTransitions(state, input)){
+                    successor = model.getSuccessor(transition);
+
+                    if(parents.get(successor) == null){
+                        parents.put(successor, 1);
+                    } else {
+                        parents.put(successor, parents.get(successor) + 1);
+                    }
+                }
+            }
+        }
+        return parents;
     }
 }
