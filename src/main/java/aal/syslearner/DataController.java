@@ -59,7 +59,7 @@ public class DataController {
                 i++;
             }
             currentBoard++;
-            break;
+//            break;
         }
         return allBoardTraces;
     }

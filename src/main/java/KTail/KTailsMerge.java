@@ -50,7 +50,16 @@ public class KTailsMerge {
                 merged.addTransition(from, mergedInput, to);
             }
         }
+
         System.out.println("Merged model before CTS: " + merged.getStates().size());
+
+
+        var changedFinalStates = computeFinalStateChange(mergesInto);
+
+        for (var state : changedFinalStates){
+            merged.setAccepting(mergedLocations.get(state), true);
+        }
+        
         return collapseTrivialSequences(merged);
     }
 
@@ -101,6 +110,19 @@ public class KTailsMerge {
                 (locationFutures.stream().anyMatch(list -> !list.isEmpty()) && locationFutures.stream().allMatch(list ->
                         maybeFutureValues.stream().anyMatch(maybeList -> maybeList.equals(list))));
     }
+
+    private List<Integer> computeFinalStateChange(Map<Integer, Integer> mergesInto){
+        var result = new ArrayList<Integer>();
+
+        for (var state : mergesInto.keySet()){
+            if (model.isAccepting(state)){
+                result.add(mergesInto.get(state));
+            }
+        }
+
+        return result;
+    }
+
 
     private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model){
         CompactNFA<IEvent> collapsed = null;
