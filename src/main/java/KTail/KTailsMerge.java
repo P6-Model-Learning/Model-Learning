@@ -50,6 +50,7 @@ public class KTailsMerge {
                 merged.addTransition(from, mergedInput, to);
             }
         }
+        System.out.println("Merged model before CTS: " + merged.getStates().size());
         return collapseTrivialSequences(merged);
     }
 
@@ -106,7 +107,7 @@ public class KTailsMerge {
         HashMap<Integer, Integer> correspondingStates = new HashMap<>();
         IEvent input;
         HashMap<Integer, Integer> parents = calculateParents(model);
-        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents);
+        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents, null);
 
         // If no trivial Sequences exist return
         if (trivialSequences.size() == 0) {
@@ -173,12 +174,17 @@ public class KTailsMerge {
         return collapsed;
     }
 
-    private ArrayList<ArrayList<Integer>> determineTrivialSequences(ArrayList<ArrayList<Integer>> trivialSequences, CompactNFA<IEvent> model,
-                                                                Integer source, HashSet<Integer> visited, HashMap<Integer, Integer> parents){
+    private ArrayList<ArrayList<Integer>> determineTrivialSequences(ArrayList<ArrayList<Integer>> trivialSequences, CompactNFA<IEvent> model, Integer source,
+                                                                    HashSet<Integer> visited, HashMap<Integer, Integer> parents, Integer parent){
         int sequenceLength;
         ArrayList<Integer> statesInSequence = new ArrayList<>();
         Collection<IEvent> inputs = model.getLocalInputs(source);
         IEvent input;
+
+        // If method called from some parent state use parent as first state in sequence
+        if(parent != null){
+            statesInSequence.add(parent);
+        }
 
         // Iterate till either reaching the end of sequence or multiple inputs are available from source
         while (inputs != null && inputs.size() == 1) {
@@ -188,9 +194,9 @@ public class KTailsMerge {
                 break;
             }
 
-            // Break if multiple parents
-            if(parents.get(source) != 1){
-                break;
+            // Break if multiple parents for all other states than first
+            if(parents.get(source) != 1 && statesInSequence.size() > 0){
+                    break;
             }
 
             statesInSequence.add(source);
@@ -217,7 +223,8 @@ public class KTailsMerge {
                         continue;
                     }
                     visited.add(transition);
-                    trivialSequences = determineTrivialSequences(trivialSequences, model, model.getSuccessor(transition), visited, parents);
+                    trivialSequences = determineTrivialSequences(trivialSequences, model, model.getSuccessor(transition),
+                            visited, parents, source);
                 }
             }
         }
