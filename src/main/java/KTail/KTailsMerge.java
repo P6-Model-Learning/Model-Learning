@@ -53,14 +53,18 @@ public class KTailsMerge {
 
         System.out.println("Merged model before CTS: " + merged.getStates().size());
 
-
         var changedFinalStates = computeFinalStateChange(mergesInto);
 
+        //Changes the NFA to contain accept states after the merge
+        var temp = new ArrayList<Integer>();
         for (var state : changedFinalStates){
             merged.setAccepting(mergedLocations.get(state), true);
+            temp.add(mergedLocations.get(state));
+            System.out.println(mergedLocations.get(state) + " is accepting");
         }
-        
-        return collapseTrivialSequences(merged);
+        changedFinalStates = temp;
+        //return merged;
+        return collapseTrivialSequences(merged, changedFinalStates);
     }
 
     private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
@@ -117,6 +121,7 @@ public class KTailsMerge {
         for (var state : mergesInto.keySet()){
             if (model.isAccepting(state)){
                 result.add(mergesInto.get(state));
+                System.out.println(state + " maps to " + mergesInto.get(state));
             }
         }
 
@@ -124,12 +129,12 @@ public class KTailsMerge {
     }
 
 
-    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model){
+    private CompactNFA<IEvent> collapseTrivialSequences(CompactNFA<IEvent> model, List<Integer> oldAcceptStates){
         CompactNFA<IEvent> collapsed = null;
         HashMap<Integer, Integer> correspondingStates = new HashMap<>();
         IEvent input;
         HashMap<Integer, Integer> parents = calculateParents(model);
-        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents, null);
+        ArrayList<ArrayList<Integer>> trivialSequences = determineTrivialSequences(new ArrayList<>(), model, 0, new HashSet<>(), parents, oldAcceptStates);
 
         // If no trivial Sequences exist return
         if (trivialSequences.size() == 0) {
@@ -191,22 +196,32 @@ public class KTailsMerge {
                 modifiedSequence.replaceAll(correspondingStates::get);
                 trivialSequences.set(i, modifiedSequence);
             }
+
+            //Updates the list of accept states iteratively
+            var tempList = new ArrayList<Integer>();
+            for (var accept : oldAcceptStates) {
+                tempList.add(correspondingStates.get(accept));
+                System.out.println(accept + " maps to " + correspondingStates.get(accept));
+            }
+            System.out.println();
+            oldAcceptStates = tempList;
+        }
+
+        //Lortet virker ikke her, men det virker så heller ikke andre steder :((
+        for (var accept : oldAcceptStates) {
+            collapsed.setAccepting(correspondingStates.get(accept), true);
+            System.out.println(correspondingStates.get(accept) + " is accepting");
         }
 
         return collapsed;
     }
 
     private ArrayList<ArrayList<Integer>> determineTrivialSequences(ArrayList<ArrayList<Integer>> trivialSequences, CompactNFA<IEvent> model, Integer source,
-                                                                    HashSet<Integer> visited, HashMap<Integer, Integer> parents, Integer parent){
+                                                                    HashSet<Integer> visited, HashMap<Integer, Integer> parents, List<Integer> acceptStates){
         int sequenceLength;
         ArrayList<Integer> statesInSequence = new ArrayList<>();
         Collection<IEvent> inputs = model.getLocalInputs(source);
         IEvent input;
-
-        // If method called from some parent state use parent as first state in sequence
-        if(parent != null){
-            statesInSequence.add(parent);
-        }
 
         // Iterate till either reaching the end of sequence or multiple inputs are available from source
         while (inputs != null && inputs.size() == 1) {
@@ -218,7 +233,12 @@ public class KTailsMerge {
 
             // Break if multiple parents for all other states than first
             if(parents.get(source) != 1 && statesInSequence.size() > 0){
-                    break;
+                break;
+            }
+
+            //Break if an accept state is part of the sequence
+            if (acceptStates.contains(source)){
+                break;
             }
 
             statesInSequence.add(source);
@@ -246,7 +266,7 @@ public class KTailsMerge {
                     }
                     visited.add(transition);
                     trivialSequences = determineTrivialSequences(trivialSequences, model, model.getSuccessor(transition),
-                            visited, parents, source);
+                            visited, parents, acceptStates);
                 }
             }
         }
