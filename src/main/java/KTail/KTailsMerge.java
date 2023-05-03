@@ -209,8 +209,8 @@ public class KTailsMerge {
 
         //Lortet virker ikke her, men det virker så heller ikke andre steder :((
         for (var accept : oldAcceptStates) {
-            collapsed.setAccepting(correspondingStates.get(accept), true);
-            System.out.println(correspondingStates.get(accept) + " is accepting");
+            collapsed.setAccepting(accept, true);
+            System.out.println(accept + " is accepting");
         }
 
         return collapsed;
@@ -251,7 +251,7 @@ public class KTailsMerge {
         sequenceLength = statesInSequence.size();
 
         // Enter if sequence meets length requirement of trivial sequence
-        if (sequenceLength >= 5) {
+        if (sequenceLength >= Math.ceil(0.05 * model.getStates().size())) {
             trivialSequences.add(statesInSequence);
             System.out.println("States in trivial sequence: " + statesInSequence);
         }
