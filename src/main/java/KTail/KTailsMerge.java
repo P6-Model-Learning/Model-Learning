@@ -63,8 +63,8 @@ public class KTailsMerge {
             System.out.println(mergedLocations.get(state) + " is accepting");
         }
         changedFinalStates = temp;
-        //return merged;
-        return collapseTrivialSequences(merged, changedFinalStates);
+        return merged;
+        //return collapseTrivialSequences(merged, changedFinalStates);
     }
 
     private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
@@ -207,7 +207,7 @@ public class KTailsMerge {
             oldAcceptStates = tempList;
         }
 
-        //Lortet virker ikke her, men det virker så heller ikke andre steder :((
+        //Sets the corresponding states as accepting
         for (var accept : oldAcceptStates) {
             collapsed.setAccepting(accept, true);
             System.out.println(accept + " is accepting");
