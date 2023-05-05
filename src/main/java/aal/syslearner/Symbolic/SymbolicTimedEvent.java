@@ -4,20 +4,26 @@ import aal.syslearner.Event;
 import aal.syslearner.IEvent;
 
 public class SymbolicTimedEvent implements IEvent {
-    public SymbolicTimedEvent(String message, String symbolicTime){
+    public SymbolicTimedEvent(String message, double min, double max){
         this.message = message;
-        this.symbolicTime = symbolicTime;
+        this.min = min;
+        this.max = max;
     }
 
     private final String message;
-    private final String symbolicTime;
+    private double min;
+    private double max;
 
     public String getMessage(){
         return message;
     }
+    public double getMin() { return min; }
+    public void setMin(double min) { this.min = min; }
+    public double getMax() { return max; }
+    public void setMax(double max) { this.max = max; }
 
     public String getSymbolicTime(){
-        return symbolicTime;
+        return min + "," + max;
     }
 
     @Override
@@ -27,12 +33,12 @@ public class SymbolicTimedEvent implements IEvent {
     }
     SymbolicTimedEvent other = (SymbolicTimedEvent) obj;
 
-    return this.message.equals(other.getMessage()) && this.symbolicTime.equals(other.getSymbolicTime());
+    return this.message.equals(other.getMessage()) && this.getSymbolicTime().equals(other.getSymbolicTime());
     }
 
     @Override
     public String toString() {
-        return message + "," + symbolicTime;
+        return message + "," + this.getSymbolicTime();
     }
 
     @Override

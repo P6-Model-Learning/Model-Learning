@@ -63,8 +63,7 @@ public class KTailsMerge {
             System.out.println(mergedLocations.get(state) + " is accepting");
         }
         changedFinalStates = temp;
-        return merged;
-        //return collapseTrivialSequences(merged, changedFinalStates);
+        return collapseTrivialSequences(Converter.makeMinValuesStricter(merged), changedFinalStates);
     }
 
     private Map<Pair<Integer, Integer>, Map<IEvent, Set<IEvent>>> collectTargetTransitions(Map<Integer, Integer> mergesInto, Map<Integer, Integer> mergedLocations) {
@@ -154,7 +153,7 @@ public class KTailsMerge {
             // Create input for collapsed sequence
             if (input.getClass() == SymbolicTimedEvent.class) {
                 input = new SymbolicTimedEvent("Collapsed trivial sequence ending with: " + input.getMessage(),
-                        (((SymbolicTimedEvent) input).getSymbolicTime()));
+                        ((SymbolicTimedEvent) input).getMin(), ((SymbolicTimedEvent) input).getMax());
             } else {
                 input = new Event("Collapsed trivial sequence ending with: " + input.getMessage());
             }
@@ -250,8 +249,11 @@ public class KTailsMerge {
         statesInSequence.add(source);
         sequenceLength = statesInSequence.size();
 
+        // Use the greater value as limit
+        int lowerLimit = Math.max(5, (int) Math.ceil(0.05 * model.getStates().size()));
+
         // Enter if sequence meets length requirement of trivial sequence
-        if (sequenceLength >= Math.ceil(0.05 * model.getStates().size())) {
+        if (sequenceLength >= lowerLimit) {
             trivialSequences.add(statesInSequence);
             System.out.println("States in trivial sequence: " + statesInSequence);
         }
