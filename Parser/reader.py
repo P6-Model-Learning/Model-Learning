@@ -110,22 +110,6 @@ class Reader:
         if re.search(sys_mode_regex, msg):
             msg = re.sub(sys_mode_regex, '', msg)
         return msg
-
-    def test_data(directory):
-        off = True
-        for root, dirs, files in os.walk(directory):
-            path = root.split(os.path.sep)
-            for file in files:
-                j = journal.Reader(path=root)
-                j.get_next(skip=1)
-                for entry in j:
-                    if entry['MESSAGE'] == 'Test started': off = False
-                    if off == True: continue
-                    print(entry['MESSAGE'])
-                    if entry['MESSAGE'] == 'Received client request to rotate journal, rotating.': off = True
     
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str, indent=4)
-
-x = Reader
-x.test_data(r'/home/claesm/Documents/code/sw6/bachelor_project/P6/p6-initdata/data/BBBTests.prevas.dk')
