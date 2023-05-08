@@ -2,27 +2,20 @@ import os
 from systemd import journal
 import json
 import re
+import re
 
 class Reader:
-    def getBoards(self) -> list:
-        boards = []
-
-        for root, dirs, files in os.walk(os.getcwd()):
-            if root not in boards and (os.path.basename(root)).endswith('.prevas.dk'):
-                boards.append(((os.path.basename(root))
-                               .split('-dut')[0]))
-        return boards
-
-    def parseBoards(self, boards, simple, init):
+    def parseBoards(self, boards, simple, init, directory):
         data = []
-        boards = self.getBoards()
-        start_string = None
+        start_string = "Test started"
         start_time = None
         
         for i in boards:
             data.append([])
+            
+        if directory is None: directory = os.getcwd()
         
-        for root, dirs, files in os.walk(os.getcwd()):
+        for root, dirs, files in os.walk(directory):
             path = root.split(os.path.sep)
             for file in files:
                 if init:
@@ -69,16 +62,18 @@ class Reader:
     
     def __parseTestTrace(self, simple, file, root, start_string):
         if file.endswith('.journal'):
-            start_string = start_string
             start_time = None
             board = None
             trace = []
+            end_string = 'Received client request to rotate journal, rotating.'
+            off = True
             j = journal.Reader(path=root)
             j.get_next(skip=1)
             j.log_level(level=7)
-            j.add_match("SYSLOG_IDENTIFIER=systemd")
             if simple:
                 for entry in j:
+                    if entry['MESSAGE'] == start_string: off = False
+                    if off: continue
                     if board == None: board = entry['_HOSTNAME']
                     if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
                     entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
@@ -88,14 +83,18 @@ class Reader:
                              '__MONOTONIC_TIMESTAMP':entry['__MONOTONIC_TIMESTAMP'],
                              'TIMEDELTA':entry['TIMEDELTA']}
                     trace.append(entry)
+                    if entry['MESSAGE'] == end_string: off = True
                 return trace, board
             else:
                 for entry in j:
+                    if entry['MESSAGE'] == start_string: off = False
+                    if off: continue
                     if board == None: board = entry['_HOSTNAME']
                     if start_time == None: start_time = entry['__MONOTONIC_TIMESTAMP'][0]
                     entry['TIMEDELTA'] = (entry['__MONOTONIC_TIMESTAMP'][0] - start_time).total_seconds()
                     entry['SIMPLE_MESSAGE'] = self.__pruneMSG(entry['MESSAGE'])
                     trace.append(entry)
+                    if entry['MESSAGE'] == end_string: off = True
                 return trace, board
     
     def __pruneMSG(self, msg):
@@ -112,6 +111,6 @@ class Reader:
         if re.search(sys_mode_regex, msg):
             msg = re.sub(sys_mode_regex, '', msg)
         return msg
-
+    
     def parseToJSON(self, data):
         return json.dumps(data, sort_keys=True, default=str, indent=4)
