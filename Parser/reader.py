@@ -2,6 +2,7 @@ import os
 from systemd import journal
 import json
 import re
+import re
 
 class Reader:
     def parseBoards(self, boards, simple, init, directory):
