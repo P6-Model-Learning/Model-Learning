@@ -1,6 +1,3 @@
-[submodule "p6-data"]
-	path = p6-data
-	url = https://github.com/P6-Model-Learning/p6-initdata
 [submodule "p6-initdata"]
 	path = p6-initdata
 	url = https://github.com/P6-Model-Learning/p6-initdata
